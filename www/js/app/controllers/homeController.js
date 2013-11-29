@@ -1,3 +1,6 @@
+/*
+* HomeController.js
+*/
 app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 	ConfigFactory.title = 'Angular boilerplate';
 	ConfigFactory.hasHeader = true;

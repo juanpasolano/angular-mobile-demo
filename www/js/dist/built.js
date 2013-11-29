@@ -1,3 +1,8 @@
+/*
+*  ANGULAR / TOPCOAT BOILERPLATE
+*  Author: Juan Pablo Solano.
+ */
+
 var app = angular.module('app', ['ngRoute', 'ngAnimate']);
 
 app.config(function($routeProvider){
@@ -19,8 +24,6 @@ app.config(function($routeProvider){
 
 
 app.controller('MainController', function($scope, $element, ConfigFactory){
-
-    //TODO: change mainCtrlProps to a factory module to share among controllers
 	$scope.config = ConfigFactory;
 
     $scope.contentStyles = function(){
@@ -52,6 +55,9 @@ app.factory('ConfigFactory', function(){
 });
 
 
+/*
+* HomeController.js
+*/
 app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 	ConfigFactory.title = 'Angular boilerplate';
 	ConfigFactory.hasHeader = true;
@@ -61,6 +67,9 @@ app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 		$rootScope.$emit('makeToast', [{title:'This is an emmited toast', type:'success'}]);
 	}
 });
+/*
+ * PageController.js
+ */
 app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 	ConfigFactory.title = 'Angular boilerplate';
 	ConfigFactory.hasHeader = true;
@@ -79,6 +88,11 @@ app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 * To make a new toast simply emit this event:
 * $rootScope.$emit('makeToast', [{title:'<string>', type:'success | error | warning'}]);
 * You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
+* -----
+* Don't forget to associate the div to this controller:
+* <div id="toasts" ng-controller="ToastController">
+* 	<div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
+* </div>
 * */
 
 app.controller('ToastController', function($scope, $rootScope, $timeout){
@@ -95,10 +109,11 @@ app.controller('ToastController', function($scope, $rootScope, $timeout){
 	function removeToast(){
 		$timeout(function(){
 			$scope.messages.splice(0,1);
-		},2000)
+		},2000);
 	}
 
 });
+
 /*----------------
  DIRECTIVES:
  E is for element,

@@ -1,3 +1,6 @@
+/*
+ * PageController.js
+ */
 app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 	ConfigFactory.title = 'Angular boilerplate';
 	ConfigFactory.hasHeader = true;

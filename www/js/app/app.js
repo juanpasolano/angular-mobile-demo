@@ -1,3 +1,8 @@
+/*
+*  ANGULAR / TOPCOAT BOILERPLATE
+*  Author: Juan Pablo Solano.
+ */
+
 var app = angular.module('app', ['ngRoute', 'ngAnimate']);
 
 app.config(function($routeProvider){
@@ -19,8 +24,6 @@ app.config(function($routeProvider){
 
 
 app.controller('MainController', function($scope, $element, ConfigFactory){
-
-    //TODO: change mainCtrlProps to a factory module to share among controllers
 	$scope.config = ConfigFactory;
 
     $scope.contentStyles = function(){
