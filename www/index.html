@@ -56,5 +56,9 @@
     </div>
 </div>
 
+<div id="toasts" ng-controller="ToastController">
+    <div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
+</div>
+
 </body>
 </html>

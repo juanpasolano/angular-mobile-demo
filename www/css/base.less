@@ -143,41 +143,37 @@ ul{
 
 
 /*PAGE ANIMATIONS*/
-.slide-animation.ng-enter, .slide-animation.ng-leave {
-  @time:1s;
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
-  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
-  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
-
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  min-height:1000px;
-  -webkit-transform:translate3d(0,0,0);
+.slide-animation{
+  &.ng-enter, &.ng-leave{
+    @time:1s;
+    -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    min-height:1000px;
+    -webkit-transform:translate3d(0,0,0);
+  }
+  &.ng-enter {
+    opacity:0;
+    -webkit-transform:translate3d(100%,0,0);
+  }
+  &.ng-enter.ng-enter-active {
+    -webkit-transform:translate3d(0,0,0);
+    opacity:1;
+  }
+  &.ng-leave {
+    -webkit-transform:translate3d(0,0,0);
+    opacity:1;
+  }
+  &.ng-leave.ng-leave-active {
+    -webkit-transform:translate3d(-100%,0,0);
+    opacity:0;
+  }
 }
-
-.slide-animation.ng-enter {
-  opacity:0;
-  -webkit-transform:translate3d(100%,0,0);
-}
-
-.slide-animation.ng-enter.ng-enter-active {
-  -webkit-transform:translate3d(0,0,0);
-  opacity:1;
-}
-
-.slide-animation.ng-leave {
-  -webkit-transform:translate3d(0,0,0);
-  opacity:1;
-}
-
-.slide-animation.ng-leave.ng-leave-active {
-  -webkit-transform:translate3d(-100%,0,0);
-  opacity:0;
-}
-
 
 /*TOASTS*/
 #toasts{
@@ -195,15 +191,9 @@ ul{
     padding: 10px;
     line-height: 12px;
     border-radius: 3px;
-    opacity: 0;
     -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
-    -webkit-transform: scaleY(0);
-    -webkit-transition: all .5s;
-    &.shown{
-      opacity: 1;
-      -webkit-transform: scaleY(1);
-    }
+    //-webkit-transition: all .5s;
     &.success{
       background: rgb(128, 214, 18);
       color:white;
@@ -215,6 +205,28 @@ ul{
     &.error{
       background: rgb(209, 21, 21);
       color:white;
+    }
+
+    &.ng-enter, &.ng-leave{
+      @time:.3s;
+      -webkit-transform: scaleY(0);
+      -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+    }
+    &.ng-enter {
+      opacity:0;
+      -webkit-transform: scaleY(0);
+    }
+    &.ng-enter.ng-enter-active {
+      -webkit-transform: scaleY(1);
+      opacity:1;
+    }
+    &.ng-leave {
+      -webkit-transform: scaleY(1);
+      opacity:1;
+    }
+    &.ng-leave.ng-leave-active {
+      -webkit-transform: scaleY(0);
+      opacity:0;
     }
   }
 }

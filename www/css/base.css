@@ -184,15 +184,8 @@ ul {
   padding: 10px;
   line-height: 12px;
   border-radius: 3px;
-  opacity: 0;
   -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
-  -webkit-transform: scaleY(0);
-  -webkit-transition: all .5s;
-}
-#toasts .toast.shown {
-  opacity: 1;
-  -webkit-transform: scaleY(1);
 }
 #toasts .toast.success {
   background: #80d612;
@@ -205,4 +198,25 @@ ul {
 #toasts .toast.error {
   background: #d11515;
   color: white;
+}
+#toasts .toast.ng-enter,
+#toasts .toast.ng-leave {
+  -webkit-transform: scaleY(0);
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+#toasts .toast.ng-enter {
+  opacity: 0;
+  -webkit-transform: scaleY(0);
+}
+#toasts .toast.ng-enter.ng-enter-active {
+  -webkit-transform: scaleY(1);
+  opacity: 1;
+}
+#toasts .toast.ng-leave {
+  -webkit-transform: scaleY(1);
+  opacity: 1;
+}
+#toasts .toast.ng-leave.ng-leave-active {
+  -webkit-transform: scaleY(0);
+  opacity: 0;
 }

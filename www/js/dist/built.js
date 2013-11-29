@@ -52,10 +52,14 @@ app.factory('ConfigFactory', function(){
 });
 
 
-app.controller('HomeController', function($scope, ConfigFactory){
+app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 	ConfigFactory.title = 'Angular boilerplate';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
+
+	$scope.emitToast = function(){
+		$rootScope.$emit('makeToast', [{title:'This is an emmited toast', type:'success'}]);
+	}
 });
 app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 	ConfigFactory.title = 'Angular boilerplate';
@@ -70,6 +74,31 @@ app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 	StoresModel.getStores().success(storesSuccess);
 });
 
+/*
+* TOASTS:
+* To make a new toast simply emit this event:
+* $rootScope.$emit('makeToast', [{title:'<string>', type:'success | error | warning'}]);
+* You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
+* */
+
+app.controller('ToastController', function($scope, $rootScope, $timeout){
+	$scope.messages = []
+
+	$rootScope.$on('makeToast', function(ev, data){
+		createToast(data[0]);
+	});
+
+	function createToast(data){
+		$scope.messages.push(data);
+		removeToast();
+	}
+	function removeToast(){
+		$timeout(function(){
+			$scope.messages.splice(0,1);
+		},2000)
+	}
+
+});
 /*----------------
  DIRECTIVES:
  E is for element,
