@@ -1,0 +1,220 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+a{
+  text-decoration: none;
+}
+h1, h2, h3, h4, h5{
+  margin: 0;
+  padding: 0;
+}
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+@sideBarWidth:200px;
+@headerHeight: 70px;
+@darkGray:#4A4D4E;
+@lightGray:#dfe2e2;
+#app {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+#wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: all .4s;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  &.open {
+    -webkit-transform: translate3d(@sideBarWidth, 0, 0);
+  }
+}
+#header {
+  width: 100%;
+  height: @headerHeight;
+  background: @darkGray;
+  box-sizing: border-box;
+  padding: 10px;
+  &.hidden{
+    display: none;
+  }
+  .title{
+    display: inline-block;
+    line-height:@headerHeight*0.77;
+    padding-left: 10px;
+    color:white;
+  }
+}
+#content {
+  background: @lightGray;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: @headerHeight;
+  left: 0;
+  box-sizing: border-box;
+
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+  .page {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    position: absolute;
+    overflow-x: auto;
+    top: 0;
+    left: 0;
+    -webkit-transform:translate3d(0,0,0);
+  }
+}
+#footer{
+  width: 100%;
+  height: @headerHeight;
+  position: absolute;
+  bottom: 0;
+  display:-webkit-flex;
+  background: @darkGray;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .2s;
+  &.hidden{
+    -webkit-transform: translate3d(0,(@headerHeight + 20px),0);
+    //display: none;
+  }
+  > a{
+      -webkit-flex: 1 1 auto;
+      flex: 1 1 auto;
+      color:white;
+      text-align: center;
+      line-height: @headerHeight;
+      &:hover, &:active{
+        background: darken(@darkGray, 10%);
+      }
+  }
+}
+#sideNav {
+  width: @sideBarWidth;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: lighten(@darkGray, 20%);
+  -webkit-transform: translate3d(0, 0, 0);
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+      a {
+        color: #F0F1F1;
+        display: block;
+        height: 46px;
+        font-size: 16px;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 12px 0 0 20px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+/*PAGE ANIMATIONS*/
+.slide-animation.ng-enter, .slide-animation.ng-leave {
+  @time:1s;
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  min-height:1000px;
+  -webkit-transform:translate3d(0,0,0);
+}
+
+.slide-animation.ng-enter {
+  opacity:0;
+  -webkit-transform:translate3d(100%,0,0);
+}
+
+.slide-animation.ng-enter.ng-enter-active {
+  -webkit-transform:translate3d(0,0,0);
+  opacity:1;
+}
+
+.slide-animation.ng-leave {
+  -webkit-transform:translate3d(0,0,0);
+  opacity:1;
+}
+
+.slide-animation.ng-leave.ng-leave-active {
+  -webkit-transform:translate3d(-100%,0,0);
+  opacity:0;
+}
+
+
+/*TOASTS*/
+#toasts{
+  width: 100%;
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  z-index: 9999999;
+  .toast{
+    width: 90%;
+    margin: 2px auto;
+    background: #ccc;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 10px;
+    line-height: 12px;
+    border-radius: 3px;
+    opacity: 0;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    -webkit-transform: scaleY(0);
+    -webkit-transition: all .5s;
+    &.shown{
+      opacity: 1;
+      -webkit-transform: scaleY(1);
+    }
+    &.success{
+      background: rgb(128, 214, 18);
+      color:white;
+    }
+    &.warning{
+      background: rgb(255, 143, 0);
+      color:white;
+    }
+    &.error{
+      background: rgb(209, 21, 21);
+      color:white;
+    }
+  }
+}
