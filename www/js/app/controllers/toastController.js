@@ -24,7 +24,7 @@ app.controller('ToastController', function($scope, $rootScope, $timeout){
 	function removeToast(){
 		$timeout(function(){
 			$scope.messages.splice(0,1);
-		},2000);
+		},2500);
 	}
 
 });
