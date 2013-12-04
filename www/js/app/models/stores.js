@@ -3,9 +3,13 @@ app.factory('StoresModel', function($http, $rootScope){
 
 	return {
 		getStores :  function(){
-			return $http.get('http://192.237.180.31ss/dhm/public/api/stores?branches=true&offers=true')
+			return $http.get('http://192.237.180.31/dhm/public/api/stores?branches=true&offers=true')
 				.error(function(){
 					$rootScope.$emit('makeToast', [{title:'Algo salio mal por favor vuelve a intentarlo', type:'error'}]);
+				})
+				.success(function(data){
+					console.log(data);
+					console.log('StoresModel:success');
 				});
 		}
 	};

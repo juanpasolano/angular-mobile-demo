@@ -2,9 +2,9 @@
  * PageController.js
  */
 app.controller('PageController', function($scope, ConfigFactory, StoresModel){
-	ConfigFactory.title = 'Angular boilerplate';
+	ConfigFactory.title = 'Tradings';
 	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasFooter = true;
 
 	$scope.stores = [];
 	var storesSuccess = function(data, status){

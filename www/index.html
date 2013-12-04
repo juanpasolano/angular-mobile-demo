@@ -12,17 +12,24 @@
     <title></title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+
     <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.css"/>
     <link rel="stylesheet" type="text/css" href="css/base.css"/>
 
 
     <script src="js/vendor/jquery-2.0.3.min.js"></script>
     <script src="js/vendor/fastclick.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
+
     <script src="js/vendor/angular-1.2.2/angular.min.js"></script>
     <script src="js/vendor/angular-1.2.2/angular-route.min.js"></script>
     <script src="js/vendor/angular-1.2.2/angular-animate.min.js"></script>
-    <script src="js/dist/built.js"></script>
+    <script src="js/vendor/underscore-min.js"></script>
 
+   <script type="text/javascript" src="js/vendor/angular-google-maps.js"></script>
+    <!-- <script src="http://nlaplante.github.io/angular-google-maps/js/angular-google-maps.js"></script>http://nlaplante.github.io/angular-google-maps/#!/usage
+    <script type="text/javascript" src="https://raw.github.com/nlaplante/angular-google-maps/master/dist/angular-google-maps.js"></script>-->
+    <script src="js/dist/built.js"></script>
 
 </head>
 <body ng-app="app">
@@ -50,7 +57,7 @@
         <div id="footer" ng-class="{false: 'hidden'}[config.hasFooter]">
             <a href="#/home">Home</a>
             <a href="#/tradings">Tradings</a>
-            <a href="">Plans</a>
+            <a href="#/map">Map</a>
         </div>
 
     </div>

@@ -220,3 +220,13 @@ ul {
   -webkit-transform: scaleY(0);
   opacity: 0;
 }
+.angular-google-map {
+  height: 100%;
+  display: block;
+}
+.angular-google-map .angular-google-map-container {
+  height: 100%;
+}
+.angular-google-map .angular-google-map-container > div {
+  height: 100%;
+}

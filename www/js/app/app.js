@@ -3,7 +3,7 @@
 *  Author: Juan Pablo Solano.
  */
 
-var app = angular.module('app', ['ngRoute', 'ngAnimate']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'google-maps']);
 
 app.config(function($routeProvider){
 
@@ -15,6 +15,10 @@ app.config(function($routeProvider){
 		.when('/tradings', {
 			templateUrl: 'templates/page.html',
 			controller: 'PageController'
+		})
+		.when('/map', {
+			templateUrl: 'templates/map.html',
+			controller: 'MapDemoController'
 		})
 		.otherwise({
 			redirectTo:'/home'
