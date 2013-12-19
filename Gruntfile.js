@@ -35,18 +35,18 @@ module.exports =  function(grunt){
 			}
 		},
 
-		less:{
-			options: {
-				paths: ['www/css']
-			},
-			src: {
-					expand: true,
-					cwd:    "www/css",
-					src:    "*.less",
-					dest:		"www/css",
-					ext:    ".css"
-			}
+	less:{
+		options: {
+			paths: ['www/css']
+		},
+		src: {
+				expand: true,
+				cwd:    "www/css",
+				src:    "*.less",
+				dest:		"www/css",
+				ext:    ".css"
 		}
+	}
 
 	});
 

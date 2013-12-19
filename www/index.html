@@ -13,8 +13,47 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 
-    <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.css"/>
+    <link rel="stylesheet" type="text/css" href="css/vendor/foundation.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/base.css"/>
+
+
+
+
+</head>
+<body ng-app="app" ng-cloak>
+    <div id="app" ng-controller="MainController">
+
+        <div id="sideNav">
+            <ul>
+                <li><a href="#/home" ng-click="toggleSideNav()">Home</a></li>
+                <li><a href="#/tradings" ng-click="toggleSideNav()">Tradings</a></li>
+                <li><a href="">Plans</a></li>
+            </ul>
+        </div>
+
+        <div id="wrapper">
+
+            <div id="header" ng-class="{false: 'hidden'}[config.hasHeader]">
+                <a class="button menuButton" ng-click="toggleSideNav()">Menu</a>
+                <h3 class="title">{{config.title}}</h3>
+            </div>
+
+            <div id="content" style="{{contentStyles()}}">
+                <div ng-view="" class="slide-animation"></div>
+            </div>
+
+            <div id="footer" ng-class="{false: 'hidden'}[config.hasFooter]">
+                <a href="#/home">Home</a>
+                <a href="#/tradings">Tradings</a>
+                <a href="#/map">Map</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="toasts" ng-controller="ToastController">
+        <div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
+    </div>
 
 
     <script src="js/vendor/jquery-2.0.3.min.js"></script>
@@ -25,47 +64,11 @@
     <script src="js/vendor/angular-1.2.2/angular-route.min.js"></script>
     <script src="js/vendor/angular-1.2.2/angular-animate.min.js"></script>
     <script src="js/vendor/underscore-min.js"></script>
-
-   <script type="text/javascript" src="js/vendor/angular-google-maps.js"></script>
+    <script type="text/javascript" src="js/vendor/angular-google-maps.js"></script>
     <!-- <script src="http://nlaplante.github.io/angular-google-maps/js/angular-google-maps.js"></script>http://nlaplante.github.io/angular-google-maps/#!/usage
     <script type="text/javascript" src="https://raw.github.com/nlaplante/angular-google-maps/master/dist/angular-google-maps.js"></script>-->
     <script src="js/dist/built.js"></script>
 
-</head>
-<body ng-app="app">
-<div id="app" ng-controller="MainController">
-
-    <div id="sideNav">
-        <ul>
-            <li><a href="#/home" ng-click="toggleSideNav()">Home</a></li>
-            <li><a href="#/tradings" ng-click="toggleSideNav()">Tradings</a></li>
-            <li><a href="">Plans</a></li>
-        </ul>
-    </div>
-
-    <div id="wrapper">
-
-        <div id="header" ng-class="{false: 'hidden'}[config.hasHeader]">
-            <button class="topcoat-button" ng-click="toggleSideNav()">Menu</button>
-            <h2 class="title">{{config.title}}</h2>
-        </div>
-
-        <div id="content" style="{{contentStyles()}}">
-            <div ng-view="" class="slide-animation"></div>
-        </div>
-
-        <div id="footer" ng-class="{false: 'hidden'}[config.hasFooter]">
-            <a href="#/home">Home</a>
-            <a href="#/tradings">Tradings</a>
-            <a href="#/map">Map</a>
-        </div>
-
-    </div>
-</div>
-
-<div id="toasts" ng-controller="ToastController">
-    <div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
-</div>
 
 </body>
 </html>
