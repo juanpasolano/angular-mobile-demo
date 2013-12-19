@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'entypo';
+  src: url('../fonts/entypo.eot');
+  src: url('../fonts/entypo.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/entypo.woff') format('woff'), /* Modern Browsers */ url('../fonts/entypo.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/entypo.svg#svgFontName') format('svg');
+  
+  /* IE9 Compat Modes */
+  /* Legacy iOS */
+}
 html,
 body {
   width: 100%;
@@ -53,7 +61,11 @@ ul {
   display: none;
 }
 #header .menuButton {
+  font-family: 'entypo';
+  font-size: 3.9em;
   position: absolute;
+  padding: 0px 0.2em;
+  line-height: 0.8em;
 }
 #header .title {
   display: inline-block;
@@ -61,7 +73,7 @@ ul {
   padding-left: 10px;
   color: white;
   position: absolute;
-  left: 130px;
+  left: 70px;
 }
 #content {
   background: #dfe2e2;
