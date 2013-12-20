@@ -6,6 +6,14 @@
   /* IE9 Compat Modes */
   /* Legacy iOS */
 }
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
 html,
 body {
   width: 100%;
@@ -70,9 +78,11 @@ ul {
 #header .title {
   display: inline-block;
   line-height: 53.9px;
-  padding-left: 10px;
   color: white;
   position: absolute;
+  padding-left: 10px;
+}
+#header .title.sideNav {
   left: 70px;
 }
 #content {

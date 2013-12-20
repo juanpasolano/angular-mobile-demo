@@ -8,6 +8,10 @@
   /* Legacy iOS */
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 html,
 body {
   width: 100%;
@@ -71,10 +75,12 @@ ul{
   .title{
     display: inline-block;
     line-height:@headerHeight*0.77;
-    padding-left: 10px;
     color:white;
     position: absolute;
-    left: 70px;
+    padding-left: 10px;
+    &.sideNav{
+      left: 70px;
+    }
   }
 }
 #content {

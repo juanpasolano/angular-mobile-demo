@@ -1,7 +1,7 @@
 /*
  * PageController.js
  */
-app.controller('PageController', function($scope, ConfigFactory, StoresModel){
+app.controller('PageController', function($scope, ConfigFactory, StoresService){
 	ConfigFactory.title = 'Tradings';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
@@ -11,5 +11,5 @@ app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 		$scope.stores = data;
 		console.log(status);
 	};
-	StoresModel.getStores().success(storesSuccess);
+	StoresService.getStores().success(storesSuccess);
 });

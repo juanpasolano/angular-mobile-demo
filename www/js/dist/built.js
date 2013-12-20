@@ -71,8 +71,9 @@ app.factory('ConfigFactory', function(){
 	return {
 		title : 'Angular boilerplate from factory',
 		hasFooter: false,
-		hasHeader:false
-	}
+		hasHeader:false,
+		hasSideNavigation: false
+	};
 });
 
 
@@ -343,7 +344,7 @@ function ExampleController ($scope, $log, StoresModel) {
 /*
  * PageController.js
  */
-app.controller('PageController', function($scope, ConfigFactory, StoresModel){
+app.controller('PageController', function($scope, ConfigFactory, StoresService){
 	ConfigFactory.title = 'Tradings';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
@@ -353,7 +354,7 @@ app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 		$scope.stores = data;
 		console.log(status);
 	};
-	StoresModel.getStores().success(storesSuccess);
+	StoresService.getStores().success(storesSuccess);
 });
 
 /*
@@ -431,7 +432,7 @@ app.filter('upperCase', function(){
 });
 
 //TODO: check if there is a better/proper way to do this calls and return promises
-app.factory('StoresModel', function($http, $rootScope){
+app.factory('StoresService', function($http, $rootScope){
 
 	return {
 		getStores :  function(){

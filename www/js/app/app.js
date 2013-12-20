@@ -71,7 +71,8 @@ app.factory('ConfigFactory', function(){
 	return {
 		title : 'Angular boilerplate from factory',
 		hasFooter: false,
-		hasHeader:false
-	}
+		hasHeader:false,
+		hasSideNavigation: false
+	};
 });
 
