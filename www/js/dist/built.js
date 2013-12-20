@@ -72,7 +72,8 @@ app.factory('ConfigFactory', function(){
 		title : 'Angular boilerplate from factory',
 		hasFooter: false,
 		hasHeader:false,
-		hasSideNavigation: false
+		hasSideNavigation: false,
+		loadingPopOver:false
 	};
 });
 
@@ -87,7 +88,11 @@ app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 
 	$scope.emitToast = function(){
 		$rootScope.$emit('makeToast', [{title:'This is an emmited toast', type:'success'}]);
-	}
+	};
+	$scope.showLoading = function(){
+		ConfigFactory.loadingPopOver = true;
+		console.log(ConfigFactory.loadingPopOver);
+	};
 });
 /*
  * MapController.js

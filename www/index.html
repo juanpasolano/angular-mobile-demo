@@ -35,7 +35,7 @@
 
             <div id="header" ng-class="{false: 'hidden'}[config.hasHeader]">
                 <a class="button menuButton" ng-click="toggleSideNav()" ng-show="config.hasSideNavigation">&#9776;</a>
-                <h3 class="title" ng-class="{true: 'sideNav'}[config.hasSideNavigation]">{{config.title}}</h3>
+                <h3 class="title" ng-class="{true: 'sideNav'}[config.hasSideNavigation]">{{config.title}} {{config.loadingPopOver}}</h3>
             </div>
 
             <div id="content" style="{{contentStyles()}}">
@@ -49,13 +49,31 @@
             </div>
 
         </div>
+
+
+        <div id="toasts" ng-controller="ToastController">
+            <div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
+        </div>
+
+        <div id="loading" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
+            <div class="msgBox">
+                <p>Loading Content</p>
+                <div class="loading-dots">
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 
 
 
-    <div id="toasts" ng-controller="ToastController">
-        <div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
-    </div>
+
 
 
     <script src="js/vendor/jquery-2.0.3.min.js"></script>

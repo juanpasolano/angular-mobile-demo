@@ -8,5 +8,9 @@ app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 
 	$scope.emitToast = function(){
 		$rootScope.$emit('makeToast', [{title:'This is an emmited toast', type:'success'}]);
-	}
+	};
+	$scope.showLoading = function(){
+		ConfigFactory.loadingPopOver = true;
+		console.log(ConfigFactory.loadingPopOver);
+	};
 });
