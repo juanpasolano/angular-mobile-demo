@@ -349,7 +349,7 @@ function ExampleController ($scope, $log, StoresModel) {
 /*
  * PageController.js
  */
-app.controller('PageController', function($scope, ConfigFactory, StoresService){
+app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 	ConfigFactory.title = 'Tradings';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
@@ -359,7 +359,7 @@ app.controller('PageController', function($scope, ConfigFactory, StoresService){
 		$scope.stores = data;
 		console.log(status);
 	};
-	StoresService.getStores().success(storesSuccess);
+	StoresModel.getStores().success(storesSuccess);
 });
 
 /*
@@ -437,7 +437,7 @@ app.filter('upperCase', function(){
 });
 
 //TODO: check if there is a better/proper way to do this calls and return promises
-app.factory('StoresService', function($http, $rootScope){
+app.factory('StoresModel', function($http, $rootScope){
 
 	return {
 		getStores :  function(){

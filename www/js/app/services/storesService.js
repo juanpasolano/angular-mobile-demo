@@ -1,5 +1,5 @@
 //TODO: check if there is a better/proper way to do this calls and return promises
-app.factory('StoresService', function($http, $rootScope){
+app.factory('StoresModel', function($http, $rootScope){
 
 	return {
 		getStores :  function(){
