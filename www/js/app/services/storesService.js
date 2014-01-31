@@ -8,8 +8,8 @@ app.factory('StoresModel', function($http, $rootScope){
 					$rootScope.$emit('makeToast', [{title:'Algo salio mal por favor vuelve a intentarlo', type:'error'}]);
 				})
 				.success(function(data){
-					console.log(data);
-					console.log('StoresModel:success');
+					//console.log(data);
+					//console.log('StoresModel:success');
 				});
 		}
 	};

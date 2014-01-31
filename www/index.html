@@ -52,21 +52,13 @@
 
         </div>
 
-
+        <!-- Toast element -->
         <div id="toasts" ng-controller="ToastController">
             <div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
         </div>
 
-        <div id="loading" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
-            <div class="msgBox">
-                <p>Loading Content</p>
-                <div class="loading-dots">
-                    <div class="loading-dot"></div>
-                    <div class="loading-dot"></div>
-                    <div class="loading-dot"></div>
-                    <div class="loading-dot"></div>
-                </div>
-            </div>
+        <!-- Loading widget -->
+        <div id="loading" loading-pop-over="Wait! we are getting something nice for you" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
         </div>
 
 
