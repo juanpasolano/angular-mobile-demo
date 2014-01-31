@@ -8,20 +8,28 @@ var app = angular.module('app', ['ngRoute', 'ngAnimate', 'google-maps']);
 app.config(function($routeProvider){
 
 	$routeProvider
+		.when('/login', {
+			templateUrl: 'partials/login/login.html',
+			controller: 'LoginController'
+		})
+		.when('/login/recover', {
+			templateUrl: 'partials/login/recover.html',
+			controller: 'RecoverController'
+		})
 		.when('/home', {
-			templateUrl: 'templates/home.html',
+			templateUrl: 'partials/home.html',
 			controller: 'HomeController'
 		})
 		.when('/tradings', {
-			templateUrl: 'templates/page.html',
+			templateUrl: 'partials/page.html',
 			controller: 'PageController'
 		})
 		.when('/map', {
-			templateUrl: 'templates/map.html',
+			templateUrl: 'partials/map.html',
 			controller: 'MapDemoController'
 		})
 		.otherwise({
-			redirectTo:'/home'
+			redirectTo:'/login'
 		});
 });
 

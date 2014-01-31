@@ -8,20 +8,28 @@ var app = angular.module('app', ['ngRoute', 'ngAnimate', 'google-maps']);
 app.config(function($routeProvider){
 
 	$routeProvider
+		.when('/login', {
+			templateUrl: 'partials/login/login.html',
+			controller: 'LoginController'
+		})
+		.when('/login/recover', {
+			templateUrl: 'partials/login/recover.html',
+			controller: 'RecoverController'
+		})
 		.when('/home', {
-			templateUrl: 'templates/home.html',
+			templateUrl: 'partials/home.html',
 			controller: 'HomeController'
 		})
 		.when('/tradings', {
-			templateUrl: 'templates/page.html',
+			templateUrl: 'partials/page.html',
 			controller: 'PageController'
 		})
 		.when('/map', {
-			templateUrl: 'templates/map.html',
+			templateUrl: 'partials/map.html',
 			controller: 'MapDemoController'
 		})
 		.otherwise({
-			redirectTo:'/home'
+			redirectTo:'/login'
 		});
 });
 
@@ -85,6 +93,7 @@ app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 	ConfigFactory.title = 'Angular boilerplate';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
+	ConfigFactory.hasSideNavigation = true;
 
 	$scope.emitToast = function(){
 		$rootScope.$emit('makeToast', [{title:'This is an emmited toast', type:'success'}]);
@@ -436,6 +445,37 @@ app.filter('upperCase', function(){
 	};
 });
 
+/*
+* HomeController.js
+*/
+app.controller('LoginController', function($scope, $rootScope, $location, ConfigFactory){
+	ConfigFactory.title = 'Login';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = false;
+
+	$scope.loginData = {};
+
+	$scope.loginSubmit = function(e){
+		console.log($scope.loginData);
+		$location.path('/home');
+	};
+});
+/*
+* RecoverController.js
+*/
+app.controller('RecoverController', function($scope, $rootScope, $location, ConfigFactory){
+	ConfigFactory.title = 'Recover your password';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = false;
+
+	$scope.mailsent = false;
+
+	$scope.recoverSubmit = function(){
+		$scope.mailsent = !$scope.mailsent;
+	};
+});
 //TODO: check if there is a better/proper way to do this calls and return promises
 app.factory('StoresModel', function($http, $rootScope){
 

@@ -28,6 +28,8 @@
                 <li><a href="#/home" ng-click="toggleSideNav()">Home</a></li>
                 <li><a href="#/tradings" ng-click="toggleSideNav()">Tradings</a></li>
                 <li><a href="">Plans</a></li>
+                <li><a href="#/" ng-click="toggleSideNav()">Logout</a></li>
+
             </ul>
         </div>
 
@@ -35,7 +37,7 @@
 
             <div id="header" ng-class="{false: 'hidden'}[config.hasHeader]">
                 <a class="button menuButton" ng-click="toggleSideNav()" ng-show="config.hasSideNavigation">&#9776;</a>
-                <h3 class="title" ng-class="{true: 'sideNav'}[config.hasSideNavigation]">{{config.title}} {{config.loadingPopOver}}</h3>
+                <h3 class="title" ng-class="{true: 'sideNav'}[config.hasSideNavigation]">{{config.title}}</h3>
             </div>
 
             <div id="content" style="{{contentStyles()}}">
@@ -80,9 +82,9 @@
     <script src="js/vendor/fastclick.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
 
-    <script src="js/vendor/angular-1.2.2/angular.min.js"></script>
-    <script src="js/vendor/angular-1.2.2/angular-route.min.js"></script>
-    <script src="js/vendor/angular-1.2.2/angular-animate.min.js"></script>
+    <script src="js/vendor/angular-1.2.10/angular.min.js"></script>
+    <script src="js/vendor/angular-1.2.10/angular-route.min.js"></script>
+    <script src="js/vendor/angular-1.2.10/angular-animate.min.js"></script>
     <script src="js/vendor/underscore-min.js"></script>
     <script type="text/javascript" src="js/vendor/angular-google-maps.js"></script>
     <!-- <script src="http://nlaplante.github.io/angular-google-maps/js/angular-google-maps.js"></script>http://nlaplante.github.io/angular-google-maps/#!/usage
