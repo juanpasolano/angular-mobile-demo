@@ -802,10 +802,10 @@ body {
 }
 a {
   text-decoration: none;
-  color: #dd3b5b;
+  color: #2dbef7;
 }
 a:hover {
-  color: #c32242;
+  color: #09a9e8;
 }
 h1,
 h2,
@@ -941,7 +941,7 @@ ul {
 #footer > a:hover,
 #footer > a:active {
   -webkit-transition: all .4s ease;
-  background: #c32242;
+  background: #09a9e8;
 }
 #sideNav {
   width: 200px;
@@ -959,17 +959,18 @@ ul {
 * MODULES
 *
 **/
+/*BUTTONS*/
 .button {
-  background: #dd3b5b;
+  background: #2dbef7;
 }
 .button:hover {
-  background: #981a33;
+  background: #0785b7;
 }
 .button[disabled] {
-  background: #e5667f;
+  background: #5ecdf9;
 }
 .button[disabled]:hover {
-  background: #e5667f;
+  background: #5ecdf9;
 }
 .has-icon {
   text-indent: 2em;
@@ -1000,6 +1001,7 @@ ul {
   top: 0;
   right: 0.6em;
 }
+/*SPACERS*/
 .spacer-8 {
   width: 100%;
   height: 80px;
@@ -1032,6 +1034,7 @@ ul {
   width: 100%;
   height: 10px;
 }
+/*VERTICAL MENU*/
 ul.vertical-menu {
   list-style: none;
   margin: 0;
@@ -1049,8 +1052,9 @@ ul.vertical-menu li a {
   font-weight: 300;
 }
 ul.vertical-menu li a:hover {
-  color: #dd3b5b;
+  color: #2dbef7;
 }
+/*CALENDAR*/
 .calendar .clndr-controls > div {
   height: 2.4em;
 }
@@ -1075,7 +1079,7 @@ ul.vertical-menu li a:hover {
   height: 4.4em;
 }
 .calendar .clndr-table .today {
-  background: #dd3b5b;
+  background: #2dbef7;
   color: white;
 }
 .calendar .clndr-table .event .day-contents {
@@ -1083,7 +1087,7 @@ ul.vertical-menu li a:hover {
 }
 .calendar .clndr-table .event .day-contents:after {
   content: '\23F4';
-  color: #dd3b5b;
+  color: #2dbef7;
   font-size: 6em;
   position: absolute;
   left: 50%;
@@ -1093,45 +1097,18 @@ ul.vertical-menu li a:hover {
 .calendar .clndr-table .adjacent-month {
   color: #b0b3b4;
 }
-/**
-*
-* STATES
-*
-**/
-/**
-*
-* THEME
-*
-**/
-/*PAGE ANIMATIONS*/
-.slide-animation.ng-enter,
-.slide-animation.ng-leave {
-  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
-  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
-  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  min-height: 1000px;
-  -webkit-transform: translate3d(0, 0, 0);
+/*LIST VIEW*/
+.listview li {
+  padding: 0.5em;
 }
-.slide-animation.ng-enter {
-  opacity: 0;
-  -webkit-transform: translate3d(100%, 0, 0);
+.listview li:hover {
+  background: white;
 }
-.slide-animation.ng-enter.ng-enter-active {
-  -webkit-transform: translate3d(0, 0, 0);
-  opacity: 1;
+.listview .column {
+  padding-left: 0.3em;
 }
-.slide-animation.ng-leave {
-  -webkit-transform: translate3d(0, 0, 0);
-  opacity: 1;
-}
-.slide-animation.ng-leave.ng-leave-active {
-  -webkit-transform: translate3d(-100%, 0, 0);
-  opacity: 0;
+.listview .title {
+  font-weight: bold;
 }
 /*TOASTS*/
 #toasts {
@@ -1277,18 +1254,45 @@ ul.vertical-menu li a:hover {
     opacity: 0;
   }
 }
-/*LIST VIEW*/
-.listview li {
-  padding: 0.5em;
+/**
+*
+* STATES
+*
+**/
+/**
+*
+* THEME
+*
+**/
+/*PAGE ANIMATIONS*/
+.slide-animation.ng-enter,
+.slide-animation.ng-leave {
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 1000px;
+  -webkit-transform: translate3d(0, 0, 0);
 }
-.listview li:hover {
-  background: white;
+.slide-animation.ng-enter {
+  opacity: 0;
+  -webkit-transform: translate3d(100%, 0, 0);
 }
-.listview .column {
-  padding-left: 0.3em;
+.slide-animation.ng-enter.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
-.listview .title {
-  font-weight: bold;
+.slide-animation.ng-leave {
+  -webkit-transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+.slide-animation.ng-leave.ng-leave-active {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  opacity: 0;
 }
 .angular-google-map {
   height: 100%;
