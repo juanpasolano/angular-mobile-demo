@@ -1065,8 +1065,8 @@ ul.vertical-menu li a:hover {
   line-height: 1em;
 }
 .calendar .clndr-controls .month {
-  line-height: 2.1em;
-  font-size: 1.8em;
+  line-height: 2.6em;
+  font-size: 1.5em;
   font-weight: 200;
 }
 .calendar .clndr-table {
@@ -1074,8 +1074,6 @@ ul.vertical-menu li a:hover {
 }
 .calendar .clndr-table td {
   text-align: center;
-}
-.calendar .clndr-table .day {
   height: 4.4em;
 }
 .calendar .clndr-table .today {
