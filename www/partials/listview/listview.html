@@ -1,8 +1,6 @@
 <div class="page">
-	<p>This is a listview template, I'll show you how to implement it</p>
-
     <ul class="listview">
-    	<li ng-repeat="item in items" class="row column medium-6" ng-click="getDetails()">
+    	<li ng-repeat="item in items" class="row column medium-6" ng-click="getDetails(item)">
     		<div class="column small-3">
     			<img src="{{item.image[2]['#text']}}" alt="">
     		</div>

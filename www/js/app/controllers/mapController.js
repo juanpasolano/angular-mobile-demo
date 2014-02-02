@@ -5,10 +5,11 @@ app.controller('MapDemoController', function($scope, $log, ConfigFactory, Stores
 	ConfigFactory.title = 'Map demo';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
+	ConfigFactory.hasSideNavigation = true;
 
 	onMarkerClicked = function(marker){
 		marker.showWindow = true;
-		window.alert("Marker: lat: " + marker.latitude +", lon: " + marker.longitude + " clicked!!")
+		window.alert("Marker: lat: " + marker.latitude +", lon: " + marker.longitude + " clicked!!");
 	};
 
 	$scope.map = {

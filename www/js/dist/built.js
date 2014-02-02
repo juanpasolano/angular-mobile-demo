@@ -28,6 +28,14 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/listview/listview.html',
 			controller: 'ListViewController'
 		})
+		.when('/detailDefault/:id', {
+			templateUrl: 'partials/details/detailDefault.html',
+			controller: 'DetailController'
+		})
+		.when('/calendar', {
+			templateUrl: 'partials/calendar/calendar.html',
+			controller: 'CalendarController'
+		})
 		.when('/map', {
 			templateUrl: 'partials/map.html',
 			controller: 'MapDemoController'
@@ -95,6 +103,76 @@ app.factory('ConfigFactory', function(){
 
 
 /*
+* CalendarController.js
+*/
+
+app.controller('CalendarController', function($scope, $location, ConfigFactory){
+	ConfigFactory.title = 'Calendar';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = true;
+	$scope.config = ConfigFactory;
+
+});
+/*
+* CalendarDirective.js
+*/
+
+app.directive('calendar', function(){
+	return{
+		scope:{
+			events:'@'
+		},
+		link: function(scope, element, attrs){
+			clndrTemplate = "<div class='clndr-controls row'>" +
+				"<div class='clndr-control-button column small-2'>"+
+				"<span class='clndr-previous-button entypo-font'>&#59237;</span>"+
+				"</div>"+
+				"<div class='month column small-8 tac'><%= month %> <%= year %></div>"+
+				"<div class='clndr-control-button rightalign column small-2'>"+
+				"<span class='clndr-next-button entypo-font tar'>&#59238;</span>"+
+				"</div>" +
+				"</div>" +
+				"<table class='clndr-table' border='0' cellspacing='0' cellpadding='0'>" +
+				"<thead>" +
+				"<tr class='header-days'>" +
+				"<% for(var i = 0; i < daysOfTheWeek.length; i++) { %>" +
+				"<td class='header-day'><%= daysOfTheWeek[i] %></td>" +
+				"<% } %>" +
+				"</tr>" +
+				"</thead>" +
+				"<tbody>" +
+				"<% for(var i = 0; i < numberOfRows; i++){ %>" +
+				"<tr>" +
+				"<% for(var j = 0; j < 7; j++){ %>" +
+				"<% var d = j + i * 7; %>" +
+				"<td class='<%= days[d].classes %>'><div class='day-contents'><%= days[d].day %>" +
+				"</div></td>" +
+				"<% } %>" +
+				"</tr>" +
+				"<% } %>" +
+				"</tbody>" +
+				"</table>";
+
+			$(element).clndr({
+				template: clndrTemplate,
+				events: JSON.parse(attrs.events),
+				clickEvents: {
+					click: function(target) {
+						console.log(target);
+					},
+					onMonthChange: function(month) {
+						console.log('you just went to ' + month.format('MMMM, YYYY'));
+					}
+				},
+				doneRendering: function() {
+					console.log('this would be a fine place to attach custom event handlers.');
+				}
+			});
+		}
+	};
+});
+/*
 * HomeController.js
 */
 app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
@@ -118,10 +196,11 @@ app.controller('MapDemoController', function($scope, $log, ConfigFactory, Stores
 	ConfigFactory.title = 'Map demo';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
+	ConfigFactory.hasSideNavigation = true;
 
 	onMarkerClicked = function(marker){
 		marker.showWindow = true;
-		window.alert("Marker: lat: " + marker.latitude +", lon: " + marker.longitude + " clicked!!")
+		window.alert("Marker: lat: " + marker.latitude +", lon: " + marker.longitude + " clicked!!");
 	};
 
 	$scope.map = {
@@ -370,6 +449,7 @@ app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 	ConfigFactory.title = 'Tradings';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
+	ConfigFactory.hasSideNavigation = true;
 
 	$scope.stores = [];
 	var storesSuccess = function(data, status){
@@ -410,6 +490,27 @@ app.controller('ToastController', function($scope, $rootScope, $timeout){
 
 });
 
+/*
+* DetailController.js
+*/
+
+app.controller('DetailController', function($scope, $routeParams, $location, ConfigFactory, MusicService){
+	ConfigFactory.title = $routeParams.id;
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = true;
+	$scope.config = ConfigFactory;
+
+	$scope.itemId = $routeParams.id;
+
+	var itemSuccess = function(data, status){
+		$scope.item = data.album;
+		console.log(status);
+	};
+
+	MusicService.getDetail($routeParams.id).success(itemSuccess);
+
+});
 /*----------------
  DIRECTIVES:
  E is for element,
@@ -483,7 +584,7 @@ app.filter('upperCase', function(){
 /*
 * ListViewController.js
 */
-app.controller('ListViewController', function($scope, $rootScope, $location, ConfigFactory, MusicService){
+app.controller('ListViewController', function($scope, $location, ConfigFactory, MusicService){
 	ConfigFactory.title = 'List View Controller';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = false;
@@ -499,9 +600,28 @@ app.controller('ListViewController', function($scope, $rootScope, $location, Con
 	MusicService.getStores().success(itemsSuccess);
 
 
-	$scope.getDetails = function(){
-		console.log('dadas');
+	$scope.getDetails = function(item){
+		$location.path('detailDefault/'+item.name);
+		console.log(item);
 	};
+});
+
+app.controller('DetailController', function($scope, $routeParams, $location, ConfigFactory, MusicService){
+	ConfigFactory.title = $routeParams.id;
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = true;
+	$scope.config = ConfigFactory;
+
+	$scope.itemId = $routeParams.id;
+
+	var itemSuccess = function(data, status){
+		$scope.item = data.album;
+		console.log(status);
+	};
+
+	MusicService.getDetail($routeParams.id).success(itemSuccess);
+
 });
 /*
 * HomeController.js
@@ -539,7 +659,17 @@ app.factory('MusicService', function($http, $rootScope, ConfigFactory){
 
 	return {
 		getStores :  function(){
-			return $http.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=red+hot+chilli&api_key=77725761af78cf82f9d7a9b304be958e&format=json')
+			return $http.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=red+hot+chilli&artist=red+hot+chilli&api_key=77725761af78cf82f9d7a9b304be958e&format=json')
+				.error(function(){
+					$rootScope.$emit('makeToast', [{title:'Algo salio mal por favor vuelve a intentarlo', type:'error'}]);
+				})
+				.success(function(data){
+					console.log(data);
+					//console.log('StoresModel:success');
+				});
+		},
+		getDetail: function(id){
+			return $http.get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=red+hot+chilli+peppers&album='+id+'&api_key=77725761af78cf82f9d7a9b304be958e&format=json')
 				.error(function(){
 					$rootScope.$emit('makeToast', [{title:'Algo salio mal por favor vuelve a intentarlo', type:'error'}]);
 				})

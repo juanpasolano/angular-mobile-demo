@@ -5,6 +5,7 @@ app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 	ConfigFactory.title = 'Tradings';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
+	ConfigFactory.hasSideNavigation = true;
 
 	$scope.stores = [];
 	var storesSuccess = function(data, status){

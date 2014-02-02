@@ -8,7 +8,7 @@ module.exports =  function(grunt){
 				tasks: [/*'uglify:js_app',*/ 'concat:js_app']
 			},
 			less:{
-				files:['www/css/*.less'],
+				files:['www/css/base.less'],
 				tasks:['less']
 			}
 		},
@@ -42,7 +42,7 @@ module.exports =  function(grunt){
 		src: {
 				expand: true,
 				cwd:    "www/css",
-				src:    "*.less",
+				src:    "base.less",
 				dest:		"www/css",
 				ext:    ".css"
 		}

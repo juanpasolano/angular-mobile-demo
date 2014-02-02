@@ -1,3 +1,4 @@
+@import 'entypoIcons.less';
 
 /**
 *
@@ -5,37 +6,12 @@
 *
 **/
 
-/**
-*
-* LAYOUT
-*
-**/
+@sideBarWidth:200px;
+@headerHeight: 70px;
+@darkGray:#4A4D4E;
+@lightGray:#dfe2e2;
 
-/**
-*
-* MODULES
-*
-**/
-
-
-/**
-*
-* STATES
-*
-**/
-
-
-/**
-*
-* THEME
-*
-**/
-
-
-
-
-
-
+@mainColor:#DD3B5B;
 
 
 @font-face {
@@ -60,6 +36,10 @@ body {
 }
 a{
   text-decoration: none;
+  color:@mainColor;
+  &:hover{
+    color: darken(@mainColor, 10%);
+  }
 }
 h1, h2, h3, h4, h5{
   margin: 0;
@@ -70,31 +50,28 @@ ul{
   padding: 0;
   margin: 0;
 }
-.has-icon{
-  text-indent: 2em;
-  position: relative;
-  i{
-    font-family: 'entypo';
-    font-size: 2.7em;
-    font-style: normal;
-    position: absolute;
-    left: -0.2em;
-    top: -0.2em;
-  }
-}
-.spacer (@index) when (@index > 0) {
-    .spacer-@{index} {
-      width: 100%;
-      height: 10px*@index;
-    }
-    .spacer(@index - 1);
-}
-.spacer(8);
 
-@sideBarWidth:200px;
-@headerHeight: 70px;
-@darkGray:#4A4D4E;
-@lightGray:#dfe2e2;
+/**
+*
+* LAYOUT
+*
+**/
+.tac{
+  text-align: center;
+}
+.tar{
+  text-align: right;
+}
+.w100p{
+  width: 100%;
+}
+.fll{
+  float: left;
+}
+.flr{
+  float: right;
+}
+
 #app {
   width: 100%;
   height: 100%;
@@ -194,7 +171,8 @@ ul{
       text-align: center;
       line-height: @headerHeight;
       &:hover, &:active{
-        background: darken(@darkGray, 10%);
+        -webkit-transition: all .4s ease;
+        background: darken(@mainColor, 10%);
       }
   }
 }
@@ -206,27 +184,168 @@ ul{
   left: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: lighten(@darkGray, 20%);
+  background-color: white;
   -webkit-transform: translate3d(0, 0, 0);
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    li{
-      a {
-        color: #F0F1F1;
-        display: block;
-        height: 46px;
-        font-size: 16px;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        padding: 12px 0 0 20px;
-        text-decoration: none;
-        font-weight: 300;
+}
+
+/**
+*
+* MODULES
+*
+**/
+.button{
+  background: @mainColor;
+  &:hover{
+    background: darken(@mainColor, 20%);
+  }
+  &[disabled]{
+    background: lighten(@mainColor, 10%);
+    &:hover{
+      background: lighten(@mainColor, 10%);
+    }
+  }
+}
+.has-icon{
+  text-indent: 2em;
+  position: relative;
+  &:before{
+    font-family: 'entypo';
+    font-size: 2.7em;
+    font-style: normal;
+    position: absolute;
+    left: -0.4em;
+    top: -0.2em;
+  }
+  &.button{
+    &:before{
+      top: 0.1em;
+    }
+  }
+  &.button.tiny{
+    &:before{
+      top: 0;
+    }
+  }
+}
+.has-chevron{
+  padding-right: 3em !important;
+  &:after{
+    content: '\E75E';
+    font-size: 2em;
+    position: absolute;
+    font-family: 'entypo';
+    top: 0;
+    right: 0.6em;
+  }
+}
+
+.spacer (@index) when (@index > 0) {
+    .spacer-@{index} {
+      width: 100%;
+      height: 10px*@index;
+    }
+    .spacer(@index - 1);
+}
+.spacer(8);
+
+ul.vertical-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li{
+    a {
+      color: @darkGray;
+      display: block;
+      height: 46px;
+      font-size: 16px;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 12px 0 0 20px;
+      text-decoration: none;
+      font-weight: 300;
+      &:hover{
+        color:@mainColor;
       }
     }
   }
 }
+
+
+
+.calendar{
+  .clndr-controls{
+    >div{
+      height: 2.4em;
+    }
+    .clndr-control-button{
+      span{
+        font-size: 4em;
+        display: block;
+        width: 100%;
+        line-height: 1em;
+      }
+    }
+    .month{
+      line-height: 2.1em;
+      font-size: 1.8em;
+      font-weight: 200;
+    }
+  }
+  .clndr-table{
+    width: 100%;
+    td{
+      text-align: center;
+    }
+    .day{
+      height: 4.4em;
+    }
+    .today{
+      background: @mainColor;
+      color:white;
+    }
+    .event{
+      .day-contents{
+        position: relative;
+        &:after{
+          content: '\23F4';
+          color: #dd3b5b;
+          font-size: 6em;
+          position: absolute;
+          left: 50%;
+          top: .05em;
+          -webkit-transform: translate3d(-50%,0,0);
+        }
+      }
+    }
+    .adjacent-month{
+      color: lighten(@darkGray, 40%);
+    }
+  }
+}
+
+/**
+*
+* STATES
+*
+**/
+
+
+/**
+*
+* THEME
+*
+**/
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*PAGE ANIMATIONS*/

@@ -24,11 +24,12 @@
     <div id="app" ng-controller="MainController">
 
         <div id="sideNav">
-            <ul>
-                <li><a href="#/home" ng-click="toggleSideNav()" class="has-icon"><i>&#8962;</i>Home</a></li>
-                <li><a href="#/tradings" ng-click="toggleSideNav()" class="has-icon"><i>&#59198;</i>Tradings</a></li>
-                <li><a href="#/listview" ng-click="toggleSideNav()" class="has-icon"><i>&#128196;</i>ListView</a></li>
-                <li><a href="#/" ng-click="toggleSideNav()" class="has-icon"><i>&#59201;</i>Logout</a></li>
+            <ul class="vertical-menu">
+                <li><a href="#/home" ng-click="toggleSideNav()" class="has-chevron">Home</a></li>
+                <li><a href="#/tradings" ng-click="toggleSideNav()" class="has-icon entypo-area-graph has-chevron">Tradings</a></li>
+                <li><a href="#/listview" ng-click="toggleSideNav()" class="has-icon entypo-text-doc has-chevron">ListView</a></li>
+                <li><a href="#/calendar" ng-click="toggleSideNav()" class="has-icon entypo-calendar has-chevron">Calendar</a></li>
+                <li><a href="#/" ng-click="toggleSideNav()" class="has-icon entypo-logout has-chevron">Logout</a></li>
 
             </ul>
         </div>
@@ -79,6 +80,8 @@
     <script src="js/vendor/angular-1.2.10/angular-animate.min.js"></script>
     <script src="js/vendor/underscore-min.js"></script>
     <script type="text/javascript" src="js/vendor/angular-google-maps.js"></script>
+    <script type="text/javascript" src="js/vendor/momentjs/moment-with-langs.min.js"></script>
+    <script type="text/javascript" src="js/vendor/clndr/clndr.js"></script>
     <!-- <script src="http://nlaplante.github.io/angular-google-maps/js/angular-google-maps.js"></script>http://nlaplante.github.io/angular-google-maps/#!/usage
     <script type="text/javascript" src="https://raw.github.com/nlaplante/angular-google-maps/master/dist/angular-google-maps.js"></script>-->
     <script src="js/dist/built.js"></script>

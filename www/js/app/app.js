@@ -28,6 +28,14 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/listview/listview.html',
 			controller: 'ListViewController'
 		})
+		.when('/detailDefault/:id', {
+			templateUrl: 'partials/details/detailDefault.html',
+			controller: 'DetailController'
+		})
+		.when('/calendar', {
+			templateUrl: 'partials/calendar/calendar.html',
+			controller: 'CalendarController'
+		})
 		.when('/map', {
 			templateUrl: 'partials/map.html',
 			controller: 'MapDemoController'
