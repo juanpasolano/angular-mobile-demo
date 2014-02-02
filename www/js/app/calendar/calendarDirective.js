@@ -4,9 +4,7 @@
 
 app.directive('calendar', function(){
 	return{
-		scope:{
-			events:'@'
-		},
+		scope:true,
 		link: function(scope, element, attrs){
 			clndrTemplate = "<div class='clndr-controls row'>" +
 				"<div class='clndr-control-button column small-2'>"+

@@ -9,4 +9,12 @@ app.controller('CalendarController', function($scope, $location, ConfigFactory){
 	ConfigFactory.hasSideNavigation = true;
 	$scope.config = ConfigFactory;
 
+	$scope.events = [
+		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit.', url: 'http://github.com/kylestetz/CLNDR' },
+		{ date: '2014-02-09', title: 'Quickly embrace high standards in.', url: 'http://github.com/kylestetz/CLNDR' },
+		{ date: '2014-02-12', title: 'Quickly deliver state of.', url: 'http://github.com/kylestetz/CLNDR' },
+		{ date: '2014-02-18', title: 'Compellingly re-engineer client.', url: 'http://github.com/kylestetz/CLNDR' },
+		{ date: '2014-02-22', title: 'Appropriately expedite', url: 'http://github.com/kylestetz/CLNDR' }
+	];
+
 });
