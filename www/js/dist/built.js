@@ -24,6 +24,10 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/page.html',
 			controller: 'PageController'
 		})
+		.when('/listview', {
+			templateUrl: 'partials/listview/listview.html',
+			controller: 'ListViewController'
+		})
 		.when('/map', {
 			templateUrl: 'partials/map.html',
 			controller: 'MapDemoController'
@@ -77,6 +81,10 @@ app.controller('MainController', function($scope, $element, ConfigFactory){
 
 app.factory('ConfigFactory', function(){
 	return {
+		server: {
+			services: 'http://192.237.180.31/dhm/public/api/',
+			assets: 'http://192.237.180.31/dhm/public/'
+		},
 		title : 'Angular boilerplate from factory',
 		hasFooter: false,
 		hasHeader:false,
@@ -473,6 +481,29 @@ app.filter('upperCase', function(){
 });
 
 /*
+* ListViewController.js
+*/
+app.controller('ListViewController', function($scope, $rootScope, $location, ConfigFactory, MusicService){
+	ConfigFactory.title = 'List View Controller';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = true;
+	$scope.config = ConfigFactory;
+
+	$scope.loginData = {};
+
+	var itemsSuccess = function(data, status){
+		$scope.items = data.results.albummatches.album;
+		console.log(status);
+	};
+	MusicService.getStores().success(itemsSuccess);
+
+
+	$scope.getDetails = function(){
+		console.log('dadas');
+	};
+});
+/*
 * HomeController.js
 */
 app.controller('LoginController', function($scope, $rootScope, $location, ConfigFactory){
@@ -504,11 +535,27 @@ app.controller('RecoverController', function($scope, $rootScope, $location, Conf
 	};
 });
 //TODO: check if there is a better/proper way to do this calls and return promises
-app.factory('StoresModel', function($http, $rootScope){
+app.factory('MusicService', function($http, $rootScope, ConfigFactory){
 
 	return {
 		getStores :  function(){
-			return $http.get('http://192.237.180.31/dhm/public/api/stores?branches=true&offers=true')
+			return $http.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=red+hot+chilli&api_key=77725761af78cf82f9d7a9b304be958e&format=json')
+				.error(function(){
+					$rootScope.$emit('makeToast', [{title:'Algo salio mal por favor vuelve a intentarlo', type:'error'}]);
+				})
+				.success(function(data){
+					console.log(data);
+					//console.log('StoresModel:success');
+				});
+		}
+	};
+});
+//TODO: check if there is a better/proper way to do this calls and return promises
+app.factory('StoresModel', function($http, $rootScope, ConfigFactory){
+
+	return {
+		getStores :  function(){
+			return $http.get(ConfigFactory.server.services+'stores?branches=true&offers=true')
 				.error(function(){
 					$rootScope.$emit('makeToast', [{title:'Algo salio mal por favor vuelve a intentarlo', type:'error'}]);
 				})

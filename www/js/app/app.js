@@ -24,6 +24,10 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/page.html',
 			controller: 'PageController'
 		})
+		.when('/listview', {
+			templateUrl: 'partials/listview/listview.html',
+			controller: 'ListViewController'
+		})
 		.when('/map', {
 			templateUrl: 'partials/map.html',
 			controller: 'MapDemoController'
@@ -77,6 +81,10 @@ app.controller('MainController', function($scope, $element, ConfigFactory){
 
 app.factory('ConfigFactory', function(){
 	return {
+		server: {
+			services: 'http://192.237.180.31/dhm/public/api/',
+			assets: 'http://192.237.180.31/dhm/public/'
+		},
 		title : 'Angular boilerplate from factory',
 		hasFooter: false,
 		hasHeader:false,

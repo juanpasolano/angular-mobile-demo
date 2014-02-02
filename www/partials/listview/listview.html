@@ -1,0 +1,15 @@
+<div class="page">
+	<p>This is a listview template, I'll show you how to implement it</p>
+
+    <ul class="listview">
+    	<li ng-repeat="item in items" class="row column medium-6" ng-click="getDetails()">
+    		<div class="column small-3">
+    			<img src="{{item.image[2]['#text']}}" alt="">
+    		</div>
+    		<div class="column small-9">
+    			<h3>{{item.name}}</h3>
+    			<h6>{{item.artist}}</h6>
+    		</div>
+    	</li>
+    </ul>
+</div>
