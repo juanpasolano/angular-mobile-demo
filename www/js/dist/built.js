@@ -17,8 +17,12 @@ app.config(function($routeProvider){
 			controller: 'RecoverController'
 		})
 		.when('/home', {
-			templateUrl: 'partials/home.html',
+			templateUrl: 'partials/home/home.html',
 			controller: 'HomeController'
+		})
+		.when('/forms', {
+			templateUrl: 'partials/forms/forms.html',
+			controller: 'FormsController'
 		})
 		.when('/tradings', {
 			templateUrl: 'partials/page.html',
@@ -37,7 +41,7 @@ app.config(function($routeProvider){
 			controller: 'CalendarController'
 		})
 		.when('/map', {
-			templateUrl: 'partials/map.html',
+			templateUrl: 'partials/map/map.html',
 			controller: 'MapDemoController'
 		})
 		.otherwise({
@@ -184,6 +188,121 @@ app.directive('calendar', function(){
 	};
 });
 /*
+ * PageController.js
+ */
+app.controller('PageController', function($scope, ConfigFactory, StoresModel){
+	ConfigFactory.title = 'Tradings';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = true;
+	ConfigFactory.hasSideNavigation = true;
+
+	$scope.stores = [];
+	var storesSuccess = function(data, status){
+		$scope.stores = data;
+		console.log(status);
+	};
+	StoresModel.getStores().success(storesSuccess);
+});
+
+/*
+* TOASTS:
+* To make a new toast simply emit this event:
+* $rootScope.$emit('makeToast', [{title:'<string>', type:'success | error | warning'}]);
+* You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
+* -----
+* Don't forget to associate the div to this controller:
+* <div id="toasts" ng-controller="ToastController">
+*		<div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
+* </div>
+* */
+
+app.controller('ToastController', function($scope, $rootScope, $timeout){
+	$scope.messages = [];
+
+	$rootScope.$on('makeToast', function(ev, data){
+		createToast(data[0]);
+	});
+
+	function createToast(data){
+		$scope.messages.push(data);
+		removeToast();
+	}
+	function removeToast(){
+		$timeout(function(){
+			$scope.messages.splice(0,1);
+		},2500);
+	}
+});
+
+/*
+* DetailController.js
+*/
+
+app.controller('DetailController', function($scope, $routeParams, $location, ConfigFactory, MusicService){
+	ConfigFactory.title = $routeParams.id;
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = true;
+	$scope.config = ConfigFactory;
+
+	$scope.itemId = $routeParams.id;
+
+	var itemSuccess = function(data, status){
+		$scope.item = data.album;
+		console.log(status);
+	};
+
+	MusicService.getDetail($routeParams.id).success(itemSuccess);
+
+});
+/*
+* LoadingPopOver.js:
+* This directive shows a loading widget for when content is being oulled from the server
+* To implement:
+*
+* <div id="loading" loading-pop-over="Cargando contenido" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
+*
+* Where:
+* attr id: is related to css styling.
+* attr loading-pop-over: is the connection to the directive, the parameter you pass to this attribute will be the text it displays
+* attr ng-show: binds the property config.loadingPopOver to the visibility of the widget.
+* attr ng-click: for testing purposes only for the widget to desapear on click event.
+*/
+app.directive('loadingPopOver', function(){
+	return{
+		templateUrl: 'partials/loadingPopOver.html',
+		scope:true,
+		link: function(scope, element, attrs){
+			if(attrs.loadingPopOver !== ''){
+				scope.title = attrs.loadingPopOver;
+			}else{
+				scope.title = 'Loading content';
+			}
+		}
+	};
+});
+
+
+/*----------------
+ /*FILTERS:
+ /*---------------*/
+app.filter('upperCase', function(){
+	return function(text){
+		return text.toUpperCase();
+	};
+});
+
+/*
+* FormsController.js
+*/
+app.controller('FormsController', function($scope, $location, ConfigFactory, MusicService){
+	ConfigFactory.title = 'Forms';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = true;
+	ConfigFactory.hasSideNavigation = true;
+	$scope.config = ConfigFactory;
+});
+/*
 * HomeController.js
 */
 app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
@@ -198,6 +317,61 @@ app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 	$scope.showLoading = function(){
 		ConfigFactory.loadingPopOver = true;
 		console.log(ConfigFactory.loadingPopOver);
+	};
+});
+/*
+* ListViewController.js
+*/
+app.controller('ListViewController', function($scope, $location, ConfigFactory, MusicService){
+	ConfigFactory.title = 'List View';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = true;
+	ConfigFactory.hasSideNavigation = true;
+	$scope.config = ConfigFactory;
+
+	$scope.loginData = {};
+
+	var itemsSuccess = function(data, status){
+		$scope.items = data.results.albummatches.album;
+		console.log(status);
+	};
+	MusicService.getStores().success(itemsSuccess);
+
+
+	$scope.getDetails = function(item){
+		$location.path('detailDefault/'+item.name);
+		console.log(item);
+	};
+});
+/*
+* HomeController.js
+*/
+app.controller('LoginController', function($scope, $rootScope, $location, ConfigFactory){
+	ConfigFactory.title = 'Login';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = false;
+
+	$scope.loginData = {};
+
+	$scope.loginSubmit = function(e){
+		console.log($scope.loginData);
+		$location.path('/home');
+	};
+});
+/*
+* RecoverController.js
+*/
+app.controller('RecoverController', function($scope, $rootScope, $location, ConfigFactory){
+	ConfigFactory.title = 'Recover your password';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = false;
+
+	$scope.mailsent = false;
+
+	$scope.recoverSubmit = function(){
+		$scope.mailsent = !$scope.mailsent;
 	};
 });
 /*
@@ -453,218 +627,6 @@ function ExampleController ($scope, $log, StoresModel) {
 	StoresModel.getStores().success(storesSuccess);
 
 }
-/*
- * PageController.js
- */
-app.controller('PageController', function($scope, ConfigFactory, StoresModel){
-	ConfigFactory.title = 'Tradings';
-	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = true;
-	ConfigFactory.hasSideNavigation = true;
-
-	$scope.stores = [];
-	var storesSuccess = function(data, status){
-		$scope.stores = data;
-		console.log(status);
-	};
-	StoresModel.getStores().success(storesSuccess);
-});
-
-/*
-* TOASTS:
-* To make a new toast simply emit this event:
-* $rootScope.$emit('makeToast', [{title:'<string>', type:'success | error | warning'}]);
-* You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
-* -----
-* Don't forget to associate the div to this controller:
-* <div id="toasts" ng-controller="ToastController">
-* 	<div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
-* </div>
-* */
-
-app.controller('ToastController', function($scope, $rootScope, $timeout){
-	$scope.messages = []
-
-	$rootScope.$on('makeToast', function(ev, data){
-		createToast(data[0]);
-	});
-
-	function createToast(data){
-		$scope.messages.push(data);
-		removeToast();
-	}
-	function removeToast(){
-		$timeout(function(){
-			$scope.messages.splice(0,1);
-		},2500);
-	}
-
-});
-
-/*
-* DetailController.js
-*/
-
-app.controller('DetailController', function($scope, $routeParams, $location, ConfigFactory, MusicService){
-	ConfigFactory.title = $routeParams.id;
-	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = false;
-	ConfigFactory.hasSideNavigation = true;
-	$scope.config = ConfigFactory;
-
-	$scope.itemId = $routeParams.id;
-
-	var itemSuccess = function(data, status){
-		$scope.item = data.album;
-		console.log(status);
-	};
-
-	MusicService.getDetail($routeParams.id).success(itemSuccess);
-
-});
-/*----------------
- DIRECTIVES:
- E is for element,
- A is attribute,
- C is for class,
- M is for comment.
- ---------------*/
-app.directive('firstDirective', function(){
-	return {
-		restrict: "E",
-		template: "<div>I am a directive i have been updated using grunt....</div>"
-	};
-});
-
-app.directive('secondDirective', function(){
-	return {
-		restrict: "A",
-		link: function(){
-			console.log('I am second directive');
-		}
-	};
-});
-
-app.directive('enter', function(){
-	return{
-		link: function(scope, element, attrs){
-			element.bind('mouseenter', function(){
-				element.text(attrs.enter);
-			});
-		}
-	};
-});
-
-/*
-* LoadingPopOver.js:
-* This directive shows a loading widget for when content is being oulled from the server
-* To implement:
-*
-* <div id="loading" loading-pop-over="Cargando contenido" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
-*
-* Where:
-* attr id: is related to css styling.
-* attr loading-pop-over: is the connection to the directive, the parameter you pass to this attribute will be the text it displays
-* attr ng-show: binds the property config.loadingPopOver to the visibility of the widget.
-* attr ng-click: for testing purposes only for the widget to desapear on click event.
-*/
-app.directive('loadingPopOver', function(){
-	return{
-		templateUrl: 'partials/loadingPopOver.html',
-		scope:true,
-		link: function(scope, element, attrs){
-			if(attrs.loadingPopOver !== ''){
-				scope.title = attrs.loadingPopOver;
-			}else{
-				scope.title = 'Loading content';
-			}
-		}
-	};
-});
-
-
-/*----------------
- /*FILTERS:
- /*---------------*/
-app.filter('upperCase', function(){
-	return function(text){
-		return text.toUpperCase();
-	};
-});
-
-/*
-* ListViewController.js
-*/
-app.controller('ListViewController', function($scope, $location, ConfigFactory, MusicService){
-	ConfigFactory.title = 'List View Controller';
-	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = false;
-	ConfigFactory.hasSideNavigation = true;
-	$scope.config = ConfigFactory;
-
-	$scope.loginData = {};
-
-	var itemsSuccess = function(data, status){
-		$scope.items = data.results.albummatches.album;
-		console.log(status);
-	};
-	MusicService.getStores().success(itemsSuccess);
-
-
-	$scope.getDetails = function(item){
-		$location.path('detailDefault/'+item.name);
-		console.log(item);
-	};
-});
-
-app.controller('DetailController', function($scope, $routeParams, $location, ConfigFactory, MusicService){
-	ConfigFactory.title = $routeParams.id;
-	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = false;
-	ConfigFactory.hasSideNavigation = true;
-	$scope.config = ConfigFactory;
-
-	$scope.itemId = $routeParams.id;
-
-	var itemSuccess = function(data, status){
-		$scope.item = data.album;
-		console.log(status);
-	};
-
-	MusicService.getDetail($routeParams.id).success(itemSuccess);
-
-});
-/*
-* HomeController.js
-*/
-app.controller('LoginController', function($scope, $rootScope, $location, ConfigFactory){
-	ConfigFactory.title = 'Login';
-	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = false;
-	ConfigFactory.hasSideNavigation = false;
-
-	$scope.loginData = {};
-
-	$scope.loginSubmit = function(e){
-		console.log($scope.loginData);
-		$location.path('/home');
-	};
-});
-/*
-* RecoverController.js
-*/
-app.controller('RecoverController', function($scope, $rootScope, $location, ConfigFactory){
-	ConfigFactory.title = 'Recover your password';
-	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = false;
-	ConfigFactory.hasSideNavigation = false;
-
-	$scope.mailsent = false;
-
-	$scope.recoverSubmit = function(){
-		$scope.mailsent = !$scope.mailsent;
-	};
-});
 //TODO: check if there is a better/proper way to do this calls and return promises
 app.factory('MusicService', function($http, $rootScope, ConfigFactory){
 

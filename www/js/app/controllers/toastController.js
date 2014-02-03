@@ -6,12 +6,12 @@
 * -----
 * Don't forget to associate the div to this controller:
 * <div id="toasts" ng-controller="ToastController">
-* 	<div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
+*		<div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
 * </div>
 * */
 
 app.controller('ToastController', function($scope, $rootScope, $timeout){
-	$scope.messages = []
+	$scope.messages = [];
 
 	$rootScope.$on('makeToast', function(ev, data){
 		createToast(data[0]);
@@ -26,5 +26,4 @@ app.controller('ToastController', function($scope, $rootScope, $timeout){
 			$scope.messages.splice(0,1);
 		},2500);
 	}
-
 });

@@ -17,8 +17,12 @@ app.config(function($routeProvider){
 			controller: 'RecoverController'
 		})
 		.when('/home', {
-			templateUrl: 'partials/home.html',
+			templateUrl: 'partials/home/home.html',
 			controller: 'HomeController'
+		})
+		.when('/forms', {
+			templateUrl: 'partials/forms/forms.html',
+			controller: 'FormsController'
 		})
 		.when('/tradings', {
 			templateUrl: 'partials/page.html',
@@ -37,7 +41,7 @@ app.config(function($routeProvider){
 			controller: 'CalendarController'
 		})
 		.when('/map', {
-			templateUrl: 'partials/map.html',
+			templateUrl: 'partials/map/map.html',
 			controller: 'MapDemoController'
 		})
 		.otherwise({
