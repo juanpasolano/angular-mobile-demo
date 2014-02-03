@@ -7,7 +7,7 @@
 @darkGray:#4A4D4E;
 @lightGray:#dfe2e2;
 
-@mainColor:#32C3F1;
+@mainColor:#C7324A;
 
 /*==========  BASE  ==========*/
 
@@ -40,8 +40,8 @@ a{
     color: darken(@mainColor, 10%);
   }
 }
-h1, h2, h3, h4, h5{
-  margin: 0;
+h1, h2, h3, h4, h5, h6{
+  // margin: 0;
   padding: 0;
 }
 ul{
@@ -72,6 +72,9 @@ label{
 .tar{
   text-align: right;
 }
+.tal{
+  text-align: left;
+}
 .w100p{
   width: 100%;
 }
@@ -80,6 +83,14 @@ label{
 }
 .flr{
   float: right;
+}
+.row.extend{
+  .column:first-child{
+    padding-left: 0;
+  }
+  .column:last-child{
+    padding-right: 0;
+  }
 }
 
 #app {
@@ -377,6 +388,11 @@ ul.vertical-menu {
     }
   }
 }
+.vertical-menu-title{
+  margin-top: .5em;
+  padding-left: .4em;
+  color:@mainColor;
+}
 
 /*CALENDAR*/
 .calendar{
@@ -468,15 +484,15 @@ ul.vertical-menu {
   z-index: 9999999;
   .toast{
     width: 90%;
-    margin: 2px auto;
+    margin: 4px auto;
     background: #ccc;
     font-size: 0.9em;
     text-align: center;
     padding: 10px;
     line-height: 12px;
-    border-radius: 3px;
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    border-radius: 0;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
     //-webkit-transition: all .5s;
     &.success{
       background: rgb(128, 214, 18);
@@ -534,6 +550,45 @@ ul.vertical-menu {
     -webkit-transform: translate3d(-50%,-50%, 0);
     p{
       margin: 0;
+    }
+  }
+}
+
+#modals-container{
+  z-index: 999998;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // display: none;
+  opacity: 0;
+  -webkit-transform: translate3d(0, 100%, 0) rotate(20deg);
+  background: rgba(0,0,0,0.3);
+  -webkit-transition: all .5s ease;
+
+  &.show{
+    // display: block;
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  .modal{
+    background: white;
+    width: 90%;
+    margin: 5% auto;
+    padding: 1em;
+    position: relative;
+    .close-button{
+      width: 50px;
+      height: 50px;
+      display: block;
+      line-height: 50px;
+      font-size: 4em;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      &:hover{
+        color:@mainColor;
+      }
     }
   }
 }

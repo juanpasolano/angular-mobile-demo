@@ -207,7 +207,7 @@ app.controller('PageController', function($scope, ConfigFactory, StoresModel){
 /*
 * TOASTS:
 * To make a new toast simply emit this event:
-* $rootScope.$emit('makeToast', [{title:'<string>', type:'success | error | warning'}]);
+* $rootScope.$emit('makeToast', {title:'<string>', type:'success | error | warning'});
 * You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
 * -----
 * Don't forget to associate the div to this controller:
@@ -220,7 +220,7 @@ app.controller('ToastController', function($scope, $rootScope, $timeout){
 	$scope.messages = [];
 
 	$rootScope.$on('makeToast', function(ev, data){
-		createToast(data[0]);
+		createToast(data);
 	});
 
 	function createToast(data){
@@ -282,6 +282,59 @@ app.directive('loadingPopOver', function(){
 	};
 });
 
+/*
+* modalBox.js:
+*
+*		$rootScope.$emit('makeModal', {
+*			template:'partials/modals/formModal.html',
+*			cancelText :'Don`t do it',
+*			acceptText: 'Ok, go.'
+*		});
+*/
+app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $templateCache){
+	return{
+		scope:true,
+		link: function(scope, element, attrs){
+
+			scope.cancelText = "CANCELAR";
+			scope.acceptText = "OK";
+
+			var makeModal = function(data){
+				if(data.template){
+					$http.get(data.template, {cache: $templateCache}).success(function(tplContent){
+
+						$(element).find('.content').empty();
+						$(element).find('.content').append($compile(tplContent)(scope));
+
+						if(data.cancelText){
+							scope.cancelText = data.cancelText;
+						}
+
+						if(data.acceptText){
+							scope.acceptText = data.acceptText;
+						}
+						$(element).addClass('show');
+
+					}).error(function(e){
+						console.log('The modal cannot load the template you provided');
+					});
+				}else{
+					console.log('The modal cannot be displayed. You have to provide a valid template URL');
+				}
+			};
+
+			$rootScope.$on('makeModal', function(ev, data){
+				makeModal(data);
+			});
+
+			scope.closeModal =  function(){
+				console.log(scope.modalData);
+				$(element).removeClass('show');
+			};
+		}
+	};
+});
+
 
 /*----------------
  /*FILTERS:
@@ -311,9 +364,18 @@ app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 	ConfigFactory.hasFooter = true;
 	ConfigFactory.hasSideNavigation = true;
 
-	$scope.emitToast = function(){
-		$rootScope.$emit('makeToast', [{title:'This is an emmited toast', type:'success'}]);
+	$scope.emitToast = function(type){
+		$rootScope.$emit('makeToast', {title:'This is an emmited toast', type:type});
 	};
+
+	$scope.emitModal = function(template){
+		$rootScope.$emit('makeModal', {
+			template:template,
+			cancelText :'Don`t do it',
+			acceptText: 'Ok, go.'
+		});
+	};
+
 	$scope.showLoading = function(){
 		ConfigFactory.loadingPopOver = true;
 		console.log(ConfigFactory.loadingPopOver);
@@ -634,7 +696,7 @@ app.factory('MusicService', function($http, $rootScope, ConfigFactory){
 		getStores :  function(){
 			return $http.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=red+hot+chilli&artist=red+hot+chilli&api_key=77725761af78cf82f9d7a9b304be958e&format=json')
 				.error(function(){
-					$rootScope.$emit('makeToast', [{title:'Algo salio mal por favor vuelve a intentarlo', type:'error'}]);
+					$rootScope.$emit('makeToast', {title:'Algo salio mal por favor vuelve a intentarlo', type:'error'});
 				})
 				.success(function(data){
 					console.log(data);
@@ -644,7 +706,7 @@ app.factory('MusicService', function($http, $rootScope, ConfigFactory){
 		getDetail: function(id){
 			return $http.get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=red+hot+chilli+peppers&album='+id+'&api_key=77725761af78cf82f9d7a9b304be958e&format=json')
 				.error(function(){
-					$rootScope.$emit('makeToast', [{title:'Algo salio mal por favor vuelve a intentarlo', type:'error'}]);
+					$rootScope.$emit('makeToast', {title:'Algo salio mal por favor vuelve a intentarlo', type:'error'});
 				})
 				.success(function(data){
 					console.log(data);
@@ -660,7 +722,7 @@ app.factory('StoresModel', function($http, $rootScope, ConfigFactory){
 		getStores :  function(){
 			return $http.get(ConfigFactory.server.services+'stores?branches=true&offers=true')
 				.error(function(){
-					$rootScope.$emit('makeToast', [{title:'Algo salio mal por favor vuelve a intentarlo', type:'error'}]);
+					$rootScope.$emit('makeToast', {title:'Algo salio mal por favor vuelve a intentarlo', type:'error'});
 				})
 				.success(function(data){
 					//console.log(data);

@@ -1,7 +1,7 @@
 /*
 * TOASTS:
 * To make a new toast simply emit this event:
-* $rootScope.$emit('makeToast', [{title:'<string>', type:'success | error | warning'}]);
+* $rootScope.$emit('makeToast', {title:'<string>', type:'success | error | warning'});
 * You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
 * -----
 * Don't forget to associate the div to this controller:
@@ -14,7 +14,7 @@ app.controller('ToastController', function($scope, $rootScope, $timeout){
 	$scope.messages = [];
 
 	$rootScope.$on('makeToast', function(ev, data){
-		createToast(data[0]);
+		createToast(data);
 	});
 
 	function createToast(data){

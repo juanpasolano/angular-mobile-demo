@@ -24,6 +24,7 @@
     <div id="app" ng-controller="MainController">
 
         <div id="sideNav">
+            <h2 class="vertical-menu-title">Menu title</h2>
             <ul class="vertical-menu">
                 <li><a href="#/home" ng-click="toggleSideNav()" class="has-icon entypo-home has-chevron">Home</a></li>
                 <li><a href="#/tradings" ng-click="toggleSideNav()" class="has-icon entypo-area-graph has-chevron">Tradings</a></li>
@@ -31,8 +32,10 @@
                 <li><a href="#/forms" ng-click="toggleSideNav()" class="has-icon entypo-list has-chevron">Forms</a></li>
                 <li><a href="#/calendar" ng-click="toggleSideNav()" class="has-icon entypo-calendar has-chevron">Calendar</a></li>
                 <li><a href="#/map" ng-click="toggleSideNav()" class="has-icon entypo-map has-chevron">Map</a></li>
+            </ul>
+            <h2 class="vertical-menu-title">Menu title</h2>
+            <ul class="vertical-menu">
                 <li><a href="#/" ng-click="toggleSideNav()" class="has-icon entypo-logout has-chevron">Logout</a></li>
-
             </ul>
         </div>
 
@@ -62,6 +65,25 @@
 
         <!-- Loading widget -->
         <div id="loading" loading-pop-over="Wait! we are getting something nice for you" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
+        </div>
+
+        <!-- MODALS -->
+        <div id="modals-container" modal-box="" class="clearfix">
+            <div class="modal">
+                {{modalData}}
+                <div class="close-button entypo-font" ng-click="closeModal()">&#10062;</div>
+                <div class="content">
+
+                </div>
+                <div class="footer row extend">
+                    <div class="column small-6">
+                        <a href="javascript:;" class="button w100p" ng-click="closeModal()">{{acceptText}}</a>
+                    </div>
+                    <div class="column small-6">
+                        <a href="javascript:;" class="button secondary w100p" ng-click="closeModal()">{{cancelText}}</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
 

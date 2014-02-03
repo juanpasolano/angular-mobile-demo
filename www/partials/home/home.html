@@ -1,7 +1,37 @@
 <div class="page">
-	<h2>Home</h2>
+	<h1>Welcome</h1>
+	<p>Please be walcome to my angular boilerplate for mobile devices</p>
+	<p>This boileplate has a number of helpful modules for you to start building your angular/phonegap app</p>
 
-    <a ng-click="emitToast()" class="button has-icon entypo-text-doc tiny">Make a toast</a>
-    <a ng-click="showLoading()" class="button tiny has-chevron">Show loading content</a>
+	<h3>Toasts (this is a controller, jmm)</h3>
+	<div class="row extend">
+		<div class="column small-4">
+			<a ng-click="emitToast('error')" class="button secondary w100p tac">Error</a>
+		</div>
+		<div class="column small-4">
+			<a ng-click="emitToast('warning')" class="button secondary w100p tac">Warning</a>
+		</div>
+		<div class="column small-4">
+			<a ng-click="emitToast('success')" class="button secondary w100p tac">Success</a>
+		</div>
+	</div>
+
+	<hr>
+
+	<h3>Modals Directive</h3>
+	<div class="row extend">
+		<column class="column small-4">
+			<a ng-click="emitModal('partials/modals/simpleModal.html')" class="button w100p tac">Simple Modal</a>
+		</column>
+		<column class="column small-4">
+			<a ng-click="emitModal('partials/modals/formModal.html')" class="button w100p tac">Form Modal</a>
+		</column>
+		<column class="column small-4"></column>
+	</div>
+
+	<hr>
+	<h3>Loading Widget Directive</h3>
+	<p>This widget should be used whenever you need the user to wait a little bit. The animation is so cool! users will hang just to see it. If you want to see information on how to implement go to the js/app/directives/loadingPopOver.js fil</p>
+	<a ng-click="showLoading()" class="button has-icon entypo-text-doc has-chevron w100p tac">Show loading content</a>
 
 </div>
