@@ -15,19 +15,24 @@ app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $temp
 			scope.cancelText = "CANCELAR";
 			scope.acceptText = "OK";
 
-			var makeModal = function(data){
-				if(data.template){
-					$http.get(data.template, {cache: $templateCache}).success(function(tplContent){
+			var makeModal = function(options){
+				if(options.template){
+					$http.get(options.template, {cache: $templateCache}).success(function(tplContent){
+
+						if(options.data){
+							scope.optionsData = options.data;
+							console.log(scope.optionsData);
+						}
 
 						$(element).find('.content').empty();
 						$(element).find('.content').append($compile(tplContent)(scope));
 
-						if(data.cancelText){
-							scope.cancelText = data.cancelText;
+						if(options.cancelText){
+							scope.cancelText = options.cancelText;
 						}
 
-						if(data.acceptText){
-							scope.acceptText = data.acceptText;
+						if(options.acceptText){
+							scope.acceptText = options.acceptText;
 						}
 						$(element).addClass('show');
 
@@ -39,8 +44,8 @@ app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $temp
 				}
 			};
 
-			$rootScope.$on('makeModal', function(ev, data){
-				makeModal(data);
+			$rootScope.$on('makeModal', function(ev, options){
+				makeModal(options);
 			});
 
 			scope.closeModal =  function(){

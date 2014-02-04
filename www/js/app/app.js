@@ -98,7 +98,7 @@ app.factory('ConfigFactory', function(){
 			assets: 'http://192.237.180.31/dhm/public/'
 		},
 		title : 'Angular boilerplate from factory',
-		hasFooter: false,
+		hasFooter: true,
 		hasHeader:false,
 		hasSideNavigation: false,
 		loadingPopOver:false

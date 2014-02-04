@@ -7,7 +7,7 @@
 @darkGray:#4A4D4E;
 @lightGray:#dfe2e2;
 
-@mainColor:#C7324A;
+@mainColor:rgb(25, 164, 207);
 
 /*==========  BASE  ==========*/
 
@@ -84,14 +84,6 @@ label{
 .flr{
   float: right;
 }
-.row.extend{
-  .column:first-child{
-    padding-left: 0;
-  }
-  .column:last-child{
-    padding-right: 0;
-  }
-}
 
 #app {
   width: 100%;
@@ -135,6 +127,7 @@ label{
     display: inline-block;
     line-height:@headerHeight*0.77;
     color:white;
+    top: 0.2em;
     position: absolute;
     padding-left: 10px;
     &.sideNav{
@@ -320,6 +313,18 @@ label{
       background: lighten(@mainColor, 10%);
     }
   }
+  &.dark{
+    background: @darkGray;
+    &:hover{
+      background: darken(@darkGray, 10%);
+    }
+    &[disabled]{
+      background: lighten(@darkGray, 10%);
+      &:hover{
+        background: lighten(@darkGray, 10%);
+      }
+    }
+  }
 }
 .has-icon{
   text-indent: 2em;
@@ -352,6 +357,14 @@ label{
     font-family: 'entypo';
     top: 0;
     right: 0.6em;
+  }
+}
+.row.extend{
+  .column:first-child{
+    padding-left: 0;
+  }
+  .column:last-child{
+    padding-right: 0;
   }
 }
 
@@ -573,9 +586,12 @@ ul.vertical-menu {
   .modal{
     background: white;
     width: 90%;
+    max-height: 90%;
     margin: 5% auto;
     padding: 1em;
     position: relative;
+    .content{
+    }
     .close-button{
       width: 50px;
       height: 50px;

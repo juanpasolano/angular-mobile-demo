@@ -807,10 +807,10 @@ body {
 }
 a {
   text-decoration: none;
-  color: #c7324a;
+  color: #19a4cf;
 }
 a:hover {
-  color: #9e283b;
+  color: #1480a1;
 }
 h1,
 h2,
@@ -856,12 +856,6 @@ label {
 .flr {
   float: right;
 }
-.row.extend .column:first-child {
-  padding-left: 0;
-}
-.row.extend .column:last-child {
-  padding-right: 0;
-}
 #app {
   width: 100%;
   height: 100%;
@@ -905,6 +899,7 @@ label {
   display: inline-block;
   line-height: 53.9px;
   color: white;
+  top: 0.2em;
   position: absolute;
   padding-left: 10px;
 }
@@ -952,7 +947,7 @@ label {
 #footer > a:hover,
 #footer > a:active {
   -webkit-transition: all .4s ease;
-  background: #9e283b;
+  background: #1480a1;
 }
 #sideNav {
   width: 300px;
@@ -1067,16 +1062,28 @@ label {
 /*==========  MODULES  ==========*/
 /*BUTTONS*/
 .button {
-  background: #c7324a;
+  background: #19a4cf;
 }
 .button:hover {
-  background: #751e2c;
+  background: #0e5c74;
 }
 .button[disabled] {
-  background: #d5576b;
+  background: #34bce7;
 }
 .button[disabled]:hover {
-  background: #d5576b;
+  background: #34bce7;
+}
+.button.dark {
+  background: #4a4d4e;
+}
+.button.dark:hover {
+  background: #313334;
+}
+.button.dark[disabled] {
+  background: #636768;
+}
+.button.dark[disabled]:hover {
+  background: #636768;
 }
 .has-icon {
   text-indent: 2em;
@@ -1106,6 +1113,12 @@ label {
   font-family: 'entypo';
   top: 0;
   right: 0.6em;
+}
+.row.extend .column:first-child {
+  padding-left: 0;
+}
+.row.extend .column:last-child {
+  padding-right: 0;
 }
 /*SPACERS*/
 .spacer-8 {
@@ -1158,16 +1171,16 @@ ul.vertical-menu li a {
   font-weight: 300;
 }
 ul.vertical-menu li a:hover {
-  color: #c7324a;
+  color: #19a4cf;
 }
 .vertical-menu-title {
   margin-top: .5em;
   padding-left: .4em;
-  color: #c7324a;
+  color: #19a4cf;
 }
 /*CALENDAR*/
 .calendar .clndr-controls {
-  background: #c7324a;
+  background: #19a4cf;
   padding-bottom: 0.5em;
 }
 .calendar .clndr-controls > div {
@@ -1197,10 +1210,10 @@ ul.vertical-menu li a:hover {
   height: 4.4em;
 }
 .calendar .clndr-table .day:hover {
-  background: #e9a9b3;
+  background: #8fdaf2;
 }
 .calendar .clndr-table .today {
-  background: #c7324a;
+  background: #19a4cf;
   color: white;
 }
 .calendar .clndr-table .event .day-contents {
@@ -1208,7 +1221,7 @@ ul.vertical-menu li a:hover {
 }
 .calendar .clndr-table .event .day-contents:after {
   content: '\23F4';
-  color: #c7324a;
+  color: #19a4cf;
   font-size: 6em;
   position: absolute;
   left: 50%;
@@ -1324,6 +1337,7 @@ ul.vertical-menu li a:hover {
 #modals-container .modal {
   background: white;
   width: 90%;
+  max-height: 90%;
   margin: 5% auto;
   padding: 1em;
   position: relative;
@@ -1340,7 +1354,7 @@ ul.vertical-menu li a:hover {
   right: 0;
 }
 #modals-container .modal .close-button:hover {
-  color: #c7324a;
+  color: #19a4cf;
 }
 .loading-dots {
   width: 70px;

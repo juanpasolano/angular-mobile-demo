@@ -2,7 +2,7 @@
 * CalendarDirective.js
 */
 
-app.directive('calendar', function(){
+app.directive('calendar', function($rootScope){
 	return{
 		scope:true,
 		link: function(scope, element, attrs){
@@ -41,7 +41,14 @@ app.directive('calendar', function(){
 				events: JSON.parse(attrs.events),
 				clickEvents: {
 					click: function(target) {
-						console.log(target);
+						if(target.events.length > 0){
+							$rootScope.$emit('makeModal', {
+								template:'partials/modals/calendarModal.html',
+								cancelText :'Yep',
+								acceptText: 'Ok, go.',
+								data: target.events
+							});
+						}
 					},
 					onMonthChange: function(month) {
 						console.log('you just went to ' + month.format('MMMM, YYYY'));

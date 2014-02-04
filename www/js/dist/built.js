@@ -98,7 +98,7 @@ app.factory('ConfigFactory', function(){
 			assets: 'http://192.237.180.31/dhm/public/'
 		},
 		title : 'Angular boilerplate from factory',
-		hasFooter: false,
+		hasFooter: true,
 		hasHeader:false,
 		hasSideNavigation: false,
 		loadingPopOver:false
@@ -119,6 +119,11 @@ app.controller('CalendarController', function($scope, $location, ConfigFactory){
 
 	$scope.events = [
 		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit.', url: 'http://github.com/kylestetz/CLNDR' },
+		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit 2.', url: 'http://github.com/kylestetz/CLNDR' },
+		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit 3.', url: 'http://github.com/kylestetz/CLNDR' },
+		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit 4.', url: 'http://github.com/kylestetz/CLNDR' },
+		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit 5.', url: 'http://github.com/kylestetz/CLNDR' },
+		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit 6.', url: 'http://github.com/kylestetz/CLNDR' },
 		{ date: '2014-02-09', title: 'Quickly embrace high standards in.', url: 'http://github.com/kylestetz/CLNDR' },
 		{ date: '2014-02-12', title: 'Quickly deliver state of.', url: 'http://github.com/kylestetz/CLNDR' },
 		{ date: '2014-02-18', title: 'Compellingly re-engineer client.', url: 'http://github.com/kylestetz/CLNDR' },
@@ -135,7 +140,7 @@ app.controller('CalendarController', function($scope, $location, ConfigFactory){
 * CalendarDirective.js
 */
 
-app.directive('calendar', function(){
+app.directive('calendar', function($rootScope){
 	return{
 		scope:true,
 		link: function(scope, element, attrs){
@@ -174,7 +179,14 @@ app.directive('calendar', function(){
 				events: JSON.parse(attrs.events),
 				clickEvents: {
 					click: function(target) {
-						console.log(target);
+						if(target.events.length > 0){
+							$rootScope.$emit('makeModal', {
+								template:'partials/modals/calendarModal.html',
+								cancelText :'Yep',
+								acceptText: 'Ok, go.',
+								data: target.events
+							});
+						}
 					},
 					onMonthChange: function(month) {
 						console.log('you just went to ' + month.format('MMMM, YYYY'));
@@ -299,19 +311,24 @@ app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $temp
 			scope.cancelText = "CANCELAR";
 			scope.acceptText = "OK";
 
-			var makeModal = function(data){
-				if(data.template){
-					$http.get(data.template, {cache: $templateCache}).success(function(tplContent){
+			var makeModal = function(options){
+				if(options.template){
+					$http.get(options.template, {cache: $templateCache}).success(function(tplContent){
+
+						if(options.data){
+							scope.optionsData = options.data;
+							console.log(scope.optionsData);
+						}
 
 						$(element).find('.content').empty();
 						$(element).find('.content').append($compile(tplContent)(scope));
 
-						if(data.cancelText){
-							scope.cancelText = data.cancelText;
+						if(options.cancelText){
+							scope.cancelText = options.cancelText;
 						}
 
-						if(data.acceptText){
-							scope.acceptText = data.acceptText;
+						if(options.acceptText){
+							scope.acceptText = options.acceptText;
 						}
 						$(element).addClass('show');
 
@@ -323,8 +340,8 @@ app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $temp
 				}
 			};
 
-			$rootScope.$on('makeModal', function(ev, data){
-				makeModal(data);
+			$rootScope.$on('makeModal', function(ev, options){
+				makeModal(options);
 			});
 
 			scope.closeModal =  function(){
@@ -359,7 +376,7 @@ app.controller('FormsController', function($scope, $location, ConfigFactory, Mus
 * HomeController.js
 */
 app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
-	ConfigFactory.title = 'Angular boilerplate';
+	ConfigFactory.title = 'Angular boilerplate titulo';
 	ConfigFactory.hasHeader = true;
 	ConfigFactory.hasFooter = true;
 	ConfigFactory.hasSideNavigation = true;
