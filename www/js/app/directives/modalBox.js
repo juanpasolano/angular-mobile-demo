@@ -4,7 +4,8 @@
 *		$rootScope.$emit('makeModal', {
 *			template:'partials/modals/formModal.html',
 *			cancelText :'Don`t do it',
-*			acceptText: 'Ok, go.'
+*			acceptText: 'Ok, go.',
+*			data: 'something'
 *		});
 */
 app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $templateCache){
@@ -17,11 +18,11 @@ app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $temp
 
 			var makeModal = function(options){
 				if(options.template){
+
 					$http.get(options.template, {cache: $templateCache}).success(function(tplContent){
 
 						if(options.data){
 							scope.optionsData = options.data;
-							console.log(scope.optionsData);
 						}
 
 						$(element).find('.content').empty();

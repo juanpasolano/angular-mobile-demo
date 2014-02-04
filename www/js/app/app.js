@@ -40,6 +40,10 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/calendar/calendar.html',
 			controller: 'CalendarController'
 		})
+		.when('/swiper', {
+			templateUrl: 'partials/swiper/swiper.html',
+			controller: 'SwiperController'
+		})
 		.when('/map', {
 			templateUrl: 'partials/map/map.html',
 			controller: 'MapDemoController'

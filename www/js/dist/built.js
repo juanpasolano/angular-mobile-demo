@@ -40,6 +40,10 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/calendar/calendar.html',
 			controller: 'CalendarController'
 		})
+		.when('/swiper', {
+			templateUrl: 'partials/swiper/swiper.html',
+			controller: 'SwiperController'
+		})
 		.when('/map', {
 			templateUrl: 'partials/map/map.html',
 			controller: 'MapDemoController'
@@ -300,7 +304,8 @@ app.directive('loadingPopOver', function(){
 *		$rootScope.$emit('makeModal', {
 *			template:'partials/modals/formModal.html',
 *			cancelText :'Don`t do it',
-*			acceptText: 'Ok, go.'
+*			acceptText: 'Ok, go.',
+*			data: 'something'
 *		});
 */
 app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $templateCache){
@@ -313,11 +318,11 @@ app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $temp
 
 			var makeModal = function(options){
 				if(options.template){
+
 					$http.get(options.template, {cache: $templateCache}).success(function(tplContent){
 
 						if(options.data){
 							scope.optionsData = options.data;
-							console.log(scope.optionsData);
 						}
 
 						$(element).find('.content').empty();
@@ -748,3 +753,65 @@ app.factory('StoresModel', function($http, $rootScope, ConfigFactory){
 		}
 	};
 });
+/*
+* SwiperController.js
+*/
+
+app.controller('SwiperController', function($scope, $location, ConfigFactory){
+	ConfigFactory.title = 'Swiper plugin';
+	ConfigFactory.hasHeader = true;
+	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasSideNavigation = true;
+	$scope.config = ConfigFactory;
+
+
+	$scope.swithcExample = function(example){
+		$scope.exampleDisplayed = example;
+	};
+});
+/*
+* swiper.js:
+*/
+app.directive('swiper', function(){
+	return{
+		scope:true,
+		link: function(scope, element, attrs){
+
+			element.on('click', function(){
+				console.log('alala');
+			});
+
+			var mySwiper = element.swiper({
+				pagination: '.pagination',
+				loop:true,
+				grabCursor: true,
+				paginationClickable: true
+			});
+		}
+	};
+});
+
+app.directive('swiperScroll', function(){
+	return{
+		template : '<div class="swiper-scrollbar swiper-scrollbar-vertical"></div>'+
+			'<div class="swiper-wrapper">'+
+				'<div class="swiper-slide" ng-transclude>'+
+				'</div>'+
+			'</div>'+
+		'</div>',
+		transclude :  true,
+		scope : true,
+		link : function(scope, element, attrs){
+
+			var mySwiper = $(element).swiper({
+				scrollContainer: true,
+				mode:'vertical',
+				scrollbar: {
+					container: '.swiper-scrollbar'
+				}
+			});
+			console.log(mySwiper);
+		}
+	};
+});
+

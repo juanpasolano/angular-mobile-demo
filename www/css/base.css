@@ -1425,6 +1425,27 @@ ul.vertical-menu li a:hover {
     opacity: 0;
   }
 }
+/*SWIPER*/
+.swiper-scroller-container {
+  width: 100%;
+  height: 100%;
+}
+.swiper-scrollbar-horizontal {
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  left: 0px;
+  bottom: 5px;
+  z-index: 1;
+}
+.swiper-scrollbar-vertical {
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+  z-index: 1;
+}
 /*MAP*/
 .angular-google-map {
   height: 100%;
