@@ -12,11 +12,16 @@ app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 	};
 
 	$scope.emitModal = function(template){
+
 		$rootScope.$emit('makeModal', {
-			template:template,
-			cancelText :'Don`t do it',
-			acceptText: 'Ok, go.'
+			options:{
+				template: template,
+				cancelText :'Dont fire that',
+				acceptText: 'Lets rock!',
+				title: 'Modal demo'
+			}
 		});
+
 	};
 
 	$scope.showLoading = function(){

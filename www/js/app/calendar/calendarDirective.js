@@ -42,12 +42,17 @@ app.directive('calendar', function($rootScope){
 				clickEvents: {
 					click: function(target) {
 						if(target.events.length > 0){
+							console.log(target.date._i);
 							$rootScope.$emit('makeModal', {
-								template:'partials/modals/calendarModal.html',
-								cancelText :'Yep',
-								acceptText: 'Ok, go.',
+								options:{
+									template:'partials/modals/calendarModal.html',
+									cancelText :'Yep',
+									acceptText: 'Ok, go.',
+									title: 'Events on '+ target.date._i
+								},
 								data: target.events
 							});
+
 						}
 					},
 					onMonthChange: function(month) {

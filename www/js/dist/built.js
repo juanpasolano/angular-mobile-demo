@@ -117,7 +117,7 @@ app.factory('ConfigFactory', function(){
 app.controller('CalendarController', function($scope, $location, ConfigFactory){
 	ConfigFactory.title = 'Calendar';
 	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasFooter = true;
 	ConfigFactory.hasSideNavigation = true;
 	$scope.config = ConfigFactory;
 
@@ -184,12 +184,17 @@ app.directive('calendar', function($rootScope){
 				clickEvents: {
 					click: function(target) {
 						if(target.events.length > 0){
+							console.log(target.date._i);
 							$rootScope.$emit('makeModal', {
-								template:'partials/modals/calendarModal.html',
-								cancelText :'Yep',
-								acceptText: 'Ok, go.',
+								options:{
+									template:'partials/modals/calendarModal.html',
+									cancelText :'Yep',
+									acceptText: 'Ok, go.',
+									title: 'Events on '+ target.date._i
+								},
 								data: target.events
 							});
+
 						}
 					},
 					onMonthChange: function(month) {
@@ -302,39 +307,42 @@ app.directive('loadingPopOver', function(){
 * modalBox.js:
 *
 *		$rootScope.$emit('makeModal', {
-*			template:'partials/modals/formModal.html',
-*			cancelText :'Don`t do it',
-*			acceptText: 'Ok, go.',
-*			data: 'something'
+*			options:{
+*				template:'partials/modals/calendarModal.html',
+*				cancelText :'Yep',
+*				acceptText: 'Ok, go.',
+*			},
+*			data: {}
 *		});
+*
+*		The DATA is an object literal that you want to pass to the template of the modal
 */
 app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $templateCache){
 	return{
 		scope:true,
 		link: function(scope, element, attrs){
 
-			scope.cancelText = "CANCELAR";
-			scope.acceptText = "OK";
+			var defaults = {
+				cancelText : "CANCELAR",
+				acceptText : "OK",
+				title : "I am a modal"
+			};
 
-			var makeModal = function(options){
-				if(options.template){
 
-					$http.get(options.template, {cache: $templateCache}).success(function(tplContent){
+			var makeModal = function(attrs){
+				if(attrs.options.template){
 
-						if(options.data){
-							scope.optionsData = options.data;
+					$http.get(attrs.options.template, {cache: $templateCache}).success(function(tplContent){
+
+						scope.defaults = $.extend({}, defaults, attrs.options);
+
+						if(attrs.data){
+							scope.data = attrs.data;
 						}
 
 						$(element).find('.content').empty();
 						$(element).find('.content').append($compile(tplContent)(scope));
 
-						if(options.cancelText){
-							scope.cancelText = options.cancelText;
-						}
-
-						if(options.acceptText){
-							scope.acceptText = options.acceptText;
-						}
 						$(element).addClass('show');
 
 					}).error(function(e){
@@ -391,11 +399,16 @@ app.controller('HomeController', function($scope, $rootScope, ConfigFactory){
 	};
 
 	$scope.emitModal = function(template){
+
 		$rootScope.$emit('makeModal', {
-			template:template,
-			cancelText :'Don`t do it',
-			acceptText: 'Ok, go.'
+			options:{
+				template: template,
+				cancelText :'Dont fire that',
+				acceptText: 'Lets rock!',
+				title: 'Modal demo'
+			}
 		});
+
 	};
 
 	$scope.showLoading = function(){

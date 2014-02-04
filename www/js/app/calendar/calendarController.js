@@ -5,7 +5,7 @@
 app.controller('CalendarController', function($scope, $location, ConfigFactory){
 	ConfigFactory.title = 'Calendar';
 	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = false;
+	ConfigFactory.hasFooter = true;
 	ConfigFactory.hasSideNavigation = true;
 	$scope.config = ConfigFactory;
 

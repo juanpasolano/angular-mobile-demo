@@ -2,39 +2,42 @@
 * modalBox.js:
 *
 *		$rootScope.$emit('makeModal', {
-*			template:'partials/modals/formModal.html',
-*			cancelText :'Don`t do it',
-*			acceptText: 'Ok, go.',
-*			data: 'something'
+*			options:{
+*				template:'partials/modals/calendarModal.html',
+*				cancelText :'Yep',
+*				acceptText: 'Ok, go.',
+*			},
+*			data: {}
 *		});
+*
+*		The DATA is an object literal that you want to pass to the template of the modal
 */
 app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $templateCache){
 	return{
 		scope:true,
 		link: function(scope, element, attrs){
 
-			scope.cancelText = "CANCELAR";
-			scope.acceptText = "OK";
+			var defaults = {
+				cancelText : "CANCELAR",
+				acceptText : "OK",
+				title : "I am a modal"
+			};
 
-			var makeModal = function(options){
-				if(options.template){
 
-					$http.get(options.template, {cache: $templateCache}).success(function(tplContent){
+			var makeModal = function(attrs){
+				if(attrs.options.template){
 
-						if(options.data){
-							scope.optionsData = options.data;
+					$http.get(attrs.options.template, {cache: $templateCache}).success(function(tplContent){
+
+						scope.defaults = $.extend({}, defaults, attrs.options);
+
+						if(attrs.data){
+							scope.data = attrs.data;
 						}
 
 						$(element).find('.content').empty();
 						$(element).find('.content').append($compile(tplContent)(scope));
 
-						if(options.cancelText){
-							scope.cancelText = options.cancelText;
-						}
-
-						if(options.acceptText){
-							scope.acceptText = options.acceptText;
-						}
 						$(element).addClass('show');
 
 					}).error(function(e){

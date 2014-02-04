@@ -50,7 +50,7 @@
             </div>
 
             <div id="content" style="{{contentStyles()}}">
-                <div ng-view="" class="page-holder page-slide-animation clearfix"></div>
+                <div ng-view="" class="page-holder page-pop-animation clearfix"></div>
             </div>
 
             <div id="footer" ng-class="{false: 'hidden'}[config.hasFooter]">
@@ -74,17 +74,17 @@
         <!-- MODALS -->
         <div id="modals-container" modal-box="" class="clearfix">
             <div class="modal">
-                {{modalData}}
+                <h1>{{defaults.title}}</h1>
                 <div class="close-button entypo-font" ng-click="closeModal()">&#10062;</div>
                 <div class="content">
 
                 </div>
                 <div class="footer row extend">
                     <div class="column small-6">
-                        <a href="javascript:;" class="button w100p" ng-click="closeModal()">{{acceptText}}</a>
+                        <a href="javascript:;" class="button w100p" ng-click="closeModal()">{{defaults.acceptText}}</a>
                     </div>
                     <div class="column small-6">
-                        <a href="javascript:;" class="button secondary w100p" ng-click="closeModal()">{{cancelText}}</a>
+                        <a href="javascript:;" class="button secondary w100p" ng-click="closeModal()">{{defaults.cancelText}}</a>
                     </div>
                 </div>
             </div>
