@@ -1,3 +1,7 @@
+$(function() {
+    FastClick.attach(document.body);
+});
+
 /*
 *  ANGULAR / TOPCOAT BOILERPLATE
 *  Author: Juan Pablo Solano.

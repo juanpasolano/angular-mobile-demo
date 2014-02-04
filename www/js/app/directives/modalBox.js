@@ -20,7 +20,7 @@ app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $temp
 			var defaults = {
 				cancelText : "CANCELAR",
 				acceptText : "OK",
-				title : "I am a modal"
+				title : "Alert"
 			};
 
 

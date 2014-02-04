@@ -4,7 +4,9 @@
 
 app.directive('calendar', function($rootScope){
 	return{
-		scope:true,
+		scope:{
+			events: '='
+		},
 		link: function(scope, element, attrs){
 			clndrTemplate = "<div class='clndr-controls row'>" +
 				"<div class='clndr-control-button column small-2'>"+
@@ -38,11 +40,12 @@ app.directive('calendar', function($rootScope){
 
 			$(element).clndr({
 				template: clndrTemplate,
-				events: JSON.parse(attrs.events),
+				events: scope.events,
 				clickEvents: {
 					click: function(target) {
+						//fires a modal box on click on a date if it has events
 						if(target.events.length > 0){
-							console.log(target.date._i);
+
 							$rootScope.$emit('makeModal', {
 								options:{
 									template:'partials/modals/calendarModal.html',
@@ -52,7 +55,6 @@ app.directive('calendar', function($rootScope){
 								},
 								data: target.events
 							});
-
 						}
 					},
 					onMonthChange: function(month) {

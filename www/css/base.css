@@ -807,10 +807,10 @@ body {
 }
 a {
   text-decoration: none;
-  color: #ff0000;
+  color: #46cac5;
 }
 a:hover {
-  color: #cc0000;
+  color: #31aca7;
 }
 h1,
 h2,
@@ -880,7 +880,7 @@ hr {
   -webkit-perspective: 1000;
 }
 #wrapper.open {
-  -webkit-transform: translate3d(300px, 0, 0);
+  -webkit-transform: translate3d(200px, 0, 0);
 }
 #header {
   width: 100%;
@@ -951,10 +951,10 @@ hr {
 #footer > a:hover,
 #footer > a:active {
   -webkit-transition: all .4s ease;
-  background: #cc0000;
+  background: #31aca7;
 }
 #sideNav {
-  width: 300px;
+  width: 200px;
   height: 100%;
   position: absolute;
   top: 0;
@@ -1066,16 +1066,16 @@ hr {
 /*==========  MODULES  ==========*/
 /*BUTTONS*/
 .button {
-  background: #ff0000;
+  background: #46cac5;
 }
 .button:hover {
-  background: #990000;
+  background: #268481;
 }
 .button[disabled] {
-  background: #ff3333;
+  background: #6ed5d1;
 }
 .button[disabled]:hover {
-  background: #ff3333;
+  background: #6ed5d1;
 }
 .button.dark {
   background: #4a4d4e;
@@ -1175,16 +1175,16 @@ ul.vertical-menu li a {
   font-weight: 300;
 }
 ul.vertical-menu li a:hover {
-  color: #ff0000;
+  color: #46cac5;
 }
 .vertical-menu-title {
   margin-top: .5em;
   padding-left: .4em;
-  color: #ff0000;
+  color: #46cac5;
 }
 /*CALENDAR*/
 .calendar .clndr-controls {
-  background: #ff0000;
+  background: #46cac5;
   padding-bottom: 0.5em;
 }
 .calendar .clndr-controls > div {
@@ -1201,8 +1201,8 @@ ul.vertical-menu li a:hover {
   color: #4a4d4e;
 }
 .calendar .clndr-controls .month {
-  line-height: 2.6em;
-  font-size: 1.5em;
+  line-height: 2.9em;
+  font-size: 1.4em;
   font-weight: 200;
 }
 .calendar .clndr-table {
@@ -1214,28 +1214,34 @@ ul.vertical-menu li a:hover {
   height: 4.4em;
 }
 .calendar .clndr-table .day:hover {
-  background: #ff9999;
+  background: #bdecea;
 }
 .calendar .clndr-table .today {
-  background: #ff0000;
+  background: #46cac5;
   color: white;
 }
 .calendar .clndr-table .event .day-contents {
   position: relative;
 }
 .calendar .clndr-table .event .day-contents:after {
-  content: '\23F4';
-  color: #ff0000;
+  content: '';
+  width: 0.1em;
+  height: 0.1em;
+  background: #46cac5;
+  border-radius: 50%;
   font-size: 6em;
   position: absolute;
   left: 50%;
-  top: .05em;
+  top: 120%;
   -webkit-transform: translate3d(-50%, 0, 0);
 }
 .calendar .clndr-table .adjacent-month {
   color: #b0b3b4;
 }
 /*LIST VIEW*/
+.listview {
+  overflow: hidden;
+}
 .listview li {
   padding: 0.5em;
 }
@@ -1363,7 +1369,7 @@ ul.vertical-menu li a:hover {
   right: 0;
 }
 #modals-container .modal .close-button:hover {
-  color: #ff0000;
+  color: #46cac5;
 }
 #modals-container .modal .footer {
   margin-top: 1em;

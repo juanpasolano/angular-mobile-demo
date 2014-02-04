@@ -2,12 +2,12 @@
 
 
 /*MAIN VARIABLES*/
-@sideBarWidth:300px;
+@sideBarWidth:200px;
 @headerHeight: 70px;
 @darkGray:#4A4D4E;
 @lightGray:#dfe2e2;
 
-@mainColor:#ff0000;
+@mainColor:#46CAC5;
 
 /*==========  BASE  ==========*/
 
@@ -432,8 +432,8 @@ ul.vertical-menu {
       }
     }
     .month{
-      line-height: 2.6em;
-      font-size: 1.5em;
+      line-height: 2.9em;
+      font-size: 1.4em;
       font-weight: 200;
     }
   }
@@ -459,13 +459,16 @@ ul.vertical-menu {
       .day-contents{
         position: relative;
         &:after{
-          content: '\23F4';
-          color: @mainColor;
-          font-size: 6em;
-          position: absolute;
-          left: 50%;
-          top: .05em;
-          -webkit-transform: translate3d(-50%,0,0);
+          content: '';
+            width: 0.1em;
+            height: 0.1em;
+            background: @mainColor;
+            border-radius: 50%;
+            font-size: 6em;
+            position: absolute;
+            left: 50%;
+            top: 120%;
+            -webkit-transform: translate3d(-50%, 0, 0);
         }
       }
     }
@@ -477,6 +480,7 @@ ul.vertical-menu {
 
 /*LIST VIEW*/
 .listview{
+  overflow: hidden;
   li{
     padding: 0.5em;
     &:hover{
