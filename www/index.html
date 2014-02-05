@@ -26,10 +26,12 @@
     <div id="app" ng-controller="MainController">
 
         <div id="sideNav">
+            <div class="row logo-widget">
+                <img src="https://en.gravatar.com/userimage/10212117/55aaef8201270c8b51fb9912b61a6fb2.jpg?size=200" class="image" alt="">
+            </div>
             <h2 class="vertical-menu-title">Menu title</h2>
             <ul class="vertical-menu">
                 <li><a href="#/home" ng-click="toggleSideNav()" class="has-icon entypo-home has-chevron">Home</a></li>
-                <li><a href="#/tradings" ng-click="toggleSideNav()" class="has-icon entypo-area-graph has-chevron">Tradings</a></li>
                 <li><a href="#/listview" ng-click="toggleSideNav()" class="has-icon entypo-text-doc has-chevron">ListView</a></li>
                 <li><a href="#/forms" ng-click="toggleSideNav()" class="has-icon entypo-list has-chevron">Forms</a></li>
                 <li><a href="#/calendar" ng-click="toggleSideNav()" class="has-icon entypo-calendar has-chevron">Calendar</a></li>
@@ -110,9 +112,7 @@
     <!-- Angular -->
     <script src="js/vendor/angular-1.2.10/angular.min.js"></script>
     <script src="js/vendor/angular-1.2.10/angular-route.min.js"></script>
-    <div>
-        <script src="js/vendor/angular-1.2.10/angular-animate.min.js"></script>
-    </div>
+    <script src="js/vendor/angular-1.2.10/angular-animate.min.js"></script>
 
     <!-- Underscore -->
     <script src="js/vendor/underscore-min.js"></script>

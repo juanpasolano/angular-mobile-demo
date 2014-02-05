@@ -28,10 +28,6 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/forms/forms.html',
 			controller: 'FormsController'
 		})
-		.when('/tradings', {
-			templateUrl: 'partials/page.html',
-			controller: 'PageController'
-		})
 		.when('/listview', {
 			templateUrl: 'partials/listview/listview.html',
 			controller: 'ListViewController'
@@ -95,6 +91,7 @@ app.controller('MainController', function($scope, $element, ConfigFactory){
 
 	$scope.toggleSideNav = function(){
 		$element.find('#wrapper').toggleClass('open');
+		$element.find('#sideNav').toggleClass('open');
 	};
 });
 
@@ -214,23 +211,6 @@ app.directive('calendar', function($rootScope){
 		}
 	};
 });
-/*
- * PageController.js
- */
-app.controller('PageController', function($scope, ConfigFactory, StoresModel){
-	ConfigFactory.title = 'Tradings';
-	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = true;
-	ConfigFactory.hasSideNavigation = true;
-
-	$scope.stores = [];
-	var storesSuccess = function(data, status){
-		$scope.stores = data;
-		console.log(status);
-	};
-	StoresModel.getStores().success(storesSuccess);
-});
-
 /*
 * TOASTS:
 * To make a new toast simply emit this event:

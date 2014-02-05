@@ -28,10 +28,6 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/forms/forms.html',
 			controller: 'FormsController'
 		})
-		.when('/tradings', {
-			templateUrl: 'partials/page.html',
-			controller: 'PageController'
-		})
 		.when('/listview', {
 			templateUrl: 'partials/listview/listview.html',
 			controller: 'ListViewController'
@@ -95,6 +91,7 @@ app.controller('MainController', function($scope, $element, ConfigFactory){
 
 	$scope.toggleSideNav = function(){
 		$element.find('#wrapper').toggleClass('open');
+		$element.find('#sideNav').toggleClass('open');
 	};
 });
 

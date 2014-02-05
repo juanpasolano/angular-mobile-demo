@@ -1,8 +1,0 @@
-<div class="page">
-    <first-directive second-directive enter="I am over"></first-directive>
-
-    <input type="text" ng-model="searchText.name"/>
-    <ul class="listview">
-        <li ng-repeat="store in stores | filter:searchText | orderBy:'name' | limitTo:30">{{store.id}} - {{store.name}}</li>
-    </ul>
-</div>
