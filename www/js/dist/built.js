@@ -123,6 +123,7 @@ app.controller('CalendarController', function($scope, $location, ConfigFactory){
 	$scope.config = ConfigFactory;
 
 	$scope.events = [
+		{ date: '2014-01-09', title: 'Lorem ipsum dolor sit.', url: 'http://github.com/kylestetz/CLNDR' },
 		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit.', url: 'http://github.com/kylestetz/CLNDR' },
 		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit 2.', url: 'http://github.com/kylestetz/CLNDR' },
 		{ date: '2014-02-09', title: 'Lorem ipsum dolor sit 3.', url: 'http://github.com/kylestetz/CLNDR' },
@@ -145,7 +146,7 @@ app.controller('CalendarController', function($scope, $location, ConfigFactory){
 * CalendarDirective.js
 */
 
-app.directive('calendar', function($rootScope){
+app.directive('mbCalendar', function($rootScope){
 	return{
 		scope:{
 			events: '='
@@ -212,36 +213,6 @@ app.directive('calendar', function($rootScope){
 	};
 });
 /*
-* TOASTS:
-* To make a new toast simply emit this event:
-* $rootScope.$emit('makeToast', {title:'<string>', type:'success | error | warning'});
-* You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
-* -----
-* Don't forget to associate the div to this controller:
-* <div id="toasts" ng-controller="ToastController">
-*		<div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
-* </div>
-* */
-
-app.controller('ToastController', function($scope, $rootScope, $timeout){
-	$scope.messages = [];
-
-	$rootScope.$on('makeToast', function(ev, data){
-		createToast(data);
-	});
-
-	function createToast(data){
-		$scope.messages.push(data);
-		removeToast();
-	}
-	function removeToast(){
-		$timeout(function(){
-			$scope.messages.splice(0,1);
-		},2500);
-	}
-});
-
-/*
 * DetailController.js
 */
 
@@ -275,13 +246,14 @@ app.controller('DetailController', function($scope, $routeParams, $location, Con
 * attr ng-show: binds the property config.loadingPopOver to the visibility of the widget.
 * attr ng-click: for testing purposes only for the widget to desapear on click event.
 */
-app.directive('loadingPopOver', function(){
+app.directive('mbLoadingPopOver', function(){
 	return{
 		templateUrl: 'partials/loadingPopOver.html',
 		scope:true,
 		link: function(scope, element, attrs){
-			if(attrs.loadingPopOver !== ''){
-				scope.title = attrs.loadingPopOver;
+			console.log(attrs);
+			if(attrs.mbLoadingPopOver !== ''){
+				scope.title = attrs.mbLoadingPopOver;
 			}else{
 				scope.title = 'Loading content';
 			}
@@ -303,7 +275,7 @@ app.directive('loadingPopOver', function(){
 *
 *		The DATA is an object literal that you want to pass to the template of the modal
 */
-app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $templateCache){
+app.directive('mbModalBox', function($http, $compile, $timeout,  $rootScope, $templateCache){
 	return{
 		scope:true,
 		link: function(scope, element, attrs){
@@ -349,6 +321,40 @@ app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $temp
 			};
 		}
 	};
+});
+
+/*
+* TOASTS:
+* To make a new toast simply emit this event:
+* $rootScope.$emit('makeToast', {title:'<string>', type:'success | error | warning'});
+* You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
+* -----
+* Don't forget to associate the div to this controller:
+* <div id="toasts" mb-toast="">
+*		<div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
+* </div>
+* */
+
+app.directive('mbToast', function($rootScope, $timeout){
+	return{
+		scope:true,
+		link: function(scope, element, attrs){
+			scope.messages = [];
+			function createToast(data){
+				scope.messages.push(data);
+				removeToast();
+			}
+			function removeToast(){
+				$timeout(function(){
+					scope.messages.splice(0,1);
+				},2500);
+			}
+			$rootScope.$on('makeToast', function(ev, data){
+				createToast(data);
+			});
+		}
+	};
+
 });
 
 
@@ -771,7 +777,7 @@ app.controller('SwiperController', function($scope, $location, ConfigFactory){
 /*
 * swiper.js:
 */
-app.directive('swiper', function(){
+app.directive('mbSwiper', function(){
 	return{
 		scope:true,
 		link: function(scope, element, attrs){
@@ -790,7 +796,7 @@ app.directive('swiper', function(){
 	};
 });
 
-app.directive('swiperScroll', function(){
+app.directive('mbSwiperScroll', function(){
 	return{
 		template : '<div class="swiper-scrollbar swiper-scrollbar-vertical"></div>'+
 			'<div class="swiper-wrapper">'+
@@ -809,7 +815,6 @@ app.directive('swiperScroll', function(){
 					container: '.swiper-scrollbar'
 				}
 			});
-			console.log(mySwiper);
 		}
 	};
 });

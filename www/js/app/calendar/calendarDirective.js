@@ -2,7 +2,7 @@
 * CalendarDirective.js
 */
 
-app.directive('calendar', function($rootScope){
+app.directive('mbCalendar', function($rootScope){
 	return{
 		scope:{
 			events: '='

@@ -12,7 +12,7 @@
 *
 *		The DATA is an object literal that you want to pass to the template of the modal
 */
-app.directive('modalBox', function($http, $compile, $timeout,  $rootScope, $templateCache){
+app.directive('mbModalBox', function($http, $compile, $timeout,  $rootScope, $templateCache){
 	return{
 		scope:true,
 		link: function(scope, element, attrs){

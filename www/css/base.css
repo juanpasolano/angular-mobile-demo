@@ -807,10 +807,10 @@ body {
 }
 a {
   text-decoration: none;
-  color: #46cac5;
+  color: #39bde9;
 }
 a:hover {
-  color: #31aca7;
+  color: #18a7d7;
 }
 h1,
 h2,
@@ -952,7 +952,7 @@ hr {
 #footer > a:hover,
 #footer > a:active {
   -webkit-transition: all .4s ease;
-  background: #31aca7;
+  background: #18a7d7;
 }
 #sideNav {
   width: 250px;
@@ -1067,16 +1067,16 @@ hr {
 /*==========  MODULES  ==========*/
 /*BUTTONS*/
 .button {
-  background: #46cac5;
+  background: #39bde9;
 }
 .button:hover {
-  background: #268481;
+  background: #1384a9;
 }
 .button[disabled] {
-  background: #6ed5d1;
+  background: #67ccee;
 }
 .button[disabled]:hover {
-  background: #6ed5d1;
+  background: #67ccee;
 }
 .button.dark {
   background: #4a4d4e;
@@ -1176,12 +1176,12 @@ ul.vertical-menu li a {
   font-weight: 300;
 }
 ul.vertical-menu li a:hover {
-  color: #46cac5;
+  color: #39bde9;
 }
 .vertical-menu-title {
   margin-top: .5em;
   padding-left: .4em;
-  color: #46cac5;
+  color: #39bde9;
 }
 /*LOGO*/
 .logo-widget {
@@ -1197,7 +1197,7 @@ ul.vertical-menu li a:hover {
 }
 /*CALENDAR*/
 .calendar .clndr-controls {
-  background: #46cac5;
+  background: #39bde9;
   padding-bottom: 0.5em;
 }
 .calendar .clndr-controls > div {
@@ -1227,10 +1227,10 @@ ul.vertical-menu li a:hover {
   height: 4.4em;
 }
 .calendar .clndr-table .day:hover {
-  background: #bdecea;
+  background: #c3ebf8;
 }
 .calendar .clndr-table .today {
-  background: #46cac5;
+  background: #39bde9;
   color: white;
 }
 .calendar .clndr-table .event .day-contents {
@@ -1240,7 +1240,7 @@ ul.vertical-menu li a:hover {
   content: '';
   width: 0.1em;
   height: 0.1em;
-  background: #46cac5;
+  background: #39bde9;
   border-radius: 50%;
   font-size: 6em;
   position: absolute;
@@ -1382,7 +1382,7 @@ ul.vertical-menu li a:hover {
   right: 0;
 }
 #modals-container .modal .close-button:hover {
-  color: #46cac5;
+  color: #39bde9;
 }
 #modals-container .modal .footer {
   margin-top: 1em;

@@ -11,13 +11,14 @@
 * attr ng-show: binds the property config.loadingPopOver to the visibility of the widget.
 * attr ng-click: for testing purposes only for the widget to desapear on click event.
 */
-app.directive('loadingPopOver', function(){
+app.directive('mbLoadingPopOver', function(){
 	return{
 		templateUrl: 'partials/loadingPopOver.html',
 		scope:true,
 		link: function(scope, element, attrs){
-			if(attrs.loadingPopOver !== ''){
-				scope.title = attrs.loadingPopOver;
+			console.log(attrs);
+			if(attrs.mbLoadingPopOver !== ''){
+				scope.title = attrs.mbLoadingPopOver;
 			}else{
 				scope.title = 'Loading content';
 			}

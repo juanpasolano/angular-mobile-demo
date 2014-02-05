@@ -1,7 +1,7 @@
 /*
 * swiper.js:
 */
-app.directive('swiper', function(){
+app.directive('mbSwiper', function(){
 	return{
 		scope:true,
 		link: function(scope, element, attrs){
@@ -20,7 +20,7 @@ app.directive('swiper', function(){
 	};
 });
 
-app.directive('swiperScroll', function(){
+app.directive('mbSwiperScroll', function(){
 	return{
 		template : '<div class="swiper-scrollbar swiper-scrollbar-vertical"></div>'+
 			'<div class="swiper-wrapper">'+
@@ -39,7 +39,6 @@ app.directive('swiperScroll', function(){
 					container: '.swiper-scrollbar'
 				}
 			});
-			console.log(mySwiper);
 		}
 	};
 });

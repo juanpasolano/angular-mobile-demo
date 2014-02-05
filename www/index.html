@@ -65,16 +65,16 @@
         </div>
 
         <!-- Toast element -->
-        <div id="toasts" ng-controller="ToastController">
+        <div id="toasts" mb-toast="">
             <div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
         </div>
 
         <!-- Loading widget -->
-        <div id="loading" loading-pop-over="Wait! we are getting something nice for you" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
+        <div id="loading" mb-loading-pop-over="Wait! kasjgdak  kjashk" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
         </div>
 
         <!-- MODALS -->
-        <div id="modals-container" modal-box="" class="clearfix">
+        <div id="modals-container" mb-modal-box="" class="clearfix">
             <div class="modal">
                 <h1>{{defaults.title}}</h1>
                 <div class="close-button entypo-font" ng-click="closeModal()">&#10062;</div>
