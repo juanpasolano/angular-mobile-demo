@@ -49,6 +49,14 @@ app.config([ '$routeProvider',
 			templateUrl: 'partials/map/map.html',
 			controller: 'MapDemoController'
 		})
+		.when('/chartsjs', {
+			templateUrl: 'partials/charts/chartsjs.html',
+			controller: 'ChartsjsController'
+		})
+		.when('/d3Charts', {
+			templateUrl: 'partials/charts/d3Charts.html',
+			controller: 'D3ChartsController'
+		})
 		.otherwise({
 			redirectTo:'/login'
 		});

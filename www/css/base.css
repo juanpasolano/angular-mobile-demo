@@ -1488,5 +1488,63 @@ ul.vertical-menu li a:hover {
 .angular-google-map .angular-google-map-container > div {
   height: 100%;
 }
+/*D3*/
+.d3-chart-bar-header {
+  margin: 1em 0;
+  text-align: center;
+}
+.d3-chart-bar-header .bar-header-text {
+  position: relative;
+  padding: 0;
+}
+.d3-chart-bar-header .bar-header-text:after {
+  content: '';
+  width: 1px;
+  height: 16.5em;
+  background: #c4caca;
+  display: block;
+  position: absolute;
+  top: 1.5em;
+  left: 50%;
+}
+.d3-chart-bar .bar-row {
+  margin-bottom: 1em;
+}
+.d3-chart-bar .bar-row:nth-child( 8) .bar-bar {
+  -webkit-transition-delay: 0.4s;
+}
+.d3-chart-bar .bar-row:nth-child( 7) .bar-bar {
+  -webkit-transition-delay: 0.35000000000000003s;
+}
+.d3-chart-bar .bar-row:nth-child( 6) .bar-bar {
+  -webkit-transition-delay: 0.30000000000000004s;
+}
+.d3-chart-bar .bar-row:nth-child( 5) .bar-bar {
+  -webkit-transition-delay: 0.25s;
+}
+.d3-chart-bar .bar-row:nth-child( 4) .bar-bar {
+  -webkit-transition-delay: 0.2s;
+}
+.d3-chart-bar .bar-row:nth-child( 3) .bar-bar {
+  -webkit-transition-delay: 0.15000000000000002s;
+}
+.d3-chart-bar .bar-row:nth-child( 2) .bar-bar {
+  -webkit-transition-delay: 0.1s;
+}
+.d3-chart-bar .bar-row:nth-child( 1) .bar-bar {
+  -webkit-transition-delay: 0.05s;
+}
+.d3-chart-bar .bar-bar {
+  background-color: #39bde9;
+  text-align: right;
+  padding: 1em;
+  color: white;
+  width: 1%;
+  -webkit-transition: all 1s ease;
+}
+.d3-chart-bar .bar-text {
+  padding-right: 0;
+  margin-top: .3em;
+}
 /*==========  STATES  ==========*/
 /*==========  THEME  ==========*/

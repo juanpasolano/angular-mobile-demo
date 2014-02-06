@@ -1,7 +1,7 @@
 @import 'entypoIcons.less';
 
-
 /*MAIN VARIABLES*/
+@mainFont:'Lato';
 @sideBarWidth:250px;
 @headerHeight: 70px;
 @darkGray:#4A4D4E;
@@ -724,6 +724,53 @@ ul.vertical-menu {
   }
 }
 
+
+/*D3*/
+
+.nth-child-delay (@index, @childName) when (@index > 0) {
+  &:nth-child(@{index}) {
+    .@{childName}{
+    -webkit-transition-delay:@index*.05s;
+    }
+  }
+  .nth-child-delay(@index - 1, @childName);
+}
+.d3-chart-bar-header{
+  margin: 1em 0;
+  text-align: center;
+  .bar-header-text{
+    position: relative;
+    padding: 0;
+    &:after{
+      content: '';
+      width: 1px;
+      height: 16.5em;
+      background: darken(@lightGray, 10%);
+      display: block;
+      position: absolute;
+      top: 1.5em;
+      left: 50%;
+    }
+  }
+}
+.d3-chart-bar{
+  .bar-row{
+    margin-bottom: 1em;
+    .nth-child-delay(8, bar-bar);
+  }
+  .bar-bar{
+    background-color: @mainColor;
+    text-align: right;
+    padding: 1em;
+    color: white;
+    width: 1%;
+    -webkit-transition: all 1s ease;
+  }
+  .bar-text{
+    padding-right: 0;
+    margin-top: .3em;
+  }
+}
 
 /*==========  STATES  ==========*/
 
