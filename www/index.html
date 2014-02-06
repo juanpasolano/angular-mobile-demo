@@ -37,6 +37,7 @@
                 <li><a href="#/calendar" ng-click="toggleSideNav()" class="has-icon entypo-calendar has-chevron">Calendar</a></li>
                 <li><a href="#/map" ng-click="toggleSideNav()" class="has-icon entypo-map has-chevron">Map</a></li>
                 <li><a href="#/swiper" ng-click="toggleSideNav()" class="has-icon entypo-circled-right has-chevron">Swiper</a></li>
+                <li><a href="#/d3Charts" ng-click="toggleSideNav()" class="has-icon entypo-bar-graph has-chevron">D3 Charts</a></li>
                 <li><a href="#/chartsjs" ng-click="toggleSideNav()" class="has-icon entypo-bar-graph has-chevron">Chartsjs</a></li>
             </ul>
             <h2 class="vertical-menu-title">Menu title</h2>
@@ -53,7 +54,7 @@
             </div>
 
             <div id="content" style="{{contentStyles()}}">
-                <div ng-view="" class="page-holder page-slide-animation clearfix"></div>
+                <div ng-view="" class="page-holder page-pop-animation clearfix"></div>
             </div>
 
             <div id="footer" ng-class="{false: 'hidden'}[config.hasFooter]">
@@ -100,6 +101,8 @@
 
 
 
+    <!-- cordova -->
+    <!--<script src="cordova.js"></script>-->
 
     <!-- jQuery -->
     <script src="js/vendor/jquery-2.0.3.min.js"></script>

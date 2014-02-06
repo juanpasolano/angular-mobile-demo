@@ -807,10 +807,10 @@ body {
 }
 a {
   text-decoration: none;
-  color: #39bde9;
+  color: #e6375a;
 }
 a:hover {
-  color: #18a7d7;
+  color: #d01a3e;
 }
 h1,
 h2,
@@ -952,7 +952,7 @@ hr {
 #footer > a:hover,
 #footer > a:active {
   -webkit-transition: all .4s ease;
-  background: #18a7d7;
+  background: #d01a3e;
 }
 #sideNav {
   width: 250px;
@@ -1067,16 +1067,16 @@ hr {
 /*==========  MODULES  ==========*/
 /*BUTTONS*/
 .button {
-  background: #39bde9;
+  background: #e6375a;
 }
 .button:hover {
-  background: #1384a9;
+  background: #a31431;
 }
 .button[disabled] {
-  background: #67ccee;
+  background: #ec647f;
 }
 .button[disabled]:hover {
-  background: #67ccee;
+  background: #ec647f;
 }
 .button.dark {
   background: #4a4d4e;
@@ -1176,12 +1176,12 @@ ul.vertical-menu li a {
   font-weight: 300;
 }
 ul.vertical-menu li a:hover {
-  color: #39bde9;
+  color: #e6375a;
 }
 .vertical-menu-title {
   margin-top: .5em;
   padding-left: .4em;
-  color: #39bde9;
+  color: #e6375a;
 }
 /*LOGO*/
 .logo-widget {
@@ -1197,7 +1197,7 @@ ul.vertical-menu li a:hover {
 }
 /*CALENDAR*/
 .calendar .clndr-controls {
-  background: #39bde9;
+  background: #e6375a;
   padding-bottom: 0.5em;
 }
 .calendar .clndr-controls > div {
@@ -1227,10 +1227,10 @@ ul.vertical-menu li a:hover {
   height: 4.4em;
 }
 .calendar .clndr-table .day:hover {
-  background: #c3ebf8;
+  background: #f7bfca;
 }
 .calendar .clndr-table .today {
-  background: #39bde9;
+  background: #e6375a;
   color: white;
 }
 .calendar .clndr-table .event .day-contents {
@@ -1240,7 +1240,7 @@ ul.vertical-menu li a:hover {
   content: '';
   width: 0.1em;
   height: 0.1em;
-  background: #39bde9;
+  background: #e6375a;
   border-radius: 50%;
   font-size: 6em;
   position: absolute;
@@ -1382,7 +1382,7 @@ ul.vertical-menu li a:hover {
   right: 0;
 }
 #modals-container .modal .close-button:hover {
-  color: #39bde9;
+  color: #e6375a;
 }
 #modals-container .modal .footer {
   margin-top: 1em;
@@ -1535,7 +1535,7 @@ ul.vertical-menu li a:hover {
   -webkit-transition-delay: 0.05s;
 }
 .d3-chart-bar .bar-bar {
-  background-color: #39bde9;
+  background-color: #e6375a;
   text-align: right;
   padding: 1em;
   color: white;
