@@ -1,10 +1,12 @@
 /*
 * FormsController.js
 */
-app.controller('FormsController', function($scope, $location, ConfigFactory, MusicService){
-	ConfigFactory.title = 'Forms';
-	ConfigFactory.hasHeader = true;
-	ConfigFactory.hasFooter = true;
-	ConfigFactory.hasSideNavigation = true;
-	$scope.config = ConfigFactory;
-});
+app.controller('FormsController', ['$scope', '$location', 'ConfigFactory',
+	function($scope, $location, ConfigFactory){
+		ConfigFactory.title = 'Forms';
+		ConfigFactory.hasHeader = true;
+		ConfigFactory.hasFooter = true;
+		ConfigFactory.hasSideNavigation = true;
+		$scope.config = ConfigFactory;
+	}
+]);

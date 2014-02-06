@@ -10,24 +10,25 @@
 * </div>
 * */
 
-app.directive('mbToast', function($rootScope, $timeout){
-	return{
-		scope:true,
-		link: function(scope, element, attrs){
-			scope.messages = [];
-			function createToast(data){
-				scope.messages.push(data);
-				removeToast();
+app.directive('mbToast',['$rootScope', '$timeout',
+	function($rootScope, $timeout){
+		return{
+			scope:true,
+			link: function(scope, element, attrs){
+				scope.messages = [];
+				function createToast(data){
+					scope.messages.push(data);
+					removeToast();
+				}
+				function removeToast(){
+					$timeout(function(){
+						scope.messages.splice(0,1);
+					},2500);
+				}
+				$rootScope.$on('makeToast', function(ev, data){
+					createToast(data);
+				});
 			}
-			function removeToast(){
-				$timeout(function(){
-					scope.messages.splice(0,1);
-				},2500);
-			}
-			$rootScope.$on('makeToast', function(ev, data){
-				createToast(data);
-			});
-		}
-	};
-
-});
+		};
+	}
+]);

@@ -52,7 +52,7 @@
             </div>
 
             <div id="content" style="{{contentStyles()}}">
-                <div ng-view="" class="page-holder page-pop-animation clearfix"></div>
+                <div ng-view="" class="page-holder page-slide-animation clearfix"></div>
             </div>
 
             <div id="footer" ng-class="{false: 'hidden'}[config.hasFooter]">
@@ -70,7 +70,7 @@
         </div>
 
         <!-- Loading widget -->
-        <div id="loading" mb-loading-pop-over="Wait! kasjgdak  kjashk" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
+        <div id="loading" mb-loading-pop-over="Hang in there! we are getting some nice data just for you." ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
         </div>
 
         <!-- MODALS -->

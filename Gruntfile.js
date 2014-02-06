@@ -5,7 +5,7 @@ module.exports =  function(grunt){
 		watch:{
 			js_app: {
 				files: ['www/js/app/**/*.js','www/js/app/*.js'],
-				tasks: [/*'uglify:js_app',*/ 'concat:js_app']
+				tasks: ['uglify:js_app', 'concat:js_app']
 			},
 			less:{
 				files:['www/css/base.less'],
@@ -57,7 +57,7 @@ module.exports =  function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-less');
 
 
-	grunt.registerTask('default', ['watch:js_app']);
+	grunt.registerTask('default', ['watch']);
 	grunt.registerTask('watch-js', ['watch:js_app']);
 	grunt.registerTask('watch-less', ['watch:less']);
 	grunt.registerTask('concat-app', ['concat:js_app']);

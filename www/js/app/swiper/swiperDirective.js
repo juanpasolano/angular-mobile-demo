@@ -1,45 +1,44 @@
 /*
 * swiper.js:
 */
-app.directive('mbSwiper', function(){
-	return{
-		scope:true,
-		link: function(scope, element, attrs){
+app.directive('mbSwiper', [
+	function(){
+		return{
+			scope:true,
+			link: function(scope, element, attrs){
+				var mySwiper = element.swiper({
+					pagination: '.pagination',
+					loop:true,
+					grabCursor: true,
+					paginationClickable: true
+				});
+			}
+		};
+	}
+]);
 
-			element.on('click', function(){
-				console.log('alala');
-			});
-
-			var mySwiper = element.swiper({
-				pagination: '.pagination',
-				loop:true,
-				grabCursor: true,
-				paginationClickable: true
-			});
-		}
-	};
-});
-
-app.directive('mbSwiperScroll', function(){
-	return{
-		template : '<div class="swiper-scrollbar swiper-scrollbar-vertical"></div>'+
-			'<div class="swiper-wrapper">'+
-				'<div class="swiper-slide" ng-transclude>'+
+app.directive('mbSwiperScroll', [
+	function(){
+		return{
+			template : '<div class="swiper-scrollbar swiper-scrollbar-vertical"></div>'+
+				'<div class="swiper-wrapper">'+
+					'<div class="swiper-slide" ng-transclude>'+
+					'</div>'+
 				'</div>'+
-			'</div>'+
-		'</div>',
-		transclude :  true,
-		scope : true,
-		link : function(scope, element, attrs){
+			'</div>',
+			transclude :  true,
+			scope : true,
+			link : function(scope, element, attrs){
 
-			var mySwiper = $(element).swiper({
-				scrollContainer: true,
-				mode:'vertical',
-				scrollbar: {
-					container: '.swiper-scrollbar'
-				}
-			});
-		}
-	};
-});
+				var mySwiper = $(element).swiper({
+					scrollContainer: true,
+					mode:'vertical',
+					scrollbar: {
+						container: '.swiper-scrollbar'
+					}
+				});
+			}
+		};
+	}
+]);
 
