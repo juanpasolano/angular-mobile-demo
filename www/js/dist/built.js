@@ -118,8 +118,7 @@ app.factory('ConfigFactory', [
 			title : 'Angular boilerplate from factory',
 			hasFooter: true,
 			hasHeader:false,
-			hasSideNavigation: false,
-			loadingPopOver:false
+			hasSideNavigation: false
 		};
 	}
 ]);
@@ -421,28 +420,50 @@ app.controller('DetailController', ['$scope', '$routeParams', '$location', 'Conf
 ]);
 /*
 * LoadingPopOver.js:
-* This directive shows a loading widget for when content is being oulled from the server
+* This directive shows a loading widget for when content is being pulled from the server
 * To implement:
 *
-* <div id="loading" loading-pop-over="Cargando contenido" ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
+* <div id="loading" mb-loading-pop-over="Hang in there! we are getting some nice data just for you."></div>
 *
-* Where:
-* attr id: is related to css styling.
-* attr loading-pop-over: is the connection to the directive, the parameter you pass to this attribute will be the text it displays
-* attr ng-show: binds the property config.loadingPopOver to the visibility of the widget.
-* attr ng-click: for testing purposes only for the widget to desapear on click event.
+* To implement import $rootScope in your controller an $emit this event
+*
+* $rootScope.$emit('showLoadingPopOver',{});
+*
 */
-app.directive('mbLoadingPopOver', [
-	function(){
+app.directive('mbLoadingPopOver', ['$rootScope',
+	function($rootScope){
 		return{
 			templateUrl: 'partials/loadingPopOver.html',
-			scope:true,
 			link: function(scope, element, attrs){
+
 				if(attrs.mbLoadingPopOver !== ''){
 					scope.title = attrs.mbLoadingPopOver;
 				}else{
 					scope.title = 'Loading content';
 				}
+
+				element.on('click', function(){
+					hideLoadingPopOver();
+				});
+
+				var hideLoadingPopOver =  function(){
+					$('#wrapper').removeClass(scope.filter);
+					element.removeClass('visible');
+				};
+
+				var showLoadingPopOver =  function(options){
+					$('#wrapper').addClass(scope.filter);
+					element.addClass('visible');
+				};
+
+				$rootScope.$on('showLoadingPopOver', function(ev, options){
+					scope.filter = options !== undefined ? options.filter : 'blur-filter';
+					showLoadingPopOver(options);
+				});
+
+				$rootScope.$on('hideLoadingPopOver', function(ev, options){
+					hideLoadingPopOver();
+				});
 			}
 		};
 	}
@@ -462,8 +483,8 @@ app.directive('mbLoadingPopOver', [
 *
 *		The DATA is an object literal that you want to pass to the template of the modal
 */
-app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$templateCache',
-	function($http, $compile, $timeout,  $rootScope, $templateCache){
+app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$templateCache', 'ConfigFactory',
+	function($http, $compile, $timeout,  $rootScope, $templateCache, ConfigFactory){
 		return{
 			scope:true,
 			link: function(scope, element, attrs){
@@ -481,6 +502,8 @@ app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$te
 						$http.get(attrs.options.template, {cache: $templateCache}).success(function(tplContent){
 
 							scope.defaults = $.extend({}, defaults, attrs.options);
+
+							ConfigFactory.wrapperIsBlured = true;
 
 							if(attrs.data){
 								scope.data = attrs.data;
@@ -505,6 +528,7 @@ app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$te
 
 				scope.closeModal =  function(){
 					$(element).removeClass('show');
+					ConfigFactory.wrapperIsBlured = false;
 				};
 			}
 		};
@@ -592,7 +616,9 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 
 		};
 		$scope.showLoading = function(){
-			ConfigFactory.loadingPopOver = true;
+			$rootScope.$emit('showLoadingPopOver',{
+				filter:'blur-filter'
+			});
 		};
 
 		// This horible snippet will fix the scrolling weird problem on iOS, but yikes!
@@ -623,7 +649,6 @@ app.controller('ListViewController', ['$scope', '$location', 'ConfigFactory', 'M
 			console.log(status);
 		};
 		MusicService.getStores().success(itemsSuccess);
-
 
 		$scope.getDetails = function(item){
 			$location.path('detailDefault/'+item.name);
@@ -790,13 +815,15 @@ app.factory('MusicService',[ '$http', '$rootScope', 'ConfigFactory',
 	function($http, $rootScope, ConfigFactory){
 		return {
 			getStores :  function(){
+				$rootScope.$emit('showLoadingPopOver');
 				return $http.get('http://ws.audioscrobbler.com/2.0/?method=album.search&album=red+hot+chilli&artist=red+hot+chilli&api_key=77725761af78cf82f9d7a9b304be958e&format=json')
 					.error(function(){
+						$rootScope.$emit('hideLoadingPopOver');
 						$rootScope.$emit('makeToast', {title:'Algo salio mal por favor vuelve a intentarlo', type:'error'});
 					})
 					.success(function(data){
+						$rootScope.$emit('hideLoadingPopOver');
 						console.log(data);
-						//console.log('StoresModel:success');
 					});
 			},
 			getDetail: function(id){

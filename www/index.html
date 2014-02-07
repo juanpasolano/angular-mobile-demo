@@ -46,7 +46,7 @@
             </ul>
         </div>
 
-        <div id="wrapper" class="blur-filter">
+        <div id="wrapper"  ng-class="{true: 'blur-filter'}[config.wrapperIsBlured]">
 
             <div id="header" ng-class="{false: 'hidden'}[config.hasHeader]">
                 <a class="button menuButton" ng-click="toggleSideNav()" ng-show="config.hasSideNavigation">&#9776;</a>
@@ -73,7 +73,7 @@
         </div>
 
         <!-- Loading widget -->
-        <div id="loading" mb-loading-pop-over="Hang in there! we are getting some nice data just for you." ng-show="config.loadingPopOver" ng-click="config.loadingPopOver=false">
+        <div id="loading" mb-loading-pop-over="Hang in there! we are getting some nice data just for you.">
         </div>
 
         <!-- MODALS -->
@@ -129,15 +129,15 @@
     <script type="text/javascript" src="js/vendor/momentjs/moment-with-langs.min.js"></script>
 
     <!-- CLNDR: Calendar -->
-    <script type="text/javascript" src="js/vendor/clndr/clndr.js"></script>
+    <script type="text/javascript" src="js/vendor/clndr/clndr.min.js"></script>
 
     <!-- Swiper: for touch galleries ro carousels -->
-    <script type="text/javascript" src="js/vendor/swiper/idangerous.swiper.js"></script>
+    <script type="text/javascript" src="js/vendor/swiper/idangerous.swiper.min.js"></script>
     <script type="text/javascript" src="js/vendor/swiper/idangerous.swiper.scrollbar-2.1.js"></script>
 
     <!-- d3: For graphic charts -->
-    <script type="text/javascript" src="js/vendor/d3/d3.v3.js"></script>
-    <script type="text/javascript" src="js/vendor/chartjs/Chart.js"></script>
+    <script type="text/javascript" src="js/vendor/d3/d3.v3.min.js"></script>
+    <script type="text/javascript" src="js/vendor/chartjs/Chart.min.js"></script>
 
     <!-- My App -->
     <script src="js/dist/built.js"></script>

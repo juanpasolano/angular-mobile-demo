@@ -17,7 +17,6 @@ app.controller('ListViewController', ['$scope', '$location', 'ConfigFactory', 'M
 		};
 		MusicService.getStores().success(itemsSuccess);
 
-
 		$scope.getDetails = function(item){
 			$location.path('detailDefault/'+item.name);
 			console.log(item);

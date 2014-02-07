@@ -12,8 +12,8 @@
 *
 *		The DATA is an object literal that you want to pass to the template of the modal
 */
-app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$templateCache',
-	function($http, $compile, $timeout,  $rootScope, $templateCache){
+app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$templateCache', 'ConfigFactory',
+	function($http, $compile, $timeout,  $rootScope, $templateCache, ConfigFactory){
 		return{
 			scope:true,
 			link: function(scope, element, attrs){
@@ -31,6 +31,8 @@ app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$te
 						$http.get(attrs.options.template, {cache: $templateCache}).success(function(tplContent){
 
 							scope.defaults = $.extend({}, defaults, attrs.options);
+
+							ConfigFactory.wrapperIsBlured = true;
 
 							if(attrs.data){
 								scope.data = attrs.data;
@@ -55,6 +57,7 @@ app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$te
 
 				scope.closeModal =  function(){
 					$(element).removeClass('show');
+					ConfigFactory.wrapperIsBlured = false;
 				};
 			}
 		};

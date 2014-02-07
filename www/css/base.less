@@ -577,6 +577,11 @@ ul.vertical-menu {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.3);
+  -webkit-transform: translate3d(-140%, 0, 0) rotate(-30deg);
+  -webkit-transition: all .5s ease;
+  &.visible{
+    -webkit-transform: translate3d(0,0,0);
+  }
   .msgBox{
     width: 200px;
     padding: 20px;

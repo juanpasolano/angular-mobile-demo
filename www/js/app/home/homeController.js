@@ -24,7 +24,9 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 
 		};
 		$scope.showLoading = function(){
-			ConfigFactory.loadingPopOver = true;
+			$rootScope.$emit('showLoadingPopOver',{
+				filter:'blur-filter'
+			});
 		};
 
 		// This horible snippet will fix the scrolling weird problem on iOS, but yikes!

@@ -118,8 +118,7 @@ app.factory('ConfigFactory', [
 			title : 'Angular boilerplate from factory',
 			hasFooter: true,
 			hasHeader:false,
-			hasSideNavigation: false,
-			loadingPopOver:false
+			hasSideNavigation: false
 		};
 	}
 ]);
