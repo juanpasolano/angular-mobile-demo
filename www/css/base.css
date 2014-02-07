@@ -883,6 +883,9 @@ hr {
 #wrapper.open {
   -webkit-transform: translate3d(250px, 0, 0);
 }
+#wrapper.blur-filter {
+  -webkit-filter: blur(3px);
+}
 #header {
   width: 100%;
   height: 70px;
@@ -976,10 +979,11 @@ hr {
   box-sizing: border-box;
   padding: 1em;
   position: absolute;
-  overflow-x: auto;
   top: 0;
   left: 0;
   -webkit-transform: translate3d(0, 0, 0);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .page-slide-animation.ng-enter,
 .page-slide-animation.ng-leave {

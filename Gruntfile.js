@@ -52,6 +52,7 @@ module.exports =  function(grunt){
 			phonegap: {
 				files: [
 					{expand: true, src: ['www/**'], dest: '../app-angular-pg/platforms/ios/'},
+					{expand: true, src: ['www/**'], dest: '../app-angular-pg/platforms/android/assets/'},
 				]
 			}
 		}

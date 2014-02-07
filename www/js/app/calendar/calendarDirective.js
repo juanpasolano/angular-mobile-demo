@@ -4,6 +4,7 @@
 app.directive('mbCalendar',['$rootScope',
 	function($rootScope){
 		return{
+			priority: 1200,
 			scope:{
 				events: '='
 			},

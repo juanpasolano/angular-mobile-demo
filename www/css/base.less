@@ -111,6 +111,9 @@ hr{
   &.open {
     -webkit-transform: translate3d(@sideBarWidth, 0, 0);
   }
+  &.blur-filter{
+    -webkit-filter: blur(3px);
+  }
 }
 #header {
   width: 100%;
@@ -207,10 +210,11 @@ hr{
   box-sizing: border-box;
   padding: 1em;
   position: absolute;
-  overflow-x: auto;
   top: 0;
   left: 0;
   -webkit-transform:translate3d(0,0,0);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .page-slide-animation{
   &.ng-enter, &.ng-leave{

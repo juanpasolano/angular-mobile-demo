@@ -1,11 +1,11 @@
 /*
 * HomeController.js
 */
-app.controller('HomeController', ['$scope', '$rootScope', 'ConfigFactory',
-	function($scope, $rootScope, ConfigFactory){
+app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFactory',
+	function($scope, $rootScope, $timeout, ConfigFactory){
 		ConfigFactory.title = 'Angular boilerplate titulo';
 		ConfigFactory.hasHeader = true;
-		ConfigFactory.hasFooter = true;
+		ConfigFactory.hasFooter = false;
 		ConfigFactory.hasSideNavigation = true;
 
 		$scope.emitToast = function(type){
@@ -26,5 +26,14 @@ app.controller('HomeController', ['$scope', '$rootScope', 'ConfigFactory',
 		$scope.showLoading = function(){
 			ConfigFactory.loadingPopOver = true;
 		};
+
+		// This horible snippet will fix the scrolling weird problem on iOS, but yikes!
+		$timeout(function(){
+			var page = $('.page');
+			page.removeClass('page');
+					$timeout(function(){
+						page.addClass('page');
+					}, 800);
+		}, 800);
 	}
 ]);

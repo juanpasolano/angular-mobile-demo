@@ -46,13 +46,14 @@
             </ul>
         </div>
 
-        <div id="wrapper">
+        <div id="wrapper" class="blur-filter">
 
             <div id="header" ng-class="{false: 'hidden'}[config.hasHeader]">
                 <a class="button menuButton" ng-click="toggleSideNav()" ng-show="config.hasSideNavigation">&#9776;</a>
                 <h3 class="title" ng-class="{true: 'sideNav'}[config.hasSideNavigation]">{{config.title}}</h3>
             </div>
 
+            <!-- CONTENT -->
             <div id="content" style="{{contentStyles()}}">
                 <div ng-view="" class="page-holder page-pop-animation clearfix"></div>
             </div>
@@ -85,10 +86,10 @@
                 </div>
                 <div class="footer row extend">
                     <div class="column small-6">
-                        <a href="javascript:;" class="button w100p" ng-click="closeModal()">{{defaults.acceptText}}</a>
+                        <a href="javascript:;" class="button tiny w100p" ng-click="closeModal()">{{defaults.acceptText}}</a>
                     </div>
                     <div class="column small-6">
-                        <a href="javascript:;" class="button secondary w100p" ng-click="closeModal()">{{defaults.cancelText}}</a>
+                        <a href="javascript:;" class="button tiny secondary w100p" ng-click="closeModal()">{{defaults.cancelText}}</a>
                     </div>
                 </div>
             </div>
@@ -102,7 +103,7 @@
 
 
     <!-- cordova -->
-    <!--<script src="cordova.js"></script>-->
+    <!----><script src="cordova.js"></script>
 
     <!-- jQuery -->
     <script src="js/vendor/jquery-2.0.3.min.js"></script>

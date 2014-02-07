@@ -163,6 +163,7 @@ app.controller('CalendarController', ['$scope', '$location', 'ConfigFactory',
 app.directive('mbCalendar',['$rootScope',
 	function($rootScope){
 		return{
+			priority: 1200,
 			scope:{
 				events: '='
 			},
@@ -568,11 +569,11 @@ app.controller('FormsController', ['$scope', '$location', 'ConfigFactory',
 /*
 * HomeController.js
 */
-app.controller('HomeController', ['$scope', '$rootScope', 'ConfigFactory',
-	function($scope, $rootScope, ConfigFactory){
+app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFactory',
+	function($scope, $rootScope, $timeout, ConfigFactory){
 		ConfigFactory.title = 'Angular boilerplate titulo';
 		ConfigFactory.hasHeader = true;
-		ConfigFactory.hasFooter = true;
+		ConfigFactory.hasFooter = false;
 		ConfigFactory.hasSideNavigation = true;
 
 		$scope.emitToast = function(type){
@@ -593,6 +594,15 @@ app.controller('HomeController', ['$scope', '$rootScope', 'ConfigFactory',
 		$scope.showLoading = function(){
 			ConfigFactory.loadingPopOver = true;
 		};
+
+		// This horible snippet will fix the scrolling weird problem on iOS, but yikes!
+		$timeout(function(){
+			var page = $('.page');
+			page.removeClass('page');
+					$timeout(function(){
+						page.addClass('page');
+					}, 800);
+		}, 800);
 	}
 ]);
 /*

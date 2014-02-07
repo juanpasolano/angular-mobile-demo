@@ -1,18 +1,18 @@
 <div class="page">
-	<p class="tac">This calendar is built with the beautiful, minimal calendar plugin for jQuery CLNDR</p>
 
-  <div class="calendar"
-  mb-calendar=""
-  events="events"></div>
+		<p class="tac">This calendar is built with the beautiful, minimal calendar plugin for jQuery CLNDR</p>
 
-	<ul class="listview">
-		<li ng-repeat="event in events" class="row column medium-6" ng-click="getDetails(event)">
-			<div class="column small-12">
-				<h3>{{event.title}}</h3>
-				<h6>{{event.date}}</h6>
-			</div>
-		</li>
-	</ul>
+		<div class="calendar"
+		mb-calendar=""
+		events="events"></div>
 
+		<ul class="listview">
+			<li ng-repeat="event in events" class="row column medium-6" ng-click="getDetails(event)">
+				<div class="column small-12">
+					<h3>{{event.title}}</h3>
+					<h6>{{event.date}}</h6>
+				</div>
+			</li>
+		</ul>
 
 </div>
