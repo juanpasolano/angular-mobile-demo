@@ -627,8 +627,8 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 			page.removeClass('page');
 					$timeout(function(){
 						page.addClass('page');
-					}, 800);
-		}, 800);
+					}, 600);
+		}, 600);
 	}
 ]);
 /*
