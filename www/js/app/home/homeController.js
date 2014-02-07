@@ -18,6 +18,7 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 					template: template,
 					cancelText :'Dont fire that',
 					acceptText: 'Lets rock!',
+
 					title: 'Modal demo'
 				}
 			});

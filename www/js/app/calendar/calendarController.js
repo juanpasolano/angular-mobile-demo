@@ -2,8 +2,8 @@
 * CalendarController.js
 */
 
-app.controller('CalendarController', ['$scope', '$location', 'ConfigFactory',
-	function($scope, $location, ConfigFactory){
+app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'ConfigFactory',
+	function($scope, $rootScope, $location, ConfigFactory){
 		ConfigFactory.title = 'Calendar';
 		ConfigFactory.hasHeader = true;
 		ConfigFactory.hasFooter = true;
@@ -28,5 +28,19 @@ app.controller('CalendarController', ['$scope', '$location', 'ConfigFactory',
 			{ date: '2014-03-23', title: 'Compellingly re-engineer client.', url: 'http://github.com/kylestetz/CLNDR' },
 			{ date: '2014-03-26', title: 'Appropriately expedite', url: 'http://github.com/kylestetz/CLNDR' }
 		];
+
+		$scope.calendarDayClick = function(target){
+			if(target.events.length > 0){
+				$rootScope.$emit('makeModal', {
+					options:{
+						template:'partials/modals/calendarModal.html',
+						cancelText :'Yep',
+						acceptText: 'Ok, go.',
+						title: 'Events on '+ target.date._i
+					},
+					data: target.events
+				});
+			}
+		};
 	}
 ]);

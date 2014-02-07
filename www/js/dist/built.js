@@ -128,8 +128,8 @@ app.factory('ConfigFactory', [
 * CalendarController.js
 */
 
-app.controller('CalendarController', ['$scope', '$location', 'ConfigFactory',
-	function($scope, $location, ConfigFactory){
+app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'ConfigFactory',
+	function($scope, $rootScope, $location, ConfigFactory){
 		ConfigFactory.title = 'Calendar';
 		ConfigFactory.hasHeader = true;
 		ConfigFactory.hasFooter = true;
@@ -154,6 +154,20 @@ app.controller('CalendarController', ['$scope', '$location', 'ConfigFactory',
 			{ date: '2014-03-23', title: 'Compellingly re-engineer client.', url: 'http://github.com/kylestetz/CLNDR' },
 			{ date: '2014-03-26', title: 'Appropriately expedite', url: 'http://github.com/kylestetz/CLNDR' }
 		];
+
+		$scope.calendarDayClick = function(target){
+			if(target.events.length > 0){
+				$rootScope.$emit('makeModal', {
+					options:{
+						template:'partials/modals/calendarModal.html',
+						cancelText :'Yep',
+						acceptText: 'Ok, go.',
+						title: 'Events on '+ target.date._i
+					},
+					data: target.events
+				});
+			}
+		};
 	}
 ]);
 /*
@@ -164,7 +178,8 @@ app.directive('mbCalendar',['$rootScope',
 		return{
 			priority: 1200,
 			scope:{
-				events: '='
+				events: '=',
+				mbCalendarDayClick: '='
 			},
 			link: function(scope, element, attrs){
 				clndrTemplate = "<div class='clndr-controls row'>" +
@@ -202,18 +217,8 @@ app.directive('mbCalendar',['$rootScope',
 					events: scope.events,
 					clickEvents: {
 						click: function(target) {
-							//fires a modal box on click on a date if it has events
-							if(target.events.length > 0){
-
-								$rootScope.$emit('makeModal', {
-									options:{
-										template:'partials/modals/calendarModal.html',
-										cancelText :'Yep',
-										acceptText: 'Ok, go.',
-										title: 'Events on '+ target.date._i
-									},
-									data: target.events
-								});
+							if (typeof(scope.mbCalendarDayClick) == "function") {
+								scope.mbCalendarDayClick(target);
 							}
 						},
 						onMonthChange: function(month) {
@@ -610,6 +615,7 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 					template: template,
 					cancelText :'Dont fire that',
 					acceptText: 'Lets rock!',
+
 					title: 'Modal demo'
 				}
 			});

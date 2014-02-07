@@ -6,7 +6,8 @@ app.directive('mbCalendar',['$rootScope',
 		return{
 			priority: 1200,
 			scope:{
-				events: '='
+				events: '=',
+				mbCalendarDayClick: '='
 			},
 			link: function(scope, element, attrs){
 				clndrTemplate = "<div class='clndr-controls row'>" +
@@ -44,18 +45,8 @@ app.directive('mbCalendar',['$rootScope',
 					events: scope.events,
 					clickEvents: {
 						click: function(target) {
-							//fires a modal box on click on a date if it has events
-							if(target.events.length > 0){
-
-								$rootScope.$emit('makeModal', {
-									options:{
-										template:'partials/modals/calendarModal.html',
-										cancelText :'Yep',
-										acceptText: 'Ok, go.',
-										title: 'Events on '+ target.date._i
-									},
-									data: target.events
-								});
+							if (typeof(scope.mbCalendarDayClick) == "function") {
+								scope.mbCalendarDayClick(target);
 							}
 						},
 						onMonthChange: function(month) {
