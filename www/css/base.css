@@ -809,7 +809,7 @@ a {
   text-decoration: none;
   color: #e6375a;
 }
-a:hover {
+a:active {
   color: #d01a3e;
 }
 h1,
@@ -953,7 +953,7 @@ hr {
   text-align: center;
   line-height: 70px;
 }
-#footer > a:hover,
+#footer > a:active,
 #footer > a:active {
   -webkit-transition: all .4s ease;
   background: #d01a3e;
@@ -1074,25 +1074,25 @@ hr {
 .button {
   background: #e6375a;
 }
-.button:hover {
+.button:active {
   background: #a31431;
 }
 .button[disabled] {
   background: #ec647f;
 }
-.button[disabled]:hover {
+.button[disabled]:active {
   background: #ec647f;
 }
 .button.dark {
   background: #4a4d4e;
 }
-.button.dark:hover {
+.button.dark:active {
   background: #313334;
 }
 .button.dark[disabled] {
   background: #636768;
 }
-.button.dark[disabled]:hover {
+.button.dark[disabled]:active {
   background: #636768;
 }
 .has-icon {
@@ -1180,7 +1180,7 @@ ul.vertical-menu li a {
   text-decoration: none;
   font-weight: 300;
 }
-ul.vertical-menu li a:hover {
+ul.vertical-menu li a:active {
   color: #e6375a;
 }
 .vertical-menu-title {
@@ -1215,7 +1215,7 @@ ul.vertical-menu li a:hover {
   width: 100%;
   line-height: 1em;
 }
-.calendar .clndr-controls .clndr-control-button span:hover {
+.calendar .clndr-controls .clndr-control-button span:active {
   color: #4a4d4e;
 }
 .calendar .clndr-controls .month {
@@ -1231,7 +1231,7 @@ ul.vertical-menu li a:hover {
   text-align: center;
   height: 4.4em;
 }
-.calendar .clndr-table .day:hover {
+.calendar .clndr-table .day:active {
   background: #f7bfca;
 }
 .calendar .clndr-table .today {
@@ -1263,7 +1263,7 @@ ul.vertical-menu li a:hover {
 .listview li {
   padding: 0.5em;
 }
-.listview li:hover {
+.listview li:active {
   background: white;
 }
 .listview .column {
@@ -1391,7 +1391,7 @@ ul.vertical-menu li a:hover {
   top: 0;
   right: 0;
 }
-#modals-container .modal .close-button:hover {
+#modals-container .modal .close-button:active {
   color: #e6375a;
 }
 #modals-container .modal .footer {
@@ -1555,6 +1555,50 @@ ul.vertical-menu li a:hover {
 .d3-chart-bar .bar-text {
   padding-right: 0;
   margin-top: .3em;
+}
+/*SLIDER*/
+input[type="range"] {
+  display: inline-block;
+  overflow: hidden;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: 2px;
+  padding-left: 1px;
+  height: 35px;
+  outline: none;
+  background: linear-gradient(to right, #cccccc 0%, #cccccc 100%);
+  background-position: center;
+  background-size: 99% 4px;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 1px 3px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type="range"]::-webkit-slider-thumb:before {
+  /* what creates the colorful line on the left side of the slider */
+  position: absolute;
+  top: 8px;
+  left: -2001px;
+  width: 2000px;
+  height: 4px;
+  background: #e6375a;
+  content: ' ';
+}
+input[type="range"]::-webkit-slider-thumb:after {
+  /* create a larger (but hidden) hit area */
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  padding: 30px;
+  content: ' ';
 }
 /*==========  STATES  ==========*/
 /*==========  THEME  ==========*/

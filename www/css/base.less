@@ -36,7 +36,7 @@ body {
 a{
   text-decoration: none;
   color:@mainColor;
-  &:hover{
+  &:active{
     color: darken(@mainColor, 10%);
   }
 }
@@ -182,7 +182,7 @@ hr{
       color:white;
       text-align: center;
       line-height: @headerHeight;
-      &:hover, &:active{
+      &:active, &:active{
         -webkit-transition: all .4s ease;
         background: darken(@mainColor, 10%);
       }
@@ -314,23 +314,23 @@ hr{
 /*BUTTONS*/
 .button{
   background: @mainColor;
-  &:hover{
+  &:active{
     background: darken(@mainColor, 20%);
   }
   &[disabled]{
     background: lighten(@mainColor, 10%);
-    &:hover{
+    &:active{
       background: lighten(@mainColor, 10%);
     }
   }
   &.dark{
     background: @darkGray;
-    &:hover{
+    &:active{
       background: darken(@darkGray, 10%);
     }
     &[disabled]{
       background: lighten(@darkGray, 10%);
-      &:hover{
+      &:active{
         background: lighten(@darkGray, 10%);
       }
     }
@@ -405,7 +405,7 @@ ul.vertical-menu {
       padding: 12px 0 0 20px;
       text-decoration: none;
       font-weight: 300;
-      &:hover{
+      &:active{
         color:@mainColor;
       }
     }
@@ -445,7 +445,7 @@ ul.vertical-menu {
         display: block;
         width: 100%;
         line-height: 1em;
-        &:hover{
+        &:active{
           color: @darkGray;
         }
       }
@@ -466,7 +466,7 @@ ul.vertical-menu {
       height: 4.4em;
     }
     .day{
-      &:hover{
+      &:active{
         background: lighten(@mainColor, 30%);
       }
     }
@@ -502,7 +502,7 @@ ul.vertical-menu {
   overflow: hidden;
   li{
     padding: 0.5em;
-    &:hover{
+    &:active{
       background: white;
     }
   }
@@ -637,7 +637,7 @@ ul.vertical-menu {
       position: absolute;
       top: 0;
       right: 0;
-      &:hover{
+      &:active{
         color:@mainColor;
       }
     }
@@ -736,7 +736,6 @@ ul.vertical-menu {
 
 
 /*D3*/
-
 .nth-child-delay (@index, @childName) when (@index > 0) {
   &:nth-child(@{index}) {
     .@{childName}{
@@ -781,6 +780,49 @@ ul.vertical-menu {
     margin-top: .3em;
   }
 }
+
+/*SLIDER*/
+input[type="range"] {
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-right: 2px;
+    padding-left: 1px;
+    // width: auto;
+    height: 35px;
+    outline: none;
+    background: linear-gradient(to right, #cccccc 0%, #cccccc 100%);
+    background-position: center;
+    background-size: 99% 4px;
+    background-repeat: no-repeat;
+    -webkit-appearance: none; }
+input[type="range"]::-webkit-slider-thumb {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 1px 3px 5px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    -webkit-appearance: none; }
+input[type="range"]::-webkit-slider-thumb:before {
+    /* what creates the colorful line on the left side of the slider */
+    position: absolute;
+    top: 8px;
+    left: -2001px;
+    width: 2000px;
+    height: 4px;
+    background: @mainColor;
+    content: ' '; }
+
+input[type="range"]::-webkit-slider-thumb:after {
+    /* create a larger (but hidden) hit area */
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    padding: 30px;
+    content: ' '; }
 
 /*==========  STATES  ==========*/
 

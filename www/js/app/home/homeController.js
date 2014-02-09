@@ -3,6 +3,7 @@
 */
 app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFactory',
 	function($scope, $rootScope, $timeout, ConfigFactory){
+
 		ConfigFactory.title = 'Angular boilerplate titulo';
 		ConfigFactory.hasHeader = true;
 		ConfigFactory.hasFooter = false;
