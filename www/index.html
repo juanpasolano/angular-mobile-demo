@@ -79,17 +79,17 @@
         <!-- MODALS -->
         <div id="modals-container" mb-modal-box="" class="clearfix">
             <div class="modal">
-                <h1>{{defaults.title}}</h1>
+                <h1>{{options.title}}</h1>
                 <div class="close-button entypo-font" ng-click="closeModal()">&#10062;</div>
                 <div class="content">
 
                 </div>
                 <div class="footer row extend">
                     <div class="column small-6">
-                        <a href="javascript:;" class="button tiny w100p" ng-click="closeModal()">{{defaults.acceptText}}</a>
+                        <a href="" class="button tiny w100p" ng-click="closeModal()" ng-show="options.hasAcceptBtn">{{options.acceptText}}</a>
                     </div>
                     <div class="column small-6">
-                        <a href="javascript:;" class="button tiny secondary w100p" ng-click="closeModal()">{{defaults.cancelText}}</a>
+                        <a href="" class="button tiny secondary w100p" ng-click="closeModal()"ng-show="options.hasCancelBtn">{{options.cancelText}}</a>
                     </div>
                 </div>
             </div>

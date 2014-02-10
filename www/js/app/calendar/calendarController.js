@@ -36,9 +36,9 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 						template:'partials/modals/calendarModal.html',
 						cancelText :'Yep',
 						acceptText: 'Ok, go.',
-						title: 'Events on '+ target.date._i
-					},
-					data: target.events
+						title: 'Events on '+ target.date._i,
+						data: target.events
+					}
 				});
 			}
 		};

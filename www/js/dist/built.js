@@ -163,9 +163,9 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 						template:'partials/modals/calendarModal.html',
 						cancelText :'Yep',
 						acceptText: 'Ok, go.',
-						title: 'Events on '+ target.date._i
-					},
-					data: target.events
+						title: 'Events on '+ target.date._i,
+						data: target.events
+					}
 				});
 			}
 		};
@@ -481,13 +481,17 @@ app.directive('mbLoadingPopOver', ['$rootScope',
 *		$rootScope.$emit('makeModal', {
 *			options:{
 *				template:'partials/modals/calendarModal.html',
+*				text:'some text'
 *				cancelText :'Yep',
-*				acceptText: 'Ok, go.',
-*			},
-*			data: {}
+*				hasCancelBtn: true,
+*				acceptText: 'Ok, go.'
+*				hasAcceptBtn: true,
+*				data: {}
+*			}
 *		});
 *
-*		The DATA is an object literal that you want to pass to the template of the modal
+*		The template variable has higher priority over the text variable
+*		Any other variable passed to options will get into the isolated scope, therefore you can access it in the template html
 */
 app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$templateCache', 'ConfigFactory',
 	function($http, $compile, $timeout,  $rootScope, $templateCache, ConfigFactory){
@@ -497,44 +501,41 @@ app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$te
 
 				var defaults = {
 					cancelText : "CANCELAR",
+					hasCancelBtn: true,
 					acceptText : "OK",
+					hasAcceptBtn: true,
 					title : "Alert"
-				};
-
-
-				var makeModal = function(attrs){
-					if(attrs.options.template){
-
-						$http.get(attrs.options.template, {cache: $templateCache}).success(function(tplContent){
-
-							scope.defaults = $.extend({}, defaults, attrs.options);
-
-							ConfigFactory.wrapperIsBlured = true;
-
-							if(attrs.data){
-								scope.data = attrs.data;
-							}
-
-							$(element).find('.content').empty();
-							$(element).find('.content').append($compile(tplContent)(scope));
-
-							$(element).addClass('show');
-
-						}).error(function(e){
-							console.log('The modal cannot load the template you provided');
-						});
-					}else{
-						console.log('The modal cannot be displayed. You have to provide a valid template URL');
-					}
 				};
 
 				$rootScope.$on('makeModal', function(ev, options){
 					makeModal(options);
 				});
 
+				var makeModal = function(attrs){
+					scope.options = $.extend({}, defaults, attrs.options);
+					if(scope.options.template){
+						$http.get(scope.options.template, {cache: $templateCache}).success(function(tplContent){
+							showModal($compile(tplContent)(scope));
+						}).error(function(e){
+							console.log('The modal cannot load the template you provided');
+						});
+					}else if(scope.options.text){
+						showModal(scope.options.text);
+					}else{
+						console.log('The modal cannot be displayed. You have to provide a valid template or text variable');
+					}
+				};
+
+				var showModal = function(content){
+					ConfigFactory.wrapperIsBlured = true;
+					$(element).find('.content').empty().append(content);
+					$(element).addClass('show');
+				};
+
 				scope.closeModal =  function(){
 					$(element).removeClass('show');
 					ConfigFactory.wrapperIsBlured = false;
+					console.log(scope.modalData);
 				};
 			}
 		};
@@ -617,12 +618,19 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 					template: template,
 					cancelText :'Dont fire that',
 					acceptText: 'Lets rock!',
-
 					title: 'Modal demo'
 				}
 			});
-
 		};
+		$scope.emitStringModal =  function(){
+			$rootScope.$emit('makeModal', {
+				options:{
+					text: '<p>Some text</p>'
+				}
+			});
+		};
+
+
 		$scope.showLoading = function(){
 			$rootScope.$emit('showLoadingPopOver',{
 				filter:'blur-filter'

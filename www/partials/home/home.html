@@ -21,12 +21,15 @@
 
 		<h3>Modals Directive</h3>
 		<div class="row extend collapse">
-			<column class="column small-6">
-				<a ng-click="emitModal('partials/modals/simpleModal.html')" class="button tiny dark w100p tac">Simple Modal</a>
-			</column>
-			<column class="column small-6">
-				<a ng-click="emitModal('partials/modals/formModal.html')" class="button tiny dark w100p tac">Form Modal</a>
-			</column>
+			<div class="column small-4">
+				<a ng-click="emitModal('partials/modals/simpleModal.html')" class="button tiny dark w100p tac">Simple</a>
+			</div>
+			<div class="column small-4">
+				<a ng-click="emitModal('partials/modals/formModal.html')" class="button tiny dark w100p tac">Form</a>
+			</div>
+			<div class="column small-4">
+				<a ng-click="emitStringModal()" class="button tiny dark w100p tac">String</a>
+			</div>
 		</div>
 
 		<hr>

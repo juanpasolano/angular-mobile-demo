@@ -19,12 +19,19 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 					template: template,
 					cancelText :'Dont fire that',
 					acceptText: 'Lets rock!',
-
 					title: 'Modal demo'
 				}
 			});
-
 		};
+		$scope.emitStringModal =  function(){
+			$rootScope.$emit('makeModal', {
+				options:{
+					text: '<p>Some text</p>'
+				}
+			});
+		};
+
+
 		$scope.showLoading = function(){
 			$rootScope.$emit('showLoadingPopOver',{
 				filter:'blur-filter'
