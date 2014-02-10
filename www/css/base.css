@@ -1496,14 +1496,17 @@ ul.vertical-menu li a:active {
   z-index: 1;
 }
 /*MAP*/
-.angular-google-map {
+.angular-google-map,
+.mb-gmap {
   height: 100%;
   display: block;
 }
-.angular-google-map .angular-google-map-container {
+.angular-google-map .angular-google-map-container,
+.mb-gmap .angular-google-map-container {
   height: 100%;
 }
-.angular-google-map .angular-google-map-container > div {
+.angular-google-map .angular-google-map-container > div,
+.mb-gmap .angular-google-map-container > div {
   height: 100%;
 }
 /*D3*/

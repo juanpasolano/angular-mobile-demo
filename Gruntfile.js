@@ -67,6 +67,12 @@ module.exports =  function(grunt){
 				options:{
 					message: 'LESS files compiled'
 				}
+			},
+			copypg:{
+				options:{
+					title: 'grunt copy-pg',
+					message: 'Files copied to phonegap folders'
+				}
 			}
 		}
 
@@ -87,6 +93,6 @@ grunt.registerTask('watch-less', ['watch:less']);
 grunt.registerTask('concat-app', ['concat:js_app']);
 grunt.registerTask('uglify-app', ['uglify:js_app']);
 grunt.registerTask('uglify-libs', ['uglify:js_libs']);
-grunt.registerTask('copy-pg', ['copy:phonegap']);
+grunt.registerTask('copy-pg', ['copy:phonegap', 'notify:copypg']);
 
 };

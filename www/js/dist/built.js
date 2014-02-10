@@ -9,7 +9,7 @@ $(function() {
 	FastClick.attach(document.body);
 });
 
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'google-maps']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate']);
 
 app.config([ '$routeProvider',
 	function($routeProvider){
@@ -48,7 +48,7 @@ app.config([ '$routeProvider',
 		})
 		.when('/map', {
 			templateUrl: 'partials/map/map.html',
-			controller: 'MapDemoController'
+			controller: 'MapController'
 		})
 		.when('/chartsjs', {
 			templateUrl: 'partials/charts/chartsjs.html',
@@ -183,7 +183,7 @@ app.directive('mbCalendar',['$rootScope',
 				mbCalendarDayClick: '='
 			},
 			link: function(scope, element, attrs){
-				clndrTemplate = "<div class='clndr-controls row'>" +
+				var clndrTemplate = "<div class='clndr-controls row'>" +
 					"<div class='clndr-control-button column small-2'>"+
 					"<span class='clndr-previous-button entypo-font'>&#59237;</span>"+
 					"</div>"+
@@ -710,6 +710,14 @@ app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel
 		ConfigFactory.hasFooter = true;
 		ConfigFactory.hasSideNavigation = true;
 
+
+		$scope.branches;
+		var storesSuccess = function(data, status){
+			$scope.branches = data[3].branches;
+		};
+
+
+		StoresModel.getStores().success(storesSuccess);
 	}
 ]);
 
@@ -829,6 +837,58 @@ app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel
 ]);*/
 
 
+app.directive('mbGmap',['$rootScope', '$parse',
+	function( $rootScope, $parse){
+		return{
+
+			// compile: function(element, attrs){
+			// 	// console.log(element, attrs);
+			// },
+			scope:{
+				markers: '='
+
+			},
+
+			link: function(scope, element, attrs){
+				var map;
+				function initialize() {
+					var mapOptions = {
+						zoom: 8,
+						center: new google.maps.LatLng(4.582226749273246, -74.09687547013164 )
+					};
+					map = new google.maps.Map($(element).get(0),mapOptions);
+				}
+				initialize();
+
+
+				scope.$watch('markers', function(newValue, oldValue){
+					if(scope.markers){
+						addMarkers();
+					}
+				});
+
+				var addMarkers = function(){
+					if(scope.markers.length > 0){
+
+						for (var i = 0; i < scope.markers.length-100; i++) {
+							console.log(scope.markers[i].lat,scope.markers[i].lng);
+							var myLatlng = new google.maps.LatLng(scope.markers[i].lat,scope.markers[i].lng);
+							var marker = new google.maps.Marker({
+								position: myLatlng,
+								map: map,
+								title: 'Hello World!'
+							});
+						}
+
+					}
+				};
+
+
+
+			}
+		};
+	}
+]);
 //TODO: check if there is a better/proper way to do this calls and return promises
 app.factory('MusicService',[ '$http', '$rootScope', 'ConfigFactory',
 	function($http, $rootScope, ConfigFactory){
@@ -863,7 +923,7 @@ app.factory('StoresModel',[ '$http', '$rootScope', 'ConfigFactory',
 	function($http, $rootScope, ConfigFactory){
 		return {
 			getStores :  function(){
-				return $http.get(ConfigFactory.server.services+'stores?branches=true&offers=true')
+				return $http.get('http://192.237.180.31/dhm/public/api/stores?branches=true&offers=true')
 					.error(function(){
 						$rootScope.$emit('makeToast', {title:'Algo salio mal por favor vuelve a intentarlo', type:'error'});
 					})

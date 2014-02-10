@@ -10,7 +10,7 @@ app.directive('mbCalendar',['$rootScope',
 				mbCalendarDayClick: '='
 			},
 			link: function(scope, element, attrs){
-				clndrTemplate = "<div class='clndr-controls row'>" +
+				var clndrTemplate = "<div class='clndr-controls row'>" +
 					"<div class='clndr-control-button column small-2'>"+
 					"<span class='clndr-previous-button entypo-font'>&#59237;</span>"+
 					"</div>"+

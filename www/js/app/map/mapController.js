@@ -9,6 +9,14 @@ app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel
 		ConfigFactory.hasFooter = true;
 		ConfigFactory.hasSideNavigation = true;
 
+
+		$scope.branches;
+		var storesSuccess = function(data, status){
+			$scope.branches = data[3].branches;
+		};
+
+
+		StoresModel.getStores().success(storesSuccess);
 	}
 ]);
 

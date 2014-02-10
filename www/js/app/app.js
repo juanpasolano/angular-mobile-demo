@@ -9,7 +9,7 @@ $(function() {
 	FastClick.attach(document.body);
 });
 
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'google-maps']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate']);
 
 app.config([ '$routeProvider',
 	function($routeProvider){
