@@ -7,7 +7,7 @@ app.directive('mbCalendar',['$rootScope',
 			priority: 1200,
 			scope:{
 				events: '=',
-				mbCalendarDayClick: '='
+				calendarDayClick: '='
 			},
 			link: function(scope, element, attrs){
 				var clndrTemplate = "<div class='clndr-controls row'>" +
@@ -45,8 +45,8 @@ app.directive('mbCalendar',['$rootScope',
 					events: scope.events,
 					clickEvents: {
 						click: function(target) {
-							if (typeof(scope.mbCalendarDayClick) == "function") {
-								scope.mbCalendarDayClick(target);
+							if (typeof(scope.calendarDayClick) == "function") {
+								scope.calendarDayClick(target);
 							}
 						},
 						onMonthChange: function(month) {
