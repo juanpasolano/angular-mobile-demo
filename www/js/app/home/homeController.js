@@ -34,6 +34,7 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 
 		$scope.showLoading = function(){
 			$rootScope.$emit('showLoadingPopOver',{
+				text:'Loading some content.',
 				filter:'blur-filter'
 			});
 		};

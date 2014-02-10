@@ -13,32 +13,30 @@
 app.directive('mbLoadingPopOver', ['$rootScope',
 	function($rootScope){
 		return{
-			templateUrl: 'partials/loadingPopOver.html',
 			link: function(scope, element, attrs){
 
-				if(attrs.mbLoadingPopOver !== ''){
-					scope.title = attrs.mbLoadingPopOver;
-				}else{
-					scope.title = 'Loading content';
-				}
+				var defaults = {
+					text: 'Hang in there! we are getting some nice data just for you.',
+					filter: 'blur-filter'
+				};
 
 				element.on('click', function(){
 					hideLoadingPopOver();
 				});
 
 				var hideLoadingPopOver =  function(){
-					$('#wrapper').removeClass(scope.filter);
+					$('#wrapper').removeClass(scope.options.filter);
 					element.removeClass('visible');
 				};
 
-				var showLoadingPopOver =  function(options){
-					$('#wrapper').addClass(scope.filter);
+				var showLoadingPopOver =  function(){
+					$('#wrapper').addClass(scope.options.filter);
 					element.addClass('visible');
 				};
 
 				$rootScope.$on('showLoadingPopOver', function(ev, options){
-					scope.filter = options !== undefined ? options.filter : 'blur-filter';
-					showLoadingPopOver(options);
+					scope.options = $.extend({}, defaults, options);
+					showLoadingPopOver();
 				});
 
 				$rootScope.$on('hideLoadingPopOver', function(ev, options){
