@@ -314,23 +314,23 @@ hr{
 /*BUTTONS*/
 .button{
   background: @mainColor;
-  &:active{
+  &:active, &:focus, &:hover{
     background: darken(@mainColor, 20%);
   }
   &[disabled]{
     background: lighten(@mainColor, 10%);
-    &:active{
+    &:active, &:focus, &:hover{
       background: lighten(@mainColor, 10%);
     }
   }
   &.dark{
     background: @darkGray;
-    &:active{
+    &:active, &:focus, &:hover{
       background: darken(@darkGray, 10%);
     }
     &[disabled]{
       background: lighten(@darkGray, 10%);
-      &:active{
+      &:active, &:focus, &:hover{
         background: lighten(@darkGray, 10%);
       }
     }

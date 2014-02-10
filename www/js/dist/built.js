@@ -3,6 +3,7 @@
 *  Author: Juan Pablo Solano.
 *
 */
+'use strict';
 
 $(function() {
 	FastClick.attach(document.body);
@@ -701,7 +702,18 @@ app.controller('RecoverController',[ '$scope', '$rootScope', '$location', 'Confi
 /*
  * MapController.js
  */
-app.controller('MapDemoController',['$scope', '$log', 'ConfigFactory', 'StoresModel',
+
+app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel',
+	function($scope, $log, ConfigFactory, StoresModel){
+		ConfigFactory.title = 'Map demo';
+		ConfigFactory.hasHeader = true;
+		ConfigFactory.hasFooter = true;
+		ConfigFactory.hasSideNavigation = true;
+
+	}
+]);
+
+/*app.controller('MapDemoController',['$scope', '$log', 'ConfigFactory', 'StoresModel',
 
 	function($scope, $log, ConfigFactory, StoresModel){
 		ConfigFactory.title = 'Map demo';
@@ -814,7 +826,7 @@ app.controller('MapDemoController',['$scope', '$log', 'ConfigFactory', 'StoresMo
 		};
 		StoresModel.getStores().success(storesSuccess);
 	}
-]);
+]);*/
 
 
 //TODO: check if there is a better/proper way to do this calls and return promises

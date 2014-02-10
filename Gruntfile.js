@@ -5,11 +5,11 @@ module.exports =  function(grunt){
 		watch:{
 			js_app: {
 				files: ['www/js/app/**/*.js','www/js/app/*.js'],
-				tasks: ['uglify:js_app', 'concat:js_app']
+				tasks: ['uglify:js_app', 'concat:js_app', 'notify:js']
 			},
 			less:{
 				files:['www/css/base.less'],
-				tasks:['less']
+				tasks:['less', 'notify:less']
 			}
 		},
 
@@ -55,6 +55,19 @@ module.exports =  function(grunt){
 					{expand: true, src: ['www/**'], dest: '../app-angular-pg/platforms/android/assets/'},
 				]
 			}
+		},
+
+		notify:{
+			js:{
+				options:{
+					message: 'JS files concat and minify'
+				}
+			},
+			less:{
+				options:{
+					message: 'LESS files compiled'
+				}
+			}
 		}
 
 	});
@@ -65,6 +78,7 @@ grunt.loadNpmTasks('grunt-contrib-concat');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-less');
 grunt.loadNpmTasks('grunt-contrib-copy');
+grunt.loadNpmTasks('grunt-notify');
 
 
 grunt.registerTask('default', ['watch']);

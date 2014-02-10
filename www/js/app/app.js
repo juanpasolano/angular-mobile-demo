@@ -3,6 +3,7 @@
 *  Author: Juan Pablo Solano.
 *
 */
+'use strict';
 
 $(function() {
 	FastClick.attach(document.body);
@@ -47,7 +48,7 @@ app.config([ '$routeProvider',
 		})
 		.when('/map', {
 			templateUrl: 'partials/map/map.html',
-			controller: 'MapDemoController'
+			controller: 'MapController'
 		})
 		.when('/chartsjs', {
 			templateUrl: 'partials/charts/chartsjs.html',

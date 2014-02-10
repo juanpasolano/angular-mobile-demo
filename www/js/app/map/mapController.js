@@ -1,7 +1,18 @@
 /*
  * MapController.js
  */
-app.controller('MapDemoController',['$scope', '$log', 'ConfigFactory', 'StoresModel',
+
+app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel',
+	function($scope, $log, ConfigFactory, StoresModel){
+		ConfigFactory.title = 'Map demo';
+		ConfigFactory.hasHeader = true;
+		ConfigFactory.hasFooter = true;
+		ConfigFactory.hasSideNavigation = true;
+
+	}
+]);
+
+/*app.controller('MapDemoController',['$scope', '$log', 'ConfigFactory', 'StoresModel',
 
 	function($scope, $log, ConfigFactory, StoresModel){
 		ConfigFactory.title = 'Map demo';
@@ -114,5 +125,5 @@ app.controller('MapDemoController',['$scope', '$log', 'ConfigFactory', 'StoresMo
 		};
 		StoresModel.getStores().success(storesSuccess);
 	}
-]);
+]);*/
 

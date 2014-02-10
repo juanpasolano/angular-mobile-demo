@@ -1074,25 +1074,33 @@ hr {
 .button {
   background: #e6375a;
 }
-.button:active {
+.button:active,
+.button:focus,
+.button:hover {
   background: #a31431;
 }
 .button[disabled] {
   background: #ec647f;
 }
-.button[disabled]:active {
+.button[disabled]:active,
+.button[disabled]:focus,
+.button[disabled]:hover {
   background: #ec647f;
 }
 .button.dark {
   background: #4a4d4e;
 }
-.button.dark:active {
+.button.dark:active,
+.button.dark:focus,
+.button.dark:hover {
   background: #313334;
 }
 .button.dark[disabled] {
   background: #636768;
 }
-.button.dark[disabled]:active {
+.button.dark[disabled]:active,
+.button.dark[disabled]:focus,
+.button.dark[disabled]:hover {
   background: #636768;
 }
 .has-icon {
