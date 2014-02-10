@@ -23,6 +23,7 @@ app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel
 
 
 		var storesSuccess = function(data, status){
+			console.log(data);
 			$scope.branches = data[3].branches;
 		};
 		StoresModel.getStores().success(storesSuccess);

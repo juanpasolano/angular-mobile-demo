@@ -15,14 +15,15 @@ app.directive('mbGmap',['$rootScope','$parse',
 					center :{
 						lat:4.582226749273246,
 						lng: -74.09687547013164
-					}
+					},
+					clustered: true
 				};
-				scope.defaults = $.extend({}, defaults, scope.options);
+				scope.options = $.extend({}, defaults, scope.options);
 
 				var initialize = function() {
 					var mapOptions = {
-						zoom: scope.defaults.zoom,
-						center: new google.maps.LatLng(scope.defaults.center.lat, scope.defaults.center.lng )
+						zoom: scope.options.zoom,
+						center: new google.maps.LatLng(scope.options.center.lat, scope.options.center.lng )
 					};
 					map = new google.maps.Map($(element).get(0),mapOptions);
 				};
@@ -38,17 +39,21 @@ app.directive('mbGmap',['$rootScope','$parse',
 				});
 				var addMarkers = function(){
 					if(scope.markers.length > 0){
-						for (var i = 0; i < scope.markers.length-100; i++) {
+						var markers = [];
+						for (var i = 0; i < scope.markers.length; i++) {
 							if(scope.markers[i].lat && scope.markers[i].lng){
 								var myLatlng = new google.maps.LatLng(scope.markers[i].lat,scope.markers[i].lng);
 								var marker = new google.maps.Marker({
 									position: myLatlng,
 									map: map
 								});
+								markers.push(marker);
 								addMarkerClick(marker);
 							}
 						}
-
+						if(scope.options.clustered){
+							var markerCluster = new MarkerClusterer(map, markers);
+						}
 					}
 				};
 				var addMarkerClick = function(marker){
