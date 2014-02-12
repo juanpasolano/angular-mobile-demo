@@ -172,69 +172,6 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 	}
 ]);
 /*
-* CalendarDirective.js
-*/
-app.directive('mbCalendar',['$rootScope',
-	function($rootScope){
-		return{
-			priority: 1200,
-			scope:{
-				events: '=',
-				calendarDayClick: '='
-			},
-			link: function(scope, element, attrs){
-				var clndrTemplate = "<div class='clndr-controls row'>" +
-					"<div class='clndr-control-button column small-2'>"+
-					"<span class='clndr-previous-button entypo-font'>&#59237;</span>"+
-					"</div>"+
-					"<div class='month column small-8 tac'><%= month %> <%= year %></div>"+
-					"<div class='clndr-control-button rightalign column small-2'>"+
-					"<span class='clndr-next-button entypo-font tar'>&#59238;</span>"+
-					"</div>" +
-					"</div>" +
-					"<table class='clndr-table' border='0' cellspacing='0' cellpadding='0'>" +
-					"<thead>" +
-					"<tr class='header-days'>" +
-					"<% for(var i = 0; i < daysOfTheWeek.length; i++) { %>" +
-					"<td class='header-day'><%= daysOfTheWeek[i] %></td>" +
-					"<% } %>" +
-					"</tr>" +
-					"</thead>" +
-					"<tbody>" +
-					"<% for(var i = 0; i < numberOfRows; i++){ %>" +
-					"<tr>" +
-					"<% for(var j = 0; j < 7; j++){ %>" +
-					"<% var d = j + i * 7; %>" +
-					"<td class='<%= days[d].classes %>'><div class='day-contents'><%= days[d].day %>" +
-					"</div></td>" +
-					"<% } %>" +
-					"</tr>" +
-					"<% } %>" +
-					"</tbody>" +
-					"</table>";
-
-				$(element).clndr({
-					template: clndrTemplate,
-					events: scope.events,
-					clickEvents: {
-						click: function(target) {
-							if (typeof(scope.calendarDayClick) == "function") {
-								scope.calendarDayClick(target);
-							}
-						},
-						onMonthChange: function(month) {
-							console.log('you just went to ' + month.format('MMMM, YYYY'));
-						}
-					},
-					doneRendering: function() {
-						console.log('this would be a fine place to attach custom event handlers.');
-					}
-				});
-			}
-		};
-	}
-]);
-/*
 * ChartsjsController.js
 */
 
@@ -425,165 +362,6 @@ app.controller('DetailController', ['$scope', '$routeParams', '$location', 'Conf
 	}
 ]);
 /*
-* LoadingPopOver.js:
-* This directive shows a loading widget for when content is being pulled from the server
-* To implement:
-*
-* <div id="loading" mb-loading-pop-over="Hang in there! we are getting some nice data just for you."></div>
-*
-* To implement import $rootScope in your controller an $emit this event
-*
-* $rootScope.$emit('showLoadingPopOver',{});
-*
-*/
-app.directive('mbLoadingPopOver', ['$rootScope',
-	function($rootScope){
-		return{
-			link: function(scope, element, attrs){
-
-				var defaults = {
-					text: 'Hang in there! we are getting some nice data just for you.',
-					filter: 'blur-filter'
-				};
-
-				element.on('click', function(){
-					hideLoadingPopOver();
-				});
-
-				var hideLoadingPopOver =  function(){
-					$('#wrapper').removeClass(scope.options.filter);
-					element.removeClass('visible');
-				};
-
-				var showLoadingPopOver =  function(){
-					$('#wrapper').addClass(scope.options.filter);
-					element.addClass('visible');
-				};
-
-				$rootScope.$on('showLoadingPopOver', function(ev, options){
-					scope.options = $.extend({}, defaults, options);
-					showLoadingPopOver();
-				});
-
-				$rootScope.$on('hideLoadingPopOver', function(ev, options){
-					hideLoadingPopOver();
-				});
-			}
-		};
-	}
-]);
-
-/*
-* modalBox.js:
-*
-*		$rootScope.$emit('makeModal', {
-*			options:{
-*				template:'partials/modals/calendarModal.html',
-*				text:'some text'
-*				cancelText :'Yep',
-*				hasCancelBtn: true,
-*				acceptText: 'Ok, go.'
-*				hasAcceptBtn: true,
-*				data: {}
-*			}
-*		});
-*
-*		The template variable has higher priority over the text variable
-*		Any other variable passed to options will get into the isolated scope, therefore you can access it in the template html
-*/
-app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$templateCache', 'ConfigFactory',
-	function($http, $compile, $timeout,  $rootScope, $templateCache, ConfigFactory){
-		return{
-			scope:true,
-			link: function(scope, element, attrs){
-
-				var defaults = {
-					cancelText : "CANCELAR",
-					hasCancelBtn: true,
-					acceptText : "OK",
-					hasAcceptBtn: true,
-					title : "Alert"
-				};
-
-				$rootScope.$on('makeModal', function(ev, options){
-					makeModal(options);
-				});
-
-				var makeModal = function(attrs){
-					scope.options = $.extend({}, defaults, attrs.options);
-					if(scope.options.template){
-						$http.get(scope.options.template, {cache: $templateCache}).success(function(tplContent){
-							showModal($compile(tplContent)(scope));
-						}).error(function(e){
-							console.log('The modal cannot load the template you provided');
-						});
-					}else if(scope.options.text){
-						showModal(scope.options.text);
-					}else{
-						console.log('The modal cannot be displayed. You have to provide a valid template or text variable');
-					}
-				};
-
-				var showModal = function(content){
-					ConfigFactory.wrapperIsBlured = true;
-					$(element).find('.content').empty().append(content);
-					$(element).addClass('show');
-				};
-
-				scope.closeModal =  function(){
-					$(element).removeClass('show');
-					ConfigFactory.wrapperIsBlured = false;
-					console.log(scope.modalData);
-				};
-			}
-		};
-	}
-]);
-/*
-* TOASTS:
-* To make a new toast simply emit this event:
-* $rootScope.$emit('makeToast', {title:'<string>', type:'success | error | warning'});
-* You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
-* -----
-* Don't forget to associate the div to this controller:
-* <div id="toasts" mb-toast="">
-*		<div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
-* </div>
-* */
-
-app.directive('mbToast',['$rootScope', '$timeout',
-	function($rootScope, $timeout){
-		return{
-			scope:true,
-			link: function(scope, element, attrs){
-				scope.messages = [];
-				function createToast(data){
-					scope.messages.push(data);
-					removeToast();
-				}
-				function removeToast(){
-					$timeout(function(){
-						scope.messages.splice(0,1);
-					},2500);
-				}
-				$rootScope.$on('makeToast', function(ev, data){
-					createToast(data);
-				});
-			}
-		};
-	}
-]);
-
-/*----------------
- /*FILTERS:
- /*---------------*/
-app.filter('upperCase', function(){
-	return function(text){
-		return text.toUpperCase();
-	};
-});
-
-/*
 * FormsController.js
 */
 app.controller('FormsController', ['$scope', '$location', 'ConfigFactory',
@@ -690,23 +468,6 @@ app.controller('LoginController',[ '$scope', '$rootScope', '$location', 'ConfigF
 	}
 ]);
 /*
-* RecoverController.js
-*/
-app.controller('RecoverController',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
-	function($scope, $rootScope, $location, ConfigFactory){
-		ConfigFactory.title = 'Recover your password';
-		ConfigFactory.hasHeader = true;
-		ConfigFactory.hasFooter = false;
-		ConfigFactory.hasSideNavigation = false;
-
-		$scope.mailsent = false;
-
-		$scope.recoverSubmit = function(){
-			$scope.mailsent = !$scope.mailsent;
-		};
-	}
-]);
-/*
  * MapController.js
  */
 
@@ -735,6 +496,155 @@ app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel
 			$scope.branches = data[3].branches;
 		};
 		StoresModel.getStores().success(storesSuccess);
+	}
+]);
+
+/*
+* RecoverController.js
+*/
+app.controller('RecoverController',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
+	function($scope, $rootScope, $location, ConfigFactory){
+		ConfigFactory.title = 'Recover your password';
+		ConfigFactory.hasHeader = true;
+		ConfigFactory.hasFooter = false;
+		ConfigFactory.hasSideNavigation = false;
+
+		$scope.mailsent = false;
+
+		$scope.recoverSubmit = function(){
+			$scope.mailsent = !$scope.mailsent;
+		};
+	}
+]);
+/*
+* SwiperController.js
+*/
+
+app.controller('SwiperController', [ '$scope', '$location', 'ConfigFactory',
+
+	function($scope, $location, ConfigFactory){
+		ConfigFactory.title = 'Swiper plugin';
+		ConfigFactory.hasHeader = true;
+		ConfigFactory.hasFooter = false;
+		ConfigFactory.hasSideNavigation = true;
+		$scope.config = ConfigFactory;
+
+
+		$scope.swithcExample = function(example){
+			$scope.exampleDisplayed = example;
+		};
+	}
+
+]);
+/*
+* CalendarDirective.js
+*/
+app.directive('mbCalendar',['$rootScope',
+	function($rootScope){
+		return{
+			priority: 1200,
+			scope:{
+				events: '=',
+				calendarDayClick: '='
+			},
+			link: function(scope, element, attrs){
+				var clndrTemplate = "<div class='clndr-controls row'>" +
+					"<div class='clndr-control-button column small-2'>"+
+					"<span class='clndr-previous-button entypo-font'>&#59237;</span>"+
+					"</div>"+
+					"<div class='month column small-8 tac'><%= month %> <%= year %></div>"+
+					"<div class='clndr-control-button rightalign column small-2'>"+
+					"<span class='clndr-next-button entypo-font tar'>&#59238;</span>"+
+					"</div>" +
+					"</div>" +
+					"<table class='clndr-table' border='0' cellspacing='0' cellpadding='0'>" +
+					"<thead>" +
+					"<tr class='header-days'>" +
+					"<% for(var i = 0; i < daysOfTheWeek.length; i++) { %>" +
+					"<td class='header-day'><%= daysOfTheWeek[i] %></td>" +
+					"<% } %>" +
+					"</tr>" +
+					"</thead>" +
+					"<tbody>" +
+					"<% for(var i = 0; i < numberOfRows; i++){ %>" +
+					"<tr>" +
+					"<% for(var j = 0; j < 7; j++){ %>" +
+					"<% var d = j + i * 7; %>" +
+					"<td class='<%= days[d].classes %>'><div class='day-contents'><%= days[d].day %>" +
+					"</div></td>" +
+					"<% } %>" +
+					"</tr>" +
+					"<% } %>" +
+					"</tbody>" +
+					"</table>";
+
+				$(element).clndr({
+					template: clndrTemplate,
+					events: scope.events,
+					clickEvents: {
+						click: function(target) {
+							if (typeof(scope.calendarDayClick) == "function") {
+								scope.calendarDayClick(target);
+							}
+						},
+						onMonthChange: function(month) {
+							console.log('you just went to ' + month.format('MMMM, YYYY'));
+						}
+					},
+					doneRendering: function() {
+						console.log('this would be a fine place to attach custom event handlers.');
+					}
+				});
+			}
+		};
+	}
+]);
+/*
+* LoadingPopOver.js:
+* This directive shows a loading widget for when content is being pulled from the server
+* To implement:
+*
+* <div id="loading" mb-loading-pop-over="Hang in there! we are getting some nice data just for you."></div>
+*
+* To implement import $rootScope in your controller an $emit this event
+*
+* $rootScope.$emit('showLoadingPopOver',{});
+*
+*/
+app.directive('mbLoadingPopOver', ['$rootScope',
+	function($rootScope){
+		return{
+			link: function(scope, element, attrs){
+
+				var defaults = {
+					text: 'Hang in there! we are getting some nice data just for you.',
+					filter: 'blur-filter'
+				};
+
+				element.on('click', function(){
+					hideLoadingPopOver();
+				});
+
+				var hideLoadingPopOver =  function(){
+					$('#wrapper').removeClass(scope.options.filter);
+					element.removeClass('visible');
+				};
+
+				var showLoadingPopOver =  function(){
+					$('#wrapper').addClass(scope.options.filter);
+					element.addClass('visible');
+				};
+
+				$rootScope.$on('showLoadingPopOver', function(ev, options){
+					scope.options = $.extend({}, defaults, options);
+					showLoadingPopOver();
+				});
+
+				$rootScope.$on('hideLoadingPopOver', function(ev, options){
+					hideLoadingPopOver();
+				});
+			}
+		};
 	}
 ]);
 
@@ -809,6 +719,161 @@ app.directive('mbGmap',['$rootScope','$parse',
 		};
 	}
 ]);
+/*
+* modalBox.js:
+*
+*		$rootScope.$emit('makeModal', {
+*			options:{
+*				template:'partials/modals/calendarModal.html',
+*				text:'some text'
+*				cancelText :'Yep',
+*				hasCancelBtn: true,
+*				acceptText: 'Ok, go.'
+*				hasAcceptBtn: true,
+*				data: {}
+*			}
+*		});
+*
+*		The template variable has higher priority over the text variable
+*		Any other variable passed to options will get into the isolated scope, therefore you can access it in the template html
+*/
+app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$templateCache', 'ConfigFactory',
+	function($http, $compile, $timeout,  $rootScope, $templateCache, ConfigFactory){
+		return{
+			scope:true,
+			link: function(scope, element, attrs){
+
+				var defaults = {
+					cancelText : "CANCELAR",
+					hasCancelBtn: true,
+					acceptText : "OK",
+					hasAcceptBtn: true,
+					title : "Alert"
+				};
+
+				$rootScope.$on('makeModal', function(ev, options){
+					makeModal(options);
+				});
+
+				var makeModal = function(attrs){
+					scope.options = $.extend({}, defaults, attrs.options);
+					if(scope.options.template){
+						$http.get(scope.options.template, {cache: $templateCache}).success(function(tplContent){
+							showModal($compile(tplContent)(scope));
+						}).error(function(e){
+							console.log('The modal cannot load the template you provided');
+						});
+					}else if(scope.options.text){
+						showModal(scope.options.text);
+					}else{
+						console.log('The modal cannot be displayed. You have to provide a valid template or text variable');
+					}
+				};
+
+				var showModal = function(content){
+					ConfigFactory.wrapperIsBlured = true;
+					$(element).find('.content').empty().append(content);
+					$(element).addClass('show');
+				};
+
+				scope.closeModal =  function(){
+					$(element).removeClass('show');
+					ConfigFactory.wrapperIsBlured = false;
+					console.log(scope.modalData);
+				};
+			}
+		};
+	}
+]);
+/*
+* swiper.js:
+*/
+app.directive('mbSwiper', [
+	function(){
+		return{
+			scope:true,
+			link: function(scope, element, attrs){
+				var mySwiper = element.swiper({
+					pagination: '.pagination',
+					loop:true,
+					grabCursor: true,
+					paginationClickable: true
+				});
+			}
+		};
+	}
+]);
+
+app.directive('mbSwiperScroll', [
+	function(){
+		return{
+			template : '<div class="swiper-scrollbar swiper-scrollbar-vertical"></div>'+
+				'<div class="swiper-wrapper">'+
+					'<div class="swiper-slide" ng-transclude>'+
+					'</div>'+
+				'</div>'+
+			'</div>',
+			transclude :  true,
+			scope : true,
+			link : function(scope, element, attrs){
+
+				var mySwiper = $(element).swiper({
+					scrollContainer: true,
+					mode:'vertical',
+					scrollbar: {
+						container: '.swiper-scrollbar'
+					}
+				});
+			}
+		};
+	}
+]);
+
+
+/*
+* TOASTS:
+* To make a new toast simply emit this event:
+* $rootScope.$emit('makeToast', {title:'<string>', type:'success | error | warning'});
+* You can pass 'error', 'success' or 'warning' for the type attribute. If you do not supply one the toast will be gray
+* -----
+* Don't forget to associate the div to this controller:
+* <div id="toasts" mb-toast="">
+*		<div class="toast {{m.type}}" ng-repeat="m in messages">{{m.title}}</div>
+* </div>
+* */
+
+app.directive('mbToast',['$rootScope', '$timeout',
+	function($rootScope, $timeout){
+		return{
+			scope:true,
+			link: function(scope, element, attrs){
+				scope.messages = [];
+				function createToast(data){
+					scope.messages.push(data);
+					removeToast();
+				}
+				function removeToast(){
+					$timeout(function(){
+						scope.messages.splice(0,1);
+					},2500);
+				}
+				$rootScope.$on('makeToast', function(ev, data){
+					createToast(data);
+				});
+			}
+		};
+	}
+]);
+
+/*----------------
+ /*FILTERS:
+ /*---------------*/
+app.filter('upperCase', function(){
+	return function(text){
+		return text.toUpperCase();
+	};
+});
+
 //TODO: check if there is a better/proper way to do this calls and return promises
 app.factory('MusicService',[ '$http', '$rootScope', 'ConfigFactory',
 	function($http, $rootScope, ConfigFactory){
@@ -855,67 +920,3 @@ app.factory('StoresModel',[ '$http', '$rootScope', 'ConfigFactory',
 		};
 	}
 ]);
-/*
-* SwiperController.js
-*/
-
-app.controller('SwiperController', [ '$scope', '$location', 'ConfigFactory',
-
-	function($scope, $location, ConfigFactory){
-		ConfigFactory.title = 'Swiper plugin';
-		ConfigFactory.hasHeader = true;
-		ConfigFactory.hasFooter = false;
-		ConfigFactory.hasSideNavigation = true;
-		$scope.config = ConfigFactory;
-
-
-		$scope.swithcExample = function(example){
-			$scope.exampleDisplayed = example;
-		};
-	}
-
-]);
-/*
-* swiper.js:
-*/
-app.directive('mbSwiper', [
-	function(){
-		return{
-			scope:true,
-			link: function(scope, element, attrs){
-				var mySwiper = element.swiper({
-					pagination: '.pagination',
-					loop:true,
-					grabCursor: true,
-					paginationClickable: true
-				});
-			}
-		};
-	}
-]);
-
-app.directive('mbSwiperScroll', [
-	function(){
-		return{
-			template : '<div class="swiper-scrollbar swiper-scrollbar-vertical"></div>'+
-				'<div class="swiper-wrapper">'+
-					'<div class="swiper-slide" ng-transclude>'+
-					'</div>'+
-				'</div>'+
-			'</div>',
-			transclude :  true,
-			scope : true,
-			link : function(scope, element, attrs){
-
-				var mySwiper = $(element).swiper({
-					scrollContainer: true,
-					mode:'vertical',
-					scrollbar: {
-						container: '.swiper-scrollbar'
-					}
-				});
-			}
-		};
-	}
-]);
-
