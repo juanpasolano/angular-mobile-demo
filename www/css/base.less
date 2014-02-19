@@ -315,6 +315,12 @@ hr{
 
 
 
+
+
+
+
+
+
 /*==========  MODULES  ==========*/
 
 /*BUTTONS*/
@@ -395,8 +401,64 @@ hr{
 .spacer(8);
 
 
+/*SWITHC*/
+.onOffSwitch{
+  @size: 5em;
+  @gutter: @size/10;
+
+  width: @size;
+  height: @size/2;
+  border-radius:@size/2;
+  background: white;
+  position: relative;
+
+  .hidden{
+    display: none;
+  }
+  .handle{
+    width: @size/2 - @gutter;
+    height: @size/2 - @gutter;
+    position: absolute;
+    top: @gutter/2;
+    right: @gutter/2;
+    border-radius: 50%;
+    background: @mainColor;
+    -webkit-transition: all .1s ease-in;
+    &.off{
+      transform: translate3d(-2.5em,0,0);
+      -webkit-transform: translate3d(-2.5em,0,0);
+      background: @darkGray;
+    }
+  }
+  .text{
+    width: 100%;
+    height: @size/2;
+    line-height: @size/2;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: all .1s ease-in;
+    &.shown{
+      opacity: 1;
+    }
+    &.on{
+      padding-left: @gutter;
+      color:@mainColor;
+    }
+    &.off{
+      text-align: right;
+      padding-right: @gutter;
+      color:@darkGray;
+    }
+  }
+}
+
 /*VERTICAL MENU*/
-ul.vertical-menu {
+.vertical-menu-title{
+  margin-top: .5em;
+  padding-left: .4em;
+  color:@mainColor;
+}
+.vertical-menu {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -416,11 +478,6 @@ ul.vertical-menu {
       }
     }
   }
-}
-.vertical-menu-title{
-  margin-top: .5em;
-  padding-left: .4em;
-  color:@mainColor;
 }
 
 /*LOGO*/

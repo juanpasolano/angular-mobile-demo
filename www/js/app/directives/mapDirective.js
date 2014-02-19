@@ -48,7 +48,7 @@ app.directive('mbGmap',['$rootScope','$parse',
 									map: map
 								});
 								markers.push(marker);
-								addMarkerClick(marker);
+								addMarkerClickListener(marker);
 							}
 						}
 						if(scope.options.clustered){
@@ -56,7 +56,7 @@ app.directive('mbGmap',['$rootScope','$parse',
 						}
 					}
 				};
-				var addMarkerClick = function(marker){
+				var addMarkerClickListener = function(marker){
 					google.maps.event.addListener(marker, 'click', function() {
 						if (typeof(scope.markerClick) == "function") {
 							return scope.markerClick(marker);

@@ -8,5 +8,7 @@ app.controller('FormsController', ['$scope', '$location', 'ConfigFactory',
 		ConfigFactory.hasFooter = true;
 		ConfigFactory.hasSideNavigation = true;
 		$scope.config = ConfigFactory;
+
+		$scope.check1 = false;
 	}
 ]);

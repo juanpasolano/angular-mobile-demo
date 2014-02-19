@@ -9,7 +9,7 @@ $(function() {
 	FastClick.attach(document.body);
 });
 
-var app = angular.module('app', ['ngRoute', 'ngAnimate']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch']);
 
 app.config([ '$routeProvider',
 	function($routeProvider){
