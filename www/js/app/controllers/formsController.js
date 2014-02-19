@@ -9,6 +9,6 @@ app.controller('FormsController', ['$scope', '$location', 'ConfigFactory',
 		ConfigFactory.hasSideNavigation = true;
 		$scope.config = ConfigFactory;
 
-		$scope.check1 = false;
+		$scope.check1 = true;
 	}
 ]);

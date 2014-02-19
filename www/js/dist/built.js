@@ -372,7 +372,7 @@ app.controller('FormsController', ['$scope', '$location', 'ConfigFactory',
 		ConfigFactory.hasSideNavigation = true;
 		$scope.config = ConfigFactory;
 
-		$scope.check1 = false;
+		$scope.check1 = true;
 	}
 ]);
 /*
@@ -854,31 +854,34 @@ app.directive('mbSwitch',['$rootScope', '$timeout',
 			},
 			link: function(scope, element, attrs, ctrl, transclude){
 				var checkbox = element.find('input[type=checkbox]');
-				scope.isChecked =  checkbox.prop("checked");
-
 				scope.onText = scope.mbSwitchOn || 'ON';
 				scope.offText = scope.mbSwitchOff || 'OFF';
 
-				element.on('click', function(){
-					scope.toggle();
+				if(scope.ngModel !== undefined){
+					scope.isChecked = scope.ngModel;
+				}
+
+				scope.$watch('isChecked',function(n,o){
+					checkbox.prop('checked', n);
+					scope.ngModel = n;
 				});
 
-				scope.toggle =  function(){
+				var toggle =  function(){
 					scope.$apply(function(){
-						checkbox.prop('checked', !checkbox.prop("checked"));
-						scope.isChecked =  checkbox.prop("checked");
-						scope.ngModel = checkbox.prop("checked");
+						scope.isChecked =  !scope.isChecked;
 					});
 				};
 				scope.on = function(){
-					checkbox.prop('checked', true);
-					scope.isChecked = true;
+					scope.isChecked =  true;
 				};
 
 				scope.off = function(){
-					checkbox.prop('checked', false);
-					scope.isChecked = false;
+					scope.isChecked =  false;
 				};
+
+				element.on('click', function(){
+					toggle();
+				});
 			}
 		};
 	}
