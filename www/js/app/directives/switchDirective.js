@@ -1,5 +1,14 @@
 /*
-* Switch for checkboxes
+* SWITCH FOR CHECKBOXES
+
+<div  mb-switch ng-model="model" mb-switch-off="NO" mb-switch-on="YES">
+	<input type="checkbox" name="" id="">
+</div>
+
+ng-model : Boolean, You can bind a model residing in the controller where the directive is located.
+mb-switch-off : String, for the OFF text
+mb-switch-on : String, for the ON text
+
 * */
 
 app.directive('mbSwitch',['$rootScope', '$timeout',
@@ -20,19 +29,19 @@ app.directive('mbSwitch',['$rootScope', '$timeout',
 			},
 			link: function(scope, element, attrs, ctrl, transclude){
 				var checkbox = element.find('input[type=checkbox]');
+
+
+				scope.isChecked = (scope.ngModel !== undefined) ? scope.ngModel : true;
+
 				scope.onText = scope.mbSwitchOn || 'ON';
 				scope.offText = scope.mbSwitchOff || 'OFF';
 
-				if(scope.ngModel !== undefined){
-					scope.isChecked = scope.ngModel;
-				}
-
 				scope.$watch('isChecked',function(n,o){
 					checkbox.prop('checked', n);
-					scope.ngModel = n;
+					if(scope.ngModel !== undefined) scope.ngModel = n;
 				});
 
-				var toggle =  function(){
+				scope.toggle =  function(){
 					scope.$apply(function(){
 						scope.isChecked =  !scope.isChecked;
 					});
@@ -46,32 +55,9 @@ app.directive('mbSwitch',['$rootScope', '$timeout',
 				};
 
 				element.on('click', function(){
-					toggle();
+					scope.toggle();
 				});
 			}
 		};
 	}
 ]);
-
-/*
-* Switch for checkboxes
-* */
-
-/*app.directive('mbSwitch',['$rootScope', '$timeout',
-	function($rootScope, $timeout){
-		return{
-			scope:true,
-			link: function(scope, element, attrs, ctrl, transclude){
-				var html = '<div class="onOffSwitch">'+
-				'<div class="handle"></div>'+
-				'<div class="text on">ON</div>'+
-				'<div class="text off">OFF</div>'+
-				'<div class="hidden" ng-transclude>'+
-				'</div>'+
-			'</div>';
-
-				console.log(scope, element, attrs, ctrl, transclude);
-			}
-		};
-	}
-]);*/

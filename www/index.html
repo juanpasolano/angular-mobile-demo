@@ -48,7 +48,7 @@
 
         <div id="wrapper"  ng-class="{true: 'blur-filter'}[config.wrapperIsBlured]">
 
-            <div id="header" ng-class="{false: 'hidden'}[config.hasHeader]">
+            <div id="header" ng-class="{'hidden' : config.hasHeader == false}">
                 <a class="button menuButton" ng-click="toggleSideNav()" ng-show="config.hasSideNavigation">&#9776;</a>
                 <h3 class="title" ng-class="{true: 'sideNav'}[config.hasSideNavigation]">{{config.title}}</h3>
             </div>
