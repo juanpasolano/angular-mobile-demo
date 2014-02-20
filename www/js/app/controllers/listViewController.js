@@ -7,6 +7,7 @@ app.controller('ListViewController', ['$scope', '$location', 'ConfigFactory', 'M
 		ConfigFactory.hasHeader = true;
 		ConfigFactory.hasFooter = true;
 		ConfigFactory.hasSideNavigation = true;
+		ConfigFactory.hasBackButton = false;
 		$scope.config = ConfigFactory;
 
 		$scope.loginData = {};

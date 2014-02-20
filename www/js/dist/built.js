@@ -66,8 +66,8 @@ app.config([ '$routeProvider',
 
 
 
-app.controller('MainController',[ '$scope', '$element', 'ConfigFactory',
-	function($scope, $element, ConfigFactory){
+app.controller('MainController',[ '$scope', '$element', '$window', 'ConfigFactory',
+	function($scope, $element, $window, ConfigFactory){
 		$scope.config = ConfigFactory;
 
 		/*This functions helps us keep track of the resize*/
@@ -105,6 +105,9 @@ app.controller('MainController',[ '$scope', '$element', 'ConfigFactory',
 			$element.find('#wrapper').toggleClass('open');
 			$element.find('#sideNav').toggleClass('open');
 		};
+		$scope.goBack = function(){
+			$window.history.back();
+		};
 	}
 ]);
 
@@ -119,7 +122,8 @@ app.factory('ConfigFactory', [
 			title : 'Angular boilerplate from factory',
 			hasFooter: true,
 			hasHeader:false,
-			hasSideNavigation: false
+			hasSideNavigation: false,
+			hasBackButton: false
 		};
 	}
 ]);
@@ -349,6 +353,7 @@ app.controller('DetailController', ['$scope', '$routeParams', '$location', 'Conf
 		ConfigFactory.hasHeader = true;
 		ConfigFactory.hasFooter = false;
 		ConfigFactory.hasSideNavigation = true;
+		ConfigFactory.hasBackButton = true;
 		$scope.config = ConfigFactory;
 
 		$scope.itemId = $routeParams.id;
@@ -443,6 +448,7 @@ app.controller('ListViewController', ['$scope', '$location', 'ConfigFactory', 'M
 		ConfigFactory.hasHeader = true;
 		ConfigFactory.hasFooter = true;
 		ConfigFactory.hasSideNavigation = true;
+		ConfigFactory.hasBackButton = false;
 		$scope.config = ConfigFactory;
 
 		$scope.loginData = {};
