@@ -9,6 +9,7 @@ ng-model : Boolean, You can bind a model residing in the controller where the di
 mb-switch-off : String, for the OFF text
 mb-switch-on : String, for the ON text
 
+It is not necesary to provide an input field since the logic is insed the directive and the model is outside.
 * */
 
 app.directive('mbSwitch',['$rootScope', '$timeout',

@@ -1199,8 +1199,8 @@ hr {
   -webkit-transition: all 0.1s ease-in;
 }
 .onOffSwitch .handle.off {
-  transform: translate3d(-2.5em, 0, 0);
-  -webkit-transform: translate3d(-2.5em, 0, 0);
+  transform: translate3d(-123%, 0, 0);
+  -webkit-transform: translate3d(-123%, 0, 0);
   background: #4a4d4e;
 }
 .onOffSwitch .text {
