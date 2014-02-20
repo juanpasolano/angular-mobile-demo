@@ -1530,11 +1530,27 @@ hr {
   }
 }
 /*SWIPER*/
+.swiper-pagination {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+}
+.swiper-pagination .swiper-pagination-switch {
+  width: 1em;
+  height: 1em;
+  background: #e6375a;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 .2em;
+}
+.swiper-pagination .swiper-active-switch {
+  background: #a31431;
+}
 .swiper-scroller-container {
   width: 100%;
   height: 100%;
 }
-.swiper-scrollbar-horizontal {
+.swiper-scroller-container .swiper-scrollbar-horizontal {
   width: 100%;
   height: 4px;
   position: absolute;
@@ -1542,7 +1558,7 @@ hr {
   bottom: 5px;
   z-index: 1;
 }
-.swiper-scrollbar-vertical {
+.swiper-scroller-container .swiper-scrollbar-vertical {
   width: 4px;
   height: 100%;
   position: absolute;

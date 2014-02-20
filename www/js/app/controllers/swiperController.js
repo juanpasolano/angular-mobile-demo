@@ -15,6 +15,13 @@ app.controller('SwiperController', [ '$scope', '$location', 'ConfigFactory',
 		$scope.swithcExample = function(example){
 			$scope.exampleDisplayed = example;
 		};
+
+		$scope.swiperOpts1 ={
+			pagination: '.swiper-pagination',
+			loop:true,
+			grabCursor: true,
+			paginationClickable: false
+		};
 	}
 
 ]);

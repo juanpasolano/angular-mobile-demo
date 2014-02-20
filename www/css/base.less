@@ -767,25 +767,44 @@ hr{
 }
 
 /*SWIPER*/
+
+.swiper-pagination{
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  .swiper-pagination-switch {
+    width: 1em;
+    height: 1em;
+    background: @mainColor;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 .2em;
+  }
+  .swiper-visible-switch {}
+  .swiper-active-switch{
+    background: darken(@mainColor, 20%)
+  }
+}
+
 .swiper-scroller-container{
   width: 100%;
   height: 100%;
-}
-.swiper-scrollbar-horizontal {
-  width: 100%;
-  height: 4px;
-  position: absolute;
-  left: 0px;
-  bottom: 5px;
-  z-index: 1;
-}
-.swiper-scrollbar-vertical {
-  width: 4px;
-  height: 100%;
-  position: absolute;
-  right: 0px;
-  bottom: 5px;
-  z-index: 1;
+  .swiper-scrollbar-horizontal {
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    left: 0px;
+    bottom: 5px;
+    z-index: 1;
+  }
+  .swiper-scrollbar-vertical {
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    bottom: 5px;
+    z-index: 1;
+  }
 }
 
 /*MAP*/
