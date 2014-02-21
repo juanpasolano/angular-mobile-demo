@@ -42,5 +42,8 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 				});
 			}
 		};
+		$scope.addEvent = function(){
+			$scope.events.push($scope.newEvent);
+		};
 	}
 ]);

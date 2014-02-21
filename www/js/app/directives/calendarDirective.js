@@ -6,7 +6,7 @@ app.directive('mbCalendar',['$rootScope',
 		return{
 			priority: 1200,
 			scope:{
-				events: '=',
+				events: '=mbEvents',
 				calendarDayClick: '='
 			},
 			link: function(scope, element, attrs){
@@ -40,7 +40,7 @@ app.directive('mbCalendar',['$rootScope',
 					"</tbody>" +
 					"</table>";
 
-				$(element).clndr({
+				var calendar = $(element).clndr({
 					template: clndrTemplate,
 					events: scope.events,
 					clickEvents: {
@@ -57,6 +57,12 @@ app.directive('mbCalendar',['$rootScope',
 						console.log('this would be a fine place to attach custom event handlers.');
 					}
 				});
+
+				scope.$watch(function(){
+					return scope.events.length;
+				}, function(n,o){
+					if(n > o) calendar.addEvents([scope.events[scope.events.length-1]]);
+				}, false);
 			}
 		};
 	}
