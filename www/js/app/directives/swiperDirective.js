@@ -1,8 +1,7 @@
 /*
-* Swiper.js
+* SwiperDirective.js
 
-Info and docuentation of plugin avalible: http://www.idangero.us/sliders/swiper/
-
+URL: http://www.idangero.us/sliders/swiper/
 
 */
 

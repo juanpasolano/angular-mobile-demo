@@ -56,5 +56,9 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 			$scope.events.push($scope.newEvent);
 			$scope.newEvent = {};
 		};
+
+		$scope.removeEvent = function(){
+			$scope.events.splice($scope.events.length-1,1);
+		};
 	}
 ]);

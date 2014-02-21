@@ -187,6 +187,10 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 			$scope.events.push($scope.newEvent);
 			$scope.newEvent = {};
 		};
+
+		$scope.removeEvent = function(){
+			$scope.events.splice($scope.events.length-1,1);
+		};
 	}
 ]);
 /*
@@ -576,15 +580,29 @@ app.controller('SwiperController', [ '$scope', '$location', 'ConfigFactory',
 ]);
 /*
 * CalendarDirective.js
+
+URL: http://kylestetz.github.io/CLNDR/
+
+To implement
+
+	<div class="calendar"
+	mb-calendar="events"
+	mb-calendar-options="calendarOptions">
+	</div>
+
+	mb-calendar: Array, Is the directive identifier and expects an array of events.
+	mb-calendar-options: Object, you can pass more of the calendar options in this attribute.
 */
+
 app.directive('mbCalendar',['$rootScope',
 	function($rootScope){
 		return{
 			scope:{
-				events: '=mbCalendarEvents',
+				events: '=mbCalendar',
 				options: '=mbCalendarOptions'
 			},
 			link: function(scope, element, attrs){
+				//The calendar template
 				var clndrTemplate = "<div class='clndr-controls row'>" +
 					"<div class='clndr-control-button column small-2'>"+
 					"<span class='clndr-previous-button entypo-font'>&#59237;</span>"+
@@ -615,19 +633,25 @@ app.directive('mbCalendar',['$rootScope',
 					"</tbody>" +
 					"</table>";
 
+				//The dafaults for the calendar
 				var defaults = {
 					template: clndrTemplate,
 					events: scope.events
 				};
+				//Extending the defaults and options into settings
 				var settings = $.extend({}, defaults, scope.options);
+				//init it bitch!
 				var calendar = $(element).clndr(settings);
 
+				//watching the events object of the controller to update the changes
 				scope.$watch(function(){
 					return scope.events.length;
 				}, function(n,o){
 					if(n > o) {
 						calendar.addEvents([scope.events[scope.events.length-1]]);
-					};
+					}else if (n < o){
+						calendar.setEvents(scope.events);
+					}
 				}, false);
 			}
 		};
@@ -640,7 +664,7 @@ app.directive('mbCalendar',['$rootScope',
 *
 * <div id="loading" mb-loading-pop-over="Hang in there! we are getting some nice data just for you."></div>
 *
-* To implement import $rootScope in your controller an $emit this event
+* To show, import $rootScope in your controller an $emit this event
 *
 * $rootScope.$emit('showLoadingPopOver',{});
 *
@@ -820,10 +844,9 @@ app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$te
 	}
 ]);
 /*
-* Swiper.js
+* SwiperDirective.js
 
-Info and docuentation of plugin avalible: http://www.idangero.us/sliders/swiper/
-
+URL: http://www.idangero.us/sliders/swiper/
 
 */
 

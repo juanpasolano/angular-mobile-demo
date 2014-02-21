@@ -5,7 +5,7 @@
 *
 * <div id="loading" mb-loading-pop-over="Hang in there! we are getting some nice data just for you."></div>
 *
-* To implement import $rootScope in your controller an $emit this event
+* To show, import $rootScope in your controller an $emit this event
 *
 * $rootScope.$emit('showLoadingPopOver',{});
 *

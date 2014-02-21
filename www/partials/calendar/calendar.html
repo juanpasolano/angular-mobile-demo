@@ -7,10 +7,10 @@
 			<input type="date" ng-model="newEvent.date">
 			<div class="button" ng-click="addEvent()">Add new date</div>
 		</form>
+		<a href="" ng-click="removeEvent()">Remove event</a>
 
 		<div class="calendar"
-		mb-calendar=""
-		mb-calendar-events="events"
+		mb-calendar="events"
 		mb-calendar-options="calendarOptions"></div>
 
 		<ul class="listview">
