@@ -47,5 +47,6 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 						page.addClass('page');
 					}, 600);
 		}, 600);
+
 	}
 ]);

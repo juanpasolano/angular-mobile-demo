@@ -18,12 +18,12 @@ app.directive('mbGmap',['$rootScope','$parse',
 					},
 					clustered: true
 				};
-				scope.options = $.extend({}, defaults, scope.options);
+				var settings = $.extend({}, defaults, scope.options);
 
 				var initialize = function() {
 					var mapOptions = {
-						zoom: scope.options.zoom,
-						center: new google.maps.LatLng(scope.options.center.lat, scope.options.center.lng )
+						zoom: settings.zoom,
+						center: new google.maps.LatLng(settings.center.lat, settings.center.lng )
 					};
 					map = new google.maps.Map($(element).get(0),mapOptions);
 				};
@@ -51,7 +51,7 @@ app.directive('mbGmap',['$rootScope','$parse',
 								addMarkerClickListener(marker);
 							}
 						}
-						if(scope.options.clustered){
+						if(settings.clustered){
 							var markerCluster = new MarkerClusterer(map, markers);
 						}
 					}

@@ -59,7 +59,7 @@ app.config([ '$routeProvider',
 			controller: 'D3ChartsController'
 		})
 		.otherwise({
-			redirectTo:'/login'
+			redirectTo:'/home'
 		});
 	}
 ]);

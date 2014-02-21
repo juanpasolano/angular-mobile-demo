@@ -59,7 +59,7 @@ app.config([ '$routeProvider',
 			controller: 'D3ChartsController'
 		})
 		.otherwise({
-			redirectTo:'/login'
+			redirectTo:'/home'
 		});
 	}
 ]);
@@ -455,6 +455,7 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 						page.addClass('page');
 					}, 600);
 		}, 600);
+
 	}
 ]);
 /*
@@ -596,42 +597,42 @@ To implement
 
 app.directive('mbCalendar',['$rootScope',
 	function($rootScope){
+		//The calendar template
+		var clndrTemplate = "<div class='clndr-controls row'>" +
+			"<div class='clndr-control-button column small-2'>"+
+			"<span class='clndr-previous-button entypo-font'>&#59237;</span>"+
+			"</div>"+
+			"<div class='month column small-8 tac'><%= month %> <%= year %></div>"+
+			"<div class='clndr-control-button rightalign column small-2'>"+
+			"<span class='clndr-next-button entypo-font tar'>&#59238;</span>"+
+			"</div>" +
+			"</div>" +
+			"<table class='clndr-table' border='0' cellspacing='0' cellpadding='0'>" +
+			"<thead>" +
+			"<tr class='header-days'>" +
+			"<% for(var i = 0; i < daysOfTheWeek.length; i++) { %>" +
+			"<td class='header-day'><%= daysOfTheWeek[i] %></td>" +
+			"<% } %>" +
+			"</tr>" +
+			"</thead>" +
+			"<tbody>" +
+			"<% for(var i = 0; i < numberOfRows; i++){ %>" +
+			"<tr>" +
+			"<% for(var j = 0; j < 7; j++){ %>" +
+			"<% var d = j + i * 7; %>" +
+			"<td class='<%= days[d].classes %>'><div class='day-contents'><%= days[d].day %>" +
+			"</div></td>" +
+			"<% } %>" +
+			"</tr>" +
+			"<% } %>" +
+			"</tbody>" +
+			"</table>";
 		return{
 			scope:{
 				events: '=mbCalendar',
 				options: '=mbCalendarOptions'
 			},
 			link: function(scope, element, attrs){
-				//The calendar template
-				var clndrTemplate = "<div class='clndr-controls row'>" +
-					"<div class='clndr-control-button column small-2'>"+
-					"<span class='clndr-previous-button entypo-font'>&#59237;</span>"+
-					"</div>"+
-					"<div class='month column small-8 tac'><%= month %> <%= year %></div>"+
-					"<div class='clndr-control-button rightalign column small-2'>"+
-					"<span class='clndr-next-button entypo-font tar'>&#59238;</span>"+
-					"</div>" +
-					"</div>" +
-					"<table class='clndr-table' border='0' cellspacing='0' cellpadding='0'>" +
-					"<thead>" +
-					"<tr class='header-days'>" +
-					"<% for(var i = 0; i < daysOfTheWeek.length; i++) { %>" +
-					"<td class='header-day'><%= daysOfTheWeek[i] %></td>" +
-					"<% } %>" +
-					"</tr>" +
-					"</thead>" +
-					"<tbody>" +
-					"<% for(var i = 0; i < numberOfRows; i++){ %>" +
-					"<tr>" +
-					"<% for(var j = 0; j < 7; j++){ %>" +
-					"<% var d = j + i * 7; %>" +
-					"<td class='<%= days[d].classes %>'><div class='day-contents'><%= days[d].day %>" +
-					"</div></td>" +
-					"<% } %>" +
-					"</tr>" +
-					"<% } %>" +
-					"</tbody>" +
-					"</table>";
 
 				//The dafaults for the calendar
 				var defaults = {
@@ -726,12 +727,12 @@ app.directive('mbGmap',['$rootScope','$parse',
 					},
 					clustered: true
 				};
-				scope.options = $.extend({}, defaults, scope.options);
+				var settings = $.extend({}, defaults, scope.options);
 
 				var initialize = function() {
 					var mapOptions = {
-						zoom: scope.options.zoom,
-						center: new google.maps.LatLng(scope.options.center.lat, scope.options.center.lng )
+						zoom: settings.zoom,
+						center: new google.maps.LatLng(settings.center.lat, settings.center.lng )
 					};
 					map = new google.maps.Map($(element).get(0),mapOptions);
 				};
@@ -759,7 +760,7 @@ app.directive('mbGmap',['$rootScope','$parse',
 								addMarkerClickListener(marker);
 							}
 						}
-						if(scope.options.clustered){
+						if(settings.clustered){
 							var markerCluster = new MarkerClusterer(map, markers);
 						}
 					}
@@ -775,6 +776,29 @@ app.directive('mbGmap',['$rootScope','$parse',
 
 			}
 		};
+	}
+]);
+/*
+* MarkdownDirective.js
+*/
+
+app.directive('mbMarkdown',[
+	function(){
+		var converter = new Showdown.converter();
+    return {
+      restrict: 'AE',
+      link: function (scope, element, attrs) {
+        if (attrs.mbMarkdown) {
+          scope.$watch(attrs.mbMarkdown, function (newVal) {
+            var html = newVal ? converter.makeHtml(newVal) : '';
+            element.html(html);
+          });
+        } else {
+          var html = converter.makeHtml(element.text());
+          element.html(html);
+        }
+      }
+    };
 	}
 ]);
 /*
@@ -925,13 +949,15 @@ mb-switch-off : String, for the OFF text
 mb-switch-on : String, for the ON text
 
 It is not necesary to provide an input field since the logic is insed the directive and the model is outside.
+
+ ng-class="{off: isChecked==false}"
 * */
 
 app.directive('mbSwitch',['$rootScope', '$timeout',
 	function($rootScope, $timeout){
 		return{
 			template:'<div class="onOffSwitch" ng-swipe-left="off()" ng-swipe-right="on()">'+
-				'<div class="handle" ng-class="{off: isChecked==false}"></div>'+
+				'<div class="handle"></div>'+
 				'<div class="text on" ng-class="{shown: isChecked==true}">{{onText}}</div>'+
 				'<div class="text off" ng-class="{shown: isChecked==false}">{{offText}}</div>'+
 				'<div class="hidden" ng-transclude>'+
@@ -955,7 +981,16 @@ app.directive('mbSwitch',['$rootScope', '$timeout',
 				scope.$watch('isChecked',function(n,o){
 					checkbox.prop('checked', n);
 					if(scope.ngModel !== undefined) scope.ngModel = n;
+					toggleClasses(n);
 				});
+
+				var toggleClasses= function(val){
+					if(val){
+						$(element).find('.handle').removeClass('off');
+					}else{
+						$(element).find('.handle').addClass('off');
+					}
+				};
 
 				scope.toggle =  function(){
 					scope.$apply(function(){

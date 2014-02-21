@@ -423,9 +423,12 @@ hr{
     right: @gutter/2;
     border-radius: 50%;
     background: @mainColor;
-    -webkit-transition: all .1s ease-in;
+    // transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transition: all .2s ease-out;
     &.off{
-      transform: translate3d(-123%,0,0);
+      // transform: translate3d(-123%,0,0);
       -webkit-transform: translate3d(-123%,0,0);
       background: @darkGray;
     }
@@ -538,20 +541,21 @@ hr{
       color:white;
     }
     .event{
-      .day-contents{
-        position: relative;
-        &:after{
-          content: '';
-            width: 0.1em;
-            height: 0.1em;
-            background: @mainColor;
-            border-radius: 50%;
-            font-size: 6em;
-            position: absolute;
-            left: 50%;
-            top: 120%;
-            -webkit-transform: translate3d(-50%, 0, 0);
-        }
+      position: relative;
+      &:after{
+        content: '';
+          width: 0.1em;
+          height: 0.1em;
+          background: @mainColor;
+          border-radius: 50%;
+          font-size: 6em;
+          position: absolute;
+          left: 50%;
+          bottom: 18%;
+          -webkit-transform: translate3d(-50%, 0, 0);
+      }
+      &.today:after{
+        background: white;
       }
     }
     .adjacent-month{

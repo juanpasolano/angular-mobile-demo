@@ -1196,10 +1196,11 @@ hr {
   right: 0.25em;
   border-radius: 50%;
   background: #e6375a;
-  -webkit-transition: all 0.1s ease-in;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.2s ease-out;
 }
 .onOffSwitch .handle.off {
-  transform: translate3d(-123%, 0, 0);
   -webkit-transform: translate3d(-123%, 0, 0);
   background: #4a4d4e;
 }
@@ -1298,10 +1299,10 @@ hr {
   background: #e6375a;
   color: white;
 }
-.calendar .clndr-table .event .day-contents {
+.calendar .clndr-table .event {
   position: relative;
 }
-.calendar .clndr-table .event .day-contents:after {
+.calendar .clndr-table .event:after {
   content: '';
   width: 0.1em;
   height: 0.1em;
@@ -1310,8 +1311,11 @@ hr {
   font-size: 6em;
   position: absolute;
   left: 50%;
-  top: 120%;
+  bottom: 18%;
   -webkit-transform: translate3d(-50%, 0, 0);
+}
+.calendar .clndr-table .event.today:after {
+  background: white;
 }
 .calendar .clndr-table .adjacent-month {
   color: #b0b3b4;
