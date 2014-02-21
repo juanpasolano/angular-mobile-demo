@@ -1401,6 +1401,9 @@ hr {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0) rotate(0deg);
 }
+#modals-container .title {
+  margin-right: 1em;
+}
 #modals-container .modal {
   background: white;
   width: 90%;

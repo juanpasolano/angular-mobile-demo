@@ -28,22 +28,33 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 			{ date: '2014-03-23', title: 'Compellingly re-engineer client.', url: 'http://github.com/kylestetz/CLNDR' },
 			{ date: '2014-03-26', title: 'Appropriately expedite', url: 'http://github.com/kylestetz/CLNDR' }
 		];
-
-		$scope.calendarDayClick = function(target){
-			if(target.events.length > 0){
-				$rootScope.$emit('makeModal', {
-					options:{
-						template:'partials/modals/calendarModal.html',
-						cancelText :'Yep',
-						acceptText: 'Ok, go.',
-						title: 'Events on '+ target.date._i,
-						data: target.events
+		$scope.calendarOptions = {
+			clickEvents: {
+				click: function(target) {
+					if(target.events.length > 0){
+						$rootScope.$emit('makeModal', {
+							options:{
+								template:'partials/modals/calendarModal.html',
+								cancelText :'Yep',
+								acceptText: 'Ok, go.',
+								title: 'Events on '+ target.date._i,
+								data: target.events
+							}
+						});
 					}
-				});
+				},
+				onMonthChange: function(month) {
+					console.log('you just went to ' + month.format('MMMM, YYYY'));
+				}
+			},
+			doneRendering: function() {
+				console.log('this would be a fine place to attach custom event handlers.');
 			}
 		};
+
 		$scope.addEvent = function(){
 			$scope.events.push($scope.newEvent);
+			$scope.newEvent = {};
 		};
 	}
 ]);

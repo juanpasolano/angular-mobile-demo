@@ -7,9 +7,11 @@
 			<input type="date" ng-model="newEvent.date">
 			<div class="button" ng-click="addEvent()">Add new date</div>
 		</form>
+
 		<div class="calendar"
 		mb-calendar=""
-		mb-events="events" calendar-day-click="calendarDayClick"></div>
+		mb-calendar-events="events"
+		mb-calendar-options="calendarOptions"></div>
 
 		<ul class="listview">
 			<li ng-repeat="event in events" class="row column medium-6" ng-click="getDetails(event)">

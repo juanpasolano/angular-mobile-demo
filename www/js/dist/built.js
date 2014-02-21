@@ -159,22 +159,33 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 			{ date: '2014-03-23', title: 'Compellingly re-engineer client.', url: 'http://github.com/kylestetz/CLNDR' },
 			{ date: '2014-03-26', title: 'Appropriately expedite', url: 'http://github.com/kylestetz/CLNDR' }
 		];
-
-		$scope.calendarDayClick = function(target){
-			if(target.events.length > 0){
-				$rootScope.$emit('makeModal', {
-					options:{
-						template:'partials/modals/calendarModal.html',
-						cancelText :'Yep',
-						acceptText: 'Ok, go.',
-						title: 'Events on '+ target.date._i,
-						data: target.events
+		$scope.calendarOptions = {
+			clickEvents: {
+				click: function(target) {
+					if(target.events.length > 0){
+						$rootScope.$emit('makeModal', {
+							options:{
+								template:'partials/modals/calendarModal.html',
+								cancelText :'Yep',
+								acceptText: 'Ok, go.',
+								title: 'Events on '+ target.date._i,
+								data: target.events
+							}
+						});
 					}
-				});
+				},
+				onMonthChange: function(month) {
+					console.log('you just went to ' + month.format('MMMM, YYYY'));
+				}
+			},
+			doneRendering: function() {
+				console.log('this would be a fine place to attach custom event handlers.');
 			}
 		};
+
 		$scope.addEvent = function(){
 			$scope.events.push($scope.newEvent);
+			$scope.newEvent = {};
 		};
 	}
 ]);
@@ -569,10 +580,9 @@ app.controller('SwiperController', [ '$scope', '$location', 'ConfigFactory',
 app.directive('mbCalendar',['$rootScope',
 	function($rootScope){
 		return{
-			priority: 1200,
 			scope:{
-				events: '=mbEvents',
-				calendarDayClick: '='
+				events: '=mbCalendarEvents',
+				options: '=mbCalendarOptions'
 			},
 			link: function(scope, element, attrs){
 				var clndrTemplate = "<div class='clndr-controls row'>" +
@@ -605,28 +615,19 @@ app.directive('mbCalendar',['$rootScope',
 					"</tbody>" +
 					"</table>";
 
-				var calendar = $(element).clndr({
+				var defaults = {
 					template: clndrTemplate,
-					events: scope.events,
-					clickEvents: {
-						click: function(target) {
-							if (typeof(scope.calendarDayClick) == "function") {
-								scope.calendarDayClick(target);
-							}
-						},
-						onMonthChange: function(month) {
-							console.log('you just went to ' + month.format('MMMM, YYYY'));
-						}
-					},
-					doneRendering: function() {
-						console.log('this would be a fine place to attach custom event handlers.');
-					}
-				});
+					events: scope.events
+				};
+				var settings = $.extend({}, defaults, scope.options);
+				var calendar = $(element).clndr(settings);
 
 				scope.$watch(function(){
 					return scope.events.length;
 				}, function(n,o){
-					if(n > o) calendar.addEvents([scope.events[scope.events.length-1]]);
+					if(n > o) {
+						calendar.addEvents([scope.events[scope.events.length-1]]);
+					};
 				}, false);
 			}
 		};
