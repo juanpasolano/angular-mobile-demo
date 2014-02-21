@@ -552,6 +552,7 @@ app.controller('SwiperController', [ '$scope', '$location', 'ConfigFactory',
 
 		$scope.swiperOpts1 ={
 			pagination: '.swiper-pagination',
+			cssWidthAndHeight: false,
 			loop:true,
 			grabCursor: true,
 			paginationClickable: false
@@ -809,7 +810,11 @@ app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$te
 	}
 ]);
 /*
-* swiper.js:
+* Swiper.js
+
+Info and docuentation of plugin avalible: http://www.idangero.us/sliders/swiper/
+
+
 */
 
 app.directive('mbSwiper', [
@@ -842,6 +847,7 @@ app.directive('mbSwiper', [
 
 				//Find the swiper DOM element where it will be initialized
 				var swiperElem = element.find('.swiper-container');
+				//init it bitch!
 				var mySwiper = swiperElem.swiper(settings);
 			}
 		};

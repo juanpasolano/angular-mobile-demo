@@ -18,6 +18,7 @@ app.controller('SwiperController', [ '$scope', '$location', 'ConfigFactory',
 
 		$scope.swiperOpts1 ={
 			pagination: '.swiper-pagination',
+			cssWidthAndHeight: false,
 			loop:true,
 			grabCursor: true,
 			paginationClickable: false
