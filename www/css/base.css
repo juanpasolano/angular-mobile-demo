@@ -4,720 +4,959 @@
   font-weight: normal;
   line-height: 0;
 }
+
 .entypo-phone:before {
   content: '\1F4DE';
 }
+
 .entypo-mobile:before {
   content: '\1F4F1';
 }
+
 .entypo-mouse:before {
   content: '\E789';
 }
+
 .entypo-address:before {
   content: '\E723';
 }
+
 .entypo-mail:before {
   content: '\2709';
 }
+
 .entypo-paper-plane:before {
   content: '\1F53F';
 }
+
 .entypo-pencil:before {
   content: '\270E';
 }
+
 .entypo-feather:before {
   content: '\2712';
 }
+
 .entypo-attach:before {
   content: '\1F4CE';
 }
+
 .entypo-inbox:before {
   content: '\E777';
 }
+
 .entypo-reply:before {
   content: '\E712';
 }
+
 .entypo-reply-all:before {
   content: '\E713';
 }
+
 .entypo-forward:before {
   content: '\27A6';
 }
+
 .entypo-user:before {
   content: '\1F464';
 }
+
 .entypo-users:before {
   content: '\1F465';
 }
+
 .entypo-add-user:before {
   content: '\E700';
 }
+
 .entypo-vcard:before {
   content: '\E722';
 }
+
 .entypo-export:before {
   content: '\E715';
 }
+
 .entypo-location:before {
   content: '\E724';
 }
+
 .entypo-map:before {
   content: '\E727';
 }
+
 .entypo-compass:before {
   content: '\E728';
 }
+
 .entypo-direction:before {
   content: '\27A2';
 }
+
 .entypo-hair-cross:before {
   content: '\1F3AF';
 }
+
 .entypo-share:before {
   content: '\E73C';
 }
+
 .entypo-shareable:before {
   content: '\E73E';
 }
+
 .entypo-heart:before {
   content: '\2665';
 }
+
 .entypo-heart-empty:before {
   content: '\2661';
 }
+
 .entypo-star:before {
   content: '\2605';
 }
+
 .entypo-star-empty:before {
   content: '\2606';
 }
+
 .entypo-thumbs-up:before {
   content: '\1F44D';
 }
+
 .entypo-thumbs-down:before {
   content: '\1F44E';
 }
+
 .entypo-chat:before {
   content: '\E720';
 }
+
 .entypo-comment:before {
   content: '\E718';
 }
+
 .entypo-quote:before {
   content: '\275E';
 }
+
 .entypo-home:before {
   content: '\2302';
 }
+
 .entypo-popup:before {
   content: '\E74C';
 }
+
 .entypo-search:before {
   content: '\1F50D';
 }
+
 .entypo-flashlight:before {
   content: '\1F526';
 }
+
 .entypo-print:before {
   content: '\E716';
 }
+
 .entypo-bell:before {
   content: '\1F514';
 }
+
 .entypo-link:before {
   content: '\1F517';
 }
+
 .entypo-flag:before {
   content: '\2691';
 }
+
 .entypo-cog:before {
   content: '\2699';
 }
+
 .entypo-tools:before {
   content: '\2692';
 }
+
 .entypo-trophy:before {
   content: '\1F3C6';
 }
+
 .entypo-tag:before {
   content: '\E70C';
 }
+
 .entypo-camera:before {
   content: '\1F4F7';
 }
+
 .entypo-megaphone:before {
   content: '1F4E3';
 }
+
 .entypo-moon:before {
   content: '\0045';
 }
+
 .entypo-palette:before {
   content: '\1F3A8';
 }
+
 .entypo-leaf:before {
   content: '\1F342';
 }
+
 .entypo-note:before {
   content: '\266A';
 }
+
 .entypo-beamed-note:before {
   content: '\266B';
 }
+
 .entypo-new:before {
   content: '\1F4A5';
 }
+
 .entypo-graduation-cap:before {
   content: '\1F393';
 }
+
 .entypo-book:before {
   content: '\1F4D5';
 }
+
 .entypo-newspaper:before {
   content: '\1F4F0';
 }
+
 .entypo-bag:before {
   content: '\1F45C';
 }
+
 .entypo-airplane:before {
   content: '\2708';
 }
+
 .entypo-lifebuoy:before {
   content: '\E788';
 }
+
 .entypo-eye:before {
   content: '\E70A';
 }
+
 .entypo-clock:before {
   content: '\1F554';
 }
+
 .entypo-mic:before {
   content: '\1F3A4';
 }
+
 .entypo-calendar:before {
   content: '\1F4C5';
 }
+
 .entypo-flash:before {
   content: '\26A1';
 }
+
 .entypo-thunder-cloud:before {
   content: '\26C8';
 }
+
 .entypo-droplet:before {
   content: '\1F4A7';
 }
+
 .entypo-cd:before {
   content: '\1F4BF';
 }
+
 .entypo-briefcase:before {
   content: '\1F4BC';
 }
+
 .entypo-air:before {
   content: '\1F4A8';
 }
+
 .entypo-hourglass:before {
   content: '\23F3';
 }
+
 .entypo-gauge:before {
   content: '\1F6C7';
 }
+
 .entypo-language:before {
   content: '\1F394';
 }
+
 .entypo-network:before {
   content: '\E776';
 }
+
 .entypo-key:before {
   content: '\1F511';
 }
+
 .entypo-battery:before {
   content: '\1F50B';
 }
+
 .entypo-bucket:before {
   content: '\1F4FE';
 }
+
 .entypo-magnet:before {
   content: '\E7A1';
 }
+
 .entypo-drive:before {
   content: '\1F4FD';
 }
+
 .entypo-cup:before {
   content: '\2615';
 }
+
 .entypo-rocket:before {
   content: '\1F680';
 }
+
 .entypo-brush:before {
   content: '\E79A';
 }
+
 .entypo-suitcase:before {
   content: '\1F6C6';
 }
+
 .entypo-traffic-cone:before {
   content: '\1F6C8';
 }
+
 .entypo-globe:before {
   content: '\1F30E';
 }
+
 .entypo-keyboard:before {
   content: '\2328';
 }
+
 .entypo-browser:before {
   content: '\E74E';
 }
+
 .entypo-publish:before {
   content: '\E74D';
 }
+
 .entypo-progress-3:before {
   content: '\E76B';
 }
+
 .entypo-progress-2:before {
   content: '\E76A';
 }
+
 .entypo-progress-1:before {
   content: '\E769';
 }
+
 .entypo-progress-0:before {
   content: '\E768';
 }
+
 .entypo-light-down:before {
   content: '\1F505';
 }
+
 .entypo-light-up:before {
   content: '\1F506';
 }
+
 .entypo-adjust:before {
   content: '\25D1';
 }
+
 .entypo-code:before {
   content: '\E714';
 }
+
 .entypo-monitor:before {
   content: '\1F4BB';
 }
+
 .entypo-infinity:before {
   content: '\221E';
 }
+
 .entypo-light-bulb:before {
   content: '\1F4A1';
 }
+
 .entypo-credit-card:before {
   content: '\1F4B3';
 }
+
 .entypo-database:before {
   content: '\1F4F8';
 }
+
 .entypo-voicemail:before {
   content: '\2707';
 }
+
 .entypo-clipboard:before {
   content: '\1F4CB';
 }
+
 .entypo-cart:before {
   content: '\E73D';
 }
+
 .entypo-box:before {
   content: '\1F4E6';
 }
+
 .entypo-ticket:before {
   content: '\1F3AB';
 }
+
 .entypo-rss:before {
   content: '\E73A';
 }
+
 .entypo-signal:before {
   content: '\1F4F6';
 }
+
 .entypo-thermometer:before {
   content: '\1F4FF';
 }
+
 .entypo-water:before {
   content: '\1F4A6';
 }
+
 .entypo-sweden:before {
   content: '\F601';
 }
+
 .entypo-line-graph:before {
   content: '\1F4C8';
 }
+
 .entypo-pie-chart:before {
   content: '\25F4';
 }
+
 .entypo-bar-graph:before {
   content: '\1F4CA';
 }
+
 .entypo-area-graph:before {
   content: '\1F53E';
 }
+
 .entypo-lock:before {
   content: '\1F512';
 }
+
 .entypo-lock-open:before {
   content: '\1F513';
 }
+
 .entypo-logout:before {
   content: '\E741';
 }
+
 .entypo-login:before {
   content: '\E740';
 }
+
 .entypo-check:before {
   content: '\2713';
 }
+
 .entypo-cross:before {
   content: '\274C';
 }
+
 .entypo-squared-minus:before {
   content: '\229F';
 }
+
 .entypo-squared-plus:before {
   content: '\229E';
 }
+
 .entypo-squared-cross:before {
   content: '\274E';
 }
+
 .entypo-circled-minus:before {
   content: '\2296';
 }
+
 .entypo-circled-plus:before {
   content: '\2295';
 }
+
 .entypo-circled-cross:before {
   content: '\2716';
 }
+
 .entypo-minus:before {
   content: '\2796';
 }
+
 .entypo-plus:before {
   content: '\2795';
 }
+
 .entypo-erase:before {
   content: '\232B';
 }
+
 .entypo-block:before {
   content: '\1F6AB';
 }
+
 .entypo-info:before {
   content: '\2139';
 }
+
 .entypo-circled-info:before {
   content: '\E705';
 }
+
 .entypo-help:before {
   content: '\2753';
 }
+
 .entypo-circled-help:before {
   content: '\E704';
 }
+
 .entypo-warning:before {
   content: '\26A0';
 }
+
 .entypo-cycle:before {
   content: '\1F504';
 }
+
 .entypo-cw:before {
   content: '\27F3';
 }
+
 .entypo-ccw:before {
   content: '\27F2';
 }
+
 .entypo-shuffle:before {
   content: '\1F500';
 }
+
 .entypo-back:before {
   content: '\1F519';
 }
+
 .entypo-level-down:before {
   content: '\21B3';
 }
+
 .entypo-retweet:before {
   content: '\E717';
 }
+
 .entypo-loop:before {
   content: '\1F501';
 }
+
 .entypo-back-in-time:before {
   content: '\E771';
 }
+
 .entypo-level-up:before {
   content: '\21B0';
 }
+
 .entypo-switch:before {
   content: '\21C6';
 }
+
 .entypo-numbered-list:before {
   content: '\E005';
 }
+
 .entypo-add-to-list:before {
   content: '\E003';
 }
+
 .entypo-layout:before {
   content: '\268F';
 }
+
 .entypo-list:before {
   content: '\2630';
 }
+
 .entypo-text-doc:before {
   content: '\1F4C4';
 }
+
 .entypo-text-doc-inverted:before {
   content: '\E731';
 }
+
 .entypo-doc:before {
   content: '\E730';
 }
+
 .entypo-docs:before {
   content: '\E736';
 }
+
 .entypo-landscape-doc:before {
   content: '\E737';
 }
+
 .entypo-picture:before {
   content: '\1F304';
 }
+
 .entypo-video:before {
   content: '\1F3AC';
 }
+
 .entypo-music:before {
   content: '\1F3B5';
 }
+
 .entypo-folder:before {
   content: '\1F4C1';
 }
+
 .entypo-archive:before {
   content: '\E800';
 }
+
 .entypo-trash:before {
   content: '\E729';
 }
+
 .entypo-upload:before {
   content: '\1F4E4';
 }
+
 .entypo-download:before {
   content: '\1F4E5';
 }
+
 .entypo-save:before {
   content: '\1F4BE';
 }
+
 .entypo-install:before {
   content: '\E778';
 }
+
 .entypo-cloud:before {
   content: '\2601';
 }
+
 .entypo-upload-cloud:before {
   content: '\E711';
 }
+
 .entypo-bookmark:before {
   content: '\1F516';
 }
+
 .entypo-bookmarks:before {
   content: '\1F4D1';
 }
+
 .entypo-open-book:before {
   content: '\1F4D6';
 }
+
 .entypo-play:before {
   content: '\25B6';
 }
+
 .entypo-paus:before {
   content: '\2016';
 }
+
 .entypo-record:before {
   content: '\25CF';
 }
+
 .entypo-stop:before {
   content: '\25A0';
 }
+
 .entypo-ff:before {
   content: '\23E9';
 }
+
 .entypo-fb:before {
   content: '\23EA';
 }
+
 .entypo-to-start:before {
   content: '\23EE';
 }
+
 .entypo-to-end:before {
   content: '\23ED';
 }
+
 .entypo-resize-full:before {
   content: '\E744';
 }
+
 .entypo-resize-small:before {
   content: '\E746';
 }
+
 .entypo-volume:before {
   content: '\23F7';
 }
+
 .entypo-sound:before {
   content: '\1F50A';
 }
+
 .entypo-mute:before {
   content: '\1F507';
 }
+
 .entypo-flow-cascade:before {
   content: '\1F568';
 }
+
 .entypo-flow-branch:before {
   content: '\1F569';
 }
+
 .entypo-flow-tree:before {
   content: '\1F56A';
 }
+
 .entypo-flow-line:before {
   content: '\1F56B';
 }
+
 .entypo-flow-parallel:before {
   content: '\1F56C';
 }
+
 .entypo-left-bold:before {
   content: '\E4AD';
 }
+
 .entypo-down-bold:before {
   content: '\E4B0';
 }
+
 .entypo-up-bold:before {
   content: '\E4AF';
 }
+
 .entypo-right-bold:before {
   content: '\E4AE';
 }
+
 .entypo-left:before {
   content: '\2B05';
 }
+
 .entypo-down:before {
   content: '\2B07';
 }
+
 .entypo-up:before {
   content: '\2B06';
 }
+
 .entypo-right:before {
   content: '\27A1';
 }
+
 .entypo-circled-left:before {
   content: '\E759';
 }
+
 .entypo-circled-down:before {
   content: '\E758';
 }
+
 .entypo-circled-up:before {
   content: '\E75B';
 }
+
 .entypo-circled-right:before {
   content: '\E75A';
 }
+
 .entypo-triangle-left:before {
   content: '\25C2';
 }
+
 .entypo-triangle-down:before {
   content: '\25BE';
 }
+
 .entypo-triangle-up:before {
   content: '\25B4';
 }
+
 .entypo-triangle-right:before {
   content: '\25B8';
 }
+
 .entypo-chevron-left:before {
   content: '\E75D';
 }
+
 .entypo-chevron-down:before {
   content: '\E75C';
 }
+
 .entypo-chevron-up:before {
   content: '\E75F';
 }
+
 .entypo-chevron-right:before {
   content: '\E75E';
 }
+
 .entypo-chevron-small-left:before {
   content: '\E761';
 }
+
 .entypo-chevron-small-down:before {
   content: '\E760';
 }
+
 .entypo-chevron-small-up:before {
   content: '\E763';
 }
+
 .entypo-chevron-small-right:before {
   content: '\E762';
 }
+
 .entypo-chevron-thin-left:before {
   content: '\E765';
 }
+
 .entypo-chevron-thin-down:before {
   content: '\E764';
 }
+
 .entypo-chevron-thin-up:before {
   content: '\E767';
 }
+
 .entypo-chevron-thin-right:before {
   content: '\E766';
 }
+
 .entypo-left-thin:before {
   content: '\2190';
 }
+
 .entypo-down-thin:before {
   content: '\2193';
 }
+
 .entypo-up-thin:before {
   content: '\2191';
 }
+
 .entypo-right-thin:before {
   content: '\2192';
 }
+
 .entypo-arrow-combo:before {
   content: '\E74F';
 }
+
 .entypo-three-dots:before {
   content: '\23F6';
 }
+
 .entypo-two-dots:before {
   content: '\23F5';
 }
+
 .entypo-dot:before {
   content: '\23F4';
 }
+
 .entypo-cc:before {
   content: '\1F545';
 }
+
 .entypo-cc-by:before {
   content: '\1F546';
 }
+
 .entypo-cc-nc:before {
   content: '\1F547';
 }
+
 .entypo-cc-nc-eu:before {
   content: '\1F548';
 }
+
 .entypo-cc-nc-jp:before {
   content: '\1F549';
 }
+
 .entypo-cc-sa:before {
   content: '\1F54A';
 }
+
 .entypo-cc-nd:before {
   content: '\1F54B';
 }
+
 .entypo-cc-pd:before {
   content: '\1F54C';
 }
+
 .entypo-cc-zero:before {
   content: '\1F54D';
 }
+
 .entypo-cc-share:before {
   content: '\1F54E';
 }
+
 .entypo-cc-remix:before {
   content: '\1F54F';
 }
+
 .entypo-db-logo:before {
   content: '\1F5F9';
 }
+
 .entypo-db-shape:before {
   content: '\1F5FA';
 }
+
 /*
 .entypo-social {
 	font-family: 'entypo';
@@ -773,13 +1012,11 @@
 .entypo-social.vk:before{ content:'\F354'; }
 .entypo-social.smashing:before{ content:'\F357'; }
 */
-/*MAIN VARIABLES*/
 /*==========  BASE  ==========*/
 @font-face {
   font-family: 'entypo';
-  src: url('../fonts/entypo.eot');
-  src: url('../fonts/entypo.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/entypo.woff') format('woff'), /* Modern Browsers */ url('../fonts/entypo.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/entypo.svg#svgFontName') format('svg');
-  
+  src: url("../fonts/entypo.eot");
+  src: url("../fonts/entypo.eot?#iefix") format("embedded-opentype"), url("../fonts/entypo.woff") format("woff"), url("../fonts/entypo.ttf") format("truetype"), url("../fonts/entypo.svg#svgFontName") format("svg");
   /* IE9 Compat Modes */
   /* Legacy iOS */
 }
@@ -791,20 +1028,18 @@
   clear: both;
   height: 0;
 }
-[ng\:cloak],
-[ng-cloak],
-[data-ng-cloak],
-[x-ng-cloak],
-.ng-cloak,
-.x-ng-cloak {
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none;
 }
+
 html,
 body {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
+
 a {
   text-decoration: none;
   color: #e6375a;
@@ -812,60 +1047,70 @@ a {
 a:active {
   color: #d01a3e;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
+
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 p {
   font-weight: 300;
 }
+
 fieldset {
   border: solid 1px #c4caca;
 }
 fieldset legend {
   background: none;
 }
+
 label {
   font-weight: bold;
 }
+
 hr {
   border: solid #a9b2b2;
   border-width: 1px 0 0;
 }
+
 /*==========  LAYOUT  ==========*/
 .tac {
   text-align: center;
 }
+
 .tar {
   text-align: right;
 }
+
 .tal {
   text-align: left;
 }
+
 .w100p {
   width: 100%;
 }
+
 .fll {
   float: left;
 }
+
 .flr {
   float: right;
 }
+
 .no-padding {
   padding: 0 !important;
 }
+
 .p1em {
   padding: 1em;
 }
+
 #app {
   width: 100%;
   height: 100%;
@@ -874,6 +1119,7 @@ hr {
   left: 0;
   overflow: hidden;
 }
+
 #wrapper {
   width: 100%;
   height: 100%;
@@ -893,6 +1139,7 @@ hr {
   -webkit-filter: blur(3px);
   -webkit-transform: scale(1.03);
 }
+
 #header {
   width: 100%;
   height: 70px;
@@ -921,6 +1168,7 @@ hr {
 #header .title.sideNav {
   left: 70px;
 }
+
 #content {
   background: #dfe2e2;
   width: 100%;
@@ -939,6 +1187,7 @@ hr {
   clear: both;
   height: 0;
 }
+
 #footer {
   width: 100%;
   height: 70px;
@@ -959,11 +1208,11 @@ hr {
   text-align: center;
   line-height: 70px;
 }
-#footer > a:active,
-#footer > a:active {
+#footer > a:active, #footer > a:active {
   -webkit-transition: all .4s ease;
   background: #d01a3e;
 }
+
 #sideNav {
   width: 250px;
   height: 100%;
@@ -975,11 +1224,13 @@ hr {
   background-color: white;
   -webkit-transform: translate3d(0, 0, 0);
 }
+
 /*PAGE LAYOUT*/
 .page-holder {
   width: 100%;
   height: 100%;
 }
+
 .page {
   width: 100%;
   height: 100%;
@@ -993,8 +1244,8 @@ hr {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-.page-slide-animation.ng-enter,
-.page-slide-animation.ng-leave {
+
+.page-slide-animation.ng-enter, .page-slide-animation.ng-leave {
   -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
   -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
   -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
@@ -1022,8 +1273,8 @@ hr {
   -webkit-transform: translate3d(-100%, 0, 0);
   opacity: 0;
 }
-.page-pop-animation.ng-enter,
-.page-pop-animation.ng-leave {
+
+.page-pop-animation.ng-enter, .page-pop-animation.ng-leave {
   -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
   -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
   -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
@@ -1051,8 +1302,8 @@ hr {
   -webkit-transform: scale(0.5);
   opacity: 0;
 }
-.page-fade-animation.ng-enter,
-.page-fade-animation.ng-leave {
+
+.page-fade-animation.ng-enter, .page-fade-animation.ng-leave {
   -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
   -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
   -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
@@ -1076,40 +1327,34 @@ hr {
 .page-fade-animation.ng-leave.ng-leave-active {
   opacity: 0;
 }
+
 /*==========  MODULES  ==========*/
 /*BUTTONS*/
 .button {
   background: #e6375a;
 }
-.button:active,
-.button:focus,
-.button:hover {
+.button:active, .button:focus, .button:hover {
   background: #a31431;
 }
 .button[disabled] {
   background: #ec647f;
 }
-.button[disabled]:active,
-.button[disabled]:focus,
-.button[disabled]:hover {
+.button[disabled]:active, .button[disabled]:focus, .button[disabled]:hover {
   background: #ec647f;
 }
 .button.dark {
   background: #4a4d4e;
 }
-.button.dark:active,
-.button.dark:focus,
-.button.dark:hover {
+.button.dark:active, .button.dark:focus, .button.dark:hover {
   background: #313334;
 }
 .button.dark[disabled] {
   background: #636768;
 }
-.button.dark[disabled]:active,
-.button.dark[disabled]:focus,
-.button.dark[disabled]:hover {
+.button.dark[disabled]:active, .button.dark[disabled]:focus, .button.dark[disabled]:hover {
   background: #636768;
 }
+
 .has-icon {
   text-indent: 2em;
   position: relative;
@@ -1128,6 +1373,7 @@ hr {
 .has-icon.button.tiny:before {
   top: 0;
 }
+
 .has-chevron {
   padding-right: 3em !important;
 }
@@ -1139,45 +1385,55 @@ hr {
   top: 0;
   right: 0.6em;
 }
+
 .row.extend .column:first-child {
   padding-left: 0;
 }
 .row.extend .column:last-child {
   padding-right: 0;
 }
+
 /*SPACERS*/
 .spacer-8 {
   width: 100%;
   height: 80px;
 }
+
 .spacer-7 {
   width: 100%;
   height: 70px;
 }
+
 .spacer-6 {
   width: 100%;
   height: 60px;
 }
+
 .spacer-5 {
   width: 100%;
   height: 50px;
 }
+
 .spacer-4 {
   width: 100%;
   height: 40px;
 }
+
 .spacer-3 {
   width: 100%;
   height: 30px;
 }
+
 .spacer-2 {
   width: 100%;
   height: 20px;
 }
+
 .spacer-1 {
   width: 100%;
   height: 10px;
 }
+
 /*SWITHC*/
 .onOffSwitch {
   width: 5em;
@@ -1199,7 +1455,7 @@ hr {
   background: #e6375a;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
-  -webkit-transition: all 0.2s ease-out;
+  -webkit-transition: all .2s ease-out;
 }
 .onOffSwitch .handle.off {
   -webkit-transform: translate3d(-123%, 0, 0);
@@ -1211,7 +1467,7 @@ hr {
   line-height: 2.5em;
   position: absolute;
   opacity: 0;
-  -webkit-transition: all 0.1s ease-in;
+  -webkit-transition: all .1s ease-in;
 }
 .onOffSwitch .text.shown {
   opacity: 1;
@@ -1225,12 +1481,14 @@ hr {
   padding-right: 0.5em;
   color: #4a4d4e;
 }
+
 /*VERTICAL MENU*/
 .vertical-menu-title {
   margin-top: .5em;
   padding-left: .4em;
   color: #e6375a;
 }
+
 .vertical-menu {
   list-style: none;
   margin: 0;
@@ -1250,6 +1508,7 @@ hr {
 .vertical-menu li a:active {
   color: #e6375a;
 }
+
 /*LOGO*/
 .logo-widget {
   background: #4a4d4e;
@@ -1262,6 +1521,7 @@ hr {
   box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
+
 /*CALENDAR*/
 .calendar .clndr-controls {
   background: #e6375a;
@@ -1321,6 +1581,7 @@ hr {
 .calendar .clndr-table .adjacent-month {
   color: #b0b3b4;
 }
+
 /*LIST VIEW*/
 .listview {
   overflow: hidden;
@@ -1338,6 +1599,7 @@ hr {
   color: #4a4d4e;
   font-weight: normal;
 }
+
 /*TOASTS*/
 #toasts {
   width: 100%;
@@ -1370,8 +1632,7 @@ hr {
   background: #d11515;
   color: white;
 }
-#toasts .toast.ng-enter,
-#toasts .toast.ng-leave {
+#toasts .toast.ng-enter, #toasts .toast.ng-leave {
   -webkit-transform: scaleY(0);
   -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
 }
@@ -1391,6 +1652,7 @@ hr {
   -webkit-transform: scaleY(0);
   opacity: 0;
 }
+
 /*MODALS*/
 #modals-container {
   z-index: 999998;
@@ -1439,6 +1701,7 @@ hr {
 #modals-container .modal .footer {
   margin-top: 1em;
 }
+
 /*LOADING*/
 #loading {
   z-index: 999999;
@@ -1468,6 +1731,7 @@ hr {
 #loading .msgBox p {
   margin: 0;
 }
+
 .loading-dots {
   width: 70px;
   margin: 10px auto 0px auto;
@@ -1500,40 +1764,40 @@ hr {
   animation-delay: 0.4s;
 }
 .loading-dots .loading-dot:nth-child(4) {
-  -webkit-animation-delay: 0.6000000000000001s;
-  -moz-animation-delay: 0.6000000000000001s;
-  animation-delay: 0.6000000000000001s;
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
 }
 @-webkit-keyframes loadingFade {
-  0% {
+  .loading-dots 0%  {
     opacity: 0;
   }
-  50% {
+  .loading-dots 50%  {
     opacity: 0.8;
   }
-  100% {
+  .loading-dots 100%  {
     opacity: 0;
   }
 }
 @-moz-keyframes loadingFade {
-  0% {
+  .loading-dots 0%  {
     opacity: 0;
   }
-  50% {
+  .loading-dots 50%  {
     opacity: 0.8;
   }
-  100% {
+  .loading-dots 100%  {
     opacity: 0;
   }
 }
 @keyframes loadingFade {
-  0% {
+  .loading-dots 0%  {
     opacity: 0;
   }
-  50% {
+  .loading-dots 50%  {
     opacity: 0.8;
   }
-  100% {
+  .loading-dots 100%  {
     opacity: 0;
   }
 }
@@ -1554,6 +1818,7 @@ hr {
 .swiper-pagination .swiper-active-switch {
   background: #a31431;
 }
+
 .swiper-scroller-container {
   width: 100%;
   height: 100%;
@@ -1574,20 +1839,19 @@ hr {
   bottom: 5px;
   z-index: 1;
 }
+
 /*MAP*/
-.angular-google-map,
-.mb-gmap {
+.angular-google-map, .mb-gmap {
   height: 100%;
   display: block;
 }
-.angular-google-map .angular-google-map-container,
-.mb-gmap .angular-google-map-container {
+.angular-google-map .angular-google-map-container, .mb-gmap .angular-google-map-container {
   height: 100%;
 }
-.angular-google-map .angular-google-map-container > div,
-.mb-gmap .angular-google-map-container > div {
+.angular-google-map .angular-google-map-container > div, .mb-gmap .angular-google-map-container > div {
   height: 100%;
 }
+
 /*D3*/
 .d3-chart-bar-header {
   margin: 1em 0;
@@ -1607,32 +1871,9 @@ hr {
   top: 1.5em;
   left: 50%;
 }
+
 .d3-chart-bar .bar-row {
   margin-bottom: 1em;
-}
-.d3-chart-bar .bar-row:nth-child( 8) .bar-bar {
-  -webkit-transition-delay: 0.4s;
-}
-.d3-chart-bar .bar-row:nth-child( 7) .bar-bar {
-  -webkit-transition-delay: 0.35000000000000003s;
-}
-.d3-chart-bar .bar-row:nth-child( 6) .bar-bar {
-  -webkit-transition-delay: 0.30000000000000004s;
-}
-.d3-chart-bar .bar-row:nth-child( 5) .bar-bar {
-  -webkit-transition-delay: 0.25s;
-}
-.d3-chart-bar .bar-row:nth-child( 4) .bar-bar {
-  -webkit-transition-delay: 0.2s;
-}
-.d3-chart-bar .bar-row:nth-child( 3) .bar-bar {
-  -webkit-transition-delay: 0.15000000000000002s;
-}
-.d3-chart-bar .bar-row:nth-child( 2) .bar-bar {
-  -webkit-transition-delay: 0.1s;
-}
-.d3-chart-bar .bar-row:nth-child( 1) .bar-bar {
-  -webkit-transition-delay: 0.05s;
 }
 .d3-chart-bar .bar-bar {
   background-color: #e6375a;
@@ -1646,6 +1887,7 @@ hr {
   padding-right: 0;
   margin-top: .3em;
 }
+
 /*SLIDER*/
 input[type="range"] {
   display: inline-block;
@@ -1662,6 +1904,7 @@ input[type="range"] {
   background-repeat: no-repeat;
   -webkit-appearance: none;
 }
+
 input[type="range"]::-webkit-slider-thumb {
   position: relative;
   width: 20px;
@@ -1672,6 +1915,7 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   -webkit-appearance: none;
 }
+
 input[type="range"]::-webkit-slider-thumb:before {
   /* what creates the colorful line on the left side of the slider */
   position: absolute;
@@ -1682,6 +1926,7 @@ input[type="range"]::-webkit-slider-thumb:before {
   background: #e6375a;
   content: ' ';
 }
+
 input[type="range"]::-webkit-slider-thumb:after {
   /* create a larger (but hidden) hit area */
   position: absolute;
@@ -1690,5 +1935,8 @@ input[type="range"]::-webkit-slider-thumb:after {
   padding: 30px;
   content: ' ';
 }
+
 /*==========  STATES  ==========*/
 /*==========  THEME  ==========*/
+
+/*# sourceMappingURL=base.css.map */
