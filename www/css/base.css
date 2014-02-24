@@ -988,6 +988,7 @@ hr {
   position: absolute;
   top: 0;
   left: 0;
+  -webkit-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;

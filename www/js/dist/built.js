@@ -448,13 +448,13 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 		};
 
 		// This horible snippet will fix the scrolling weird problem on iOS, but yikes!
-		$timeout(function(){
-			var page = $('.page');
-			page.removeClass('page');
-					$timeout(function(){
-						page.addClass('page');
-					}, 600);
-		}, 600);
+		// $timeout(function(){
+		// 	var page = $('.page');
+		// 	page.removeClass('page');
+		// 			$timeout(function(){
+		// 				page.addClass('page');
+		// 			}, 600);
+		// }, 600);
 
 	}
 ]);
