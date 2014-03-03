@@ -818,6 +818,7 @@ h3,
 h4,
 h5,
 h6 {
+  color: #4a4d4e;
   padding: 0;
 }
 ul {
@@ -827,6 +828,7 @@ ul {
 }
 p {
   font-weight: 300;
+  color: #4a4d4e;
 }
 fieldset {
   border: solid 1px #c4caca;
@@ -906,7 +908,6 @@ hr {
 #header .menuButton {
   font-family: 'entypo';
   font-size: 3.9em;
-  position: absolute;
   padding: 0px 0.2em;
   line-height: 0.8em;
 }
@@ -915,7 +916,6 @@ hr {
   line-height: 53.9px;
   color: white;
   top: 0.2em;
-  position: absolute;
   padding-left: 10px;
 }
 #header .title.sideNav {
@@ -972,7 +972,7 @@ hr {
   left: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: white;
+  background-color: #ffffff;
   -webkit-transform: translate3d(0, 0, 0);
 }
 /*PAGE LAYOUT*/

@@ -3,15 +3,15 @@ app.config([ '$routeProvider',
 	function($routeProvider){
 		$routeProvider
 		.when('/login', {
-			templateUrl: 'partials/login/login.html',
+			templateUrl: 'partials/login.html',
 			controller: 'LoginCtrl'
 		})
 		.when('/login/recover', {
-			templateUrl: 'partials/login/recover.html',
+			templateUrl: 'partials/recover.html',
 			controller: 'RecoverCtrl'
 		})
 		.when('/home', {
-			templateUrl: 'partials/home/home.html',
+			templateUrl: 'partials/home.html',
 			controller: 'HomeCtrl'
 		})
 		.otherwise({
