@@ -14,40 +14,8 @@ app.config([ '$routeProvider',
 			templateUrl: 'partials/home/home.html',
 			controller: 'HomeCtrl'
 		})
-		.when('/forms', {
-			templateUrl: 'partials/forms/forms.html',
-			controller: 'FormsCtrl'
-		})
-		.when('/listview', {
-			templateUrl: 'partials/listview/listview.html',
-			controller: 'ListViewCtrl'
-		})
-		.when('/detailDefault/:id', {
-			templateUrl: 'partials/details/detailDefault.html',
-			controller: 'DetailCtrl'
-		})
-		.when('/calendar', {
-			templateUrl: 'partials/calendar/calendar.html',
-			controller: 'CalendarCtrl'
-		})
-		.when('/swiper', {
-			templateUrl: 'partials/swiper/swiper.html',
-			controller: 'SwiperCtrl'
-		})
-		.when('/map', {
-			templateUrl: 'partials/map/map.html',
-			controller: 'MapCtrl'
-		})
-		.when('/chartsjs', {
-			templateUrl: 'partials/charts/chartsjs.html',
-			controller: 'ChartsjsCtrl'
-		})
-		.when('/d3Charts', {
-			templateUrl: 'partials/charts/d3Charts.html',
-			controller: 'D3ChartsCtrl'
-		})
 		.otherwise({
-			redirectTo:'/home'
+			redirectTo:'/login'
 		});
 	}
 ]);
