@@ -906,7 +906,6 @@ hr {
 #header .menuButton {
   font-family: 'entypo';
   font-size: 3.9em;
-  position: absolute;
   padding: 0px 0.2em;
   line-height: 0.8em;
 }
@@ -915,7 +914,6 @@ hr {
   line-height: 53.9px;
   color: white;
   top: 0.2em;
-  position: absolute;
   padding-left: 10px;
 }
 #header .title.sideNav {

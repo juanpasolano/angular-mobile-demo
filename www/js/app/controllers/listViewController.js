@@ -8,6 +8,7 @@ app.controller('ListViewCtrl', ['$scope', '$location', 'ConfigFactory', 'MusicSe
 		ConfigFactory.hasFooter = true;
 		ConfigFactory.hasSideNavigation = true;
 		ConfigFactory.hasBackButton = false;
+		ConfigFactory.hasRightButton = false;
 		$scope.config = ConfigFactory;
 
 		$scope.loginData = {};

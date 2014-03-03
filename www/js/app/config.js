@@ -9,7 +9,8 @@ app.factory('ConfigFactory', [
 			hasFooter: true,
 			hasHeader:false,
 			hasSideNavigation: false,
-			hasBackButton: false
+			hasBackButton: false,
+			hasRightButton: false
 		};
 	}
 ]);

@@ -68,7 +68,8 @@ app.factory('ConfigFactory', [
 			hasFooter: true,
 			hasHeader:false,
 			hasSideNavigation: false,
-			hasBackButton: false
+			hasBackButton: false,
+			hasRightButton: false
 		};
 	}
 ]);
@@ -316,6 +317,7 @@ app.controller('DetailCtrl', ['$scope', '$routeParams', '$location', 'ConfigFact
 		ConfigFactory.hasFooter = false;
 		ConfigFactory.hasSideNavigation = true;
 		ConfigFactory.hasBackButton = true;
+		ConfigFactory.hasRightButton = true;
 		$scope.config = ConfigFactory;
 
 		$scope.itemId = $routeParams.id;
@@ -412,6 +414,7 @@ app.controller('ListViewCtrl', ['$scope', '$location', 'ConfigFactory', 'MusicSe
 		ConfigFactory.hasFooter = true;
 		ConfigFactory.hasSideNavigation = true;
 		ConfigFactory.hasBackButton = false;
+		ConfigFactory.hasRightButton = false;
 		$scope.config = ConfigFactory;
 
 		$scope.loginData = {};

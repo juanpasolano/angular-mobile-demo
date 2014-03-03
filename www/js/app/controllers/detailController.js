@@ -9,6 +9,7 @@ app.controller('DetailCtrl', ['$scope', '$routeParams', '$location', 'ConfigFact
 		ConfigFactory.hasFooter = false;
 		ConfigFactory.hasSideNavigation = true;
 		ConfigFactory.hasBackButton = true;
+		ConfigFactory.hasRightButton = true;
 		$scope.config = ConfigFactory;
 
 		$scope.itemId = $routeParams.id;
