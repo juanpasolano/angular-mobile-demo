@@ -1,15 +1,21 @@
 @import 'entypoIcons.less';
 
-.yayayayayaya{}
-
 /*MAIN VARIABLES*/
 @mainFont:'Lato';
 @sideBarWidth:250px;
 @headerHeight: 70px;
+
+@mainColor:#E6375A;
 @darkGray:#4A4D4E;
 @lightGray:#dfe2e2;
 
-@mainColor:#E6375A;
+@headerColor:@darkGray;
+@sideNavColor:#fff;
+@footerColor:@darkGray;
+
+@paragraphColor:@darkGray;
+@headersColor:@darkGray;
+
 
 /*==========  BASE  ==========*/
 
@@ -44,6 +50,7 @@ a{
 }
 h1, h2, h3, h4, h5, h6{
   // margin: 0;
+  color:@headersColor;
   padding: 0;
 }
 ul{
@@ -53,6 +60,7 @@ ul{
 }
 p{
   font-weight: 300;
+  color:@paragraphColor;
 }
 fieldset {
   border: solid 1px darken(@lightGray, 10%);
@@ -127,7 +135,7 @@ hr{
 #header {
   width: 100%;
   height: @headerHeight;
-  background: @darkGray;
+  background: @headerColor;
   box-sizing: border-box;
   padding: 10px;
   &.hidden{
@@ -175,7 +183,7 @@ hr{
   position: absolute;
   bottom: 0;
   display:-webkit-flex;
-  background: @darkGray;
+  background: @footerColor;
   -webkit-transform: translate3d(0,0,0);
   -webkit-transition: all .2s;
   &.hidden{
@@ -202,7 +210,7 @@ hr{
   left: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: white;
+  background-color: @sideNavColor;
   -webkit-transform: translate3d(0, 0, 0);
 }
 

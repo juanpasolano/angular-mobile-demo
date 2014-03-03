@@ -9,6 +9,9 @@ app.controller('ListViewCtrl', ['$scope', '$location', 'ConfigFactory', 'MusicSe
 		ConfigFactory.hasSideNavigation = true;
 		ConfigFactory.hasBackButton = false;
 		ConfigFactory.hasRightButton = false;
+		ConfigFactory.rightButtonFn = function(ev){
+			console.log(ev);
+		};
 		$scope.config = ConfigFactory;
 
 		$scope.loginData = {};

@@ -818,6 +818,7 @@ h3,
 h4,
 h5,
 h6 {
+  color: #4a4d4e;
   padding: 0;
 }
 ul {
@@ -827,6 +828,7 @@ ul {
 }
 p {
   font-weight: 300;
+  color: #4a4d4e;
 }
 fieldset {
   border: solid 1px #c4caca;
@@ -970,7 +972,7 @@ hr {
   left: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: white;
+  background-color: #ffffff;
   -webkit-transform: translate3d(0, 0, 0);
 }
 /*PAGE LAYOUT*/
