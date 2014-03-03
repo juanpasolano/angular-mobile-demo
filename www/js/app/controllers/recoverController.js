@@ -1,7 +1,7 @@
 /*
-* RecoverController.js
+* RecoverCtrl.js
 */
-app.controller('RecoverController',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
+app.controller('RecoverCtrl',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
 	function($scope, $rootScope, $location, ConfigFactory){
 		ConfigFactory.title = 'Recover your password';
 		ConfigFactory.hasHeader = true;

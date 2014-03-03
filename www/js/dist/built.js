@@ -11,62 +11,7 @@ $(function() {
 
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch']);
 
-app.config([ '$routeProvider',
-	function($routeProvider){
-		$routeProvider
-		.when('/login', {
-			templateUrl: 'partials/login/login.html',
-			controller: 'LoginController'
-		})
-		.when('/login/recover', {
-			templateUrl: 'partials/login/recover.html',
-			controller: 'RecoverController'
-		})
-		.when('/home', {
-			templateUrl: 'partials/home/home.html',
-			controller: 'HomeController'
-		})
-		.when('/forms', {
-			templateUrl: 'partials/forms/forms.html',
-			controller: 'FormsController'
-		})
-		.when('/listview', {
-			templateUrl: 'partials/listview/listview.html',
-			controller: 'ListViewController'
-		})
-		.when('/detailDefault/:id', {
-			templateUrl: 'partials/details/detailDefault.html',
-			controller: 'DetailController'
-		})
-		.when('/calendar', {
-			templateUrl: 'partials/calendar/calendar.html',
-			controller: 'CalendarController'
-		})
-		.when('/swiper', {
-			templateUrl: 'partials/swiper/swiper.html',
-			controller: 'SwiperController'
-		})
-		.when('/map', {
-			templateUrl: 'partials/map/map.html',
-			controller: 'MapController'
-		})
-		.when('/chartsjs', {
-			templateUrl: 'partials/charts/chartsjs.html',
-			controller: 'ChartsjsController'
-		})
-		.when('/d3Charts', {
-			templateUrl: 'partials/charts/d3Charts.html',
-			controller: 'D3ChartsController'
-		})
-		.otherwise({
-			redirectTo:'/home'
-		});
-	}
-]);
-
-
-
-app.controller('MainController',[ '$scope', '$element', '$window', 'ConfigFactory',
+app.controller('MainCtrl',[ '$scope', '$element', '$window', 'ConfigFactory',
 	function($scope, $element, $window, ConfigFactory){
 		$scope.config = ConfigFactory;
 
@@ -109,7 +54,7 @@ app.controller('MainController',[ '$scope', '$element', '$window', 'ConfigFactor
 			$window.history.back();
 		};
 	}
-]);
+	]);
 
 
 app.factory('ConfigFactory', [
@@ -127,13 +72,11 @@ app.factory('ConfigFactory', [
 		};
 	}
 ]);
-
-
 /*
-* CalendarController.js
+* CalendarCtrl.js
 */
 
-app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'ConfigFactory',
+app.controller('CalendarCtrl', ['$scope', '$rootScope', '$location', 'ConfigFactory',
 	function($scope, $rootScope, $location, ConfigFactory){
 		ConfigFactory.title = 'Calendar';
 		ConfigFactory.hasHeader = true;
@@ -183,6 +126,7 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 			}
 		};
 
+
 		$scope.addEvent = function(){
 			$scope.events.push($scope.newEvent);
 			$scope.newEvent = {};
@@ -194,10 +138,10 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 	}
 ]);
 /*
-* ChartsjsController.js
+* ChartsjsCtrl.js
 */
 
-app.controller('ChartsjsController', ['$scope', '$timeout', 'ConfigFactory',
+app.controller('ChartsjsCtrl', ['$scope', '$timeout', 'ConfigFactory',
 	function($scope, $timeout, ConfigFactory){
 		ConfigFactory.title = 'Chart.js';
 		ConfigFactory.hasHeader = true;
@@ -325,10 +269,10 @@ app.controller('ChartsjsController', ['$scope', '$timeout', 'ConfigFactory',
 	}
 ]);
 /*
-* D3ChartsController.js
+* D3ChartsCtrl.js
 */
 
-app.controller('D3ChartsController', ['$scope', '$timeout', 'ConfigFactory',
+app.controller('D3ChartsCtrl', ['$scope', '$timeout', 'ConfigFactory',
 	function($scope, $timeout, ConfigFactory){
 		ConfigFactory.title = 'd3 Charts';
 		ConfigFactory.hasHeader = true;
@@ -362,10 +306,10 @@ app.controller('D3ChartsController', ['$scope', '$timeout', 'ConfigFactory',
 	}
 ]);
 /*
-* DetailController.js
+* DetailCtrl.js
 */
 
-app.controller('DetailController', ['$scope', '$routeParams', '$location', 'ConfigFactory', 'MusicService',
+app.controller('DetailCtrl', ['$scope', '$routeParams', '$location', 'ConfigFactory', 'MusicService',
 	function($scope, $routeParams, $location, ConfigFactory, MusicService){
 		ConfigFactory.title = $routeParams.id;
 		ConfigFactory.hasHeader = true;
@@ -385,9 +329,9 @@ app.controller('DetailController', ['$scope', '$routeParams', '$location', 'Conf
 	}
 ]);
 /*
-* FormsController.js lalala
+* FormsCtrl.js lalala
 */
-app.controller('FormsController', ['$scope', '$location', 'ConfigFactory',
+app.controller('FormsCtrl', ['$scope', '$location', 'ConfigFactory',
 	function($scope, $location, ConfigFactory){
 		ConfigFactory.title = 'Forms';
 		ConfigFactory.hasHeader = true;
@@ -407,14 +351,14 @@ app.controller('FormsController', ['$scope', '$location', 'ConfigFactory',
 
 
 /*
-* HomeController.js
+* HomeCtrl.js
 */
-app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFactory',
+app.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout', 'ConfigFactory',
 	function($scope, $rootScope, $timeout, ConfigFactory){
 
-		ConfigFactory.title = 'Buenas';
+		ConfigFactory.title = 'Mi titulo';
 		ConfigFactory.hasHeader = true;
-		ConfigFactory.hasFooter = false;
+		ConfigFactory.hasFooter = true;
 		ConfigFactory.hasSideNavigation = true;
 
 		$scope.emitToast = function(type){
@@ -448,20 +392,20 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 		};
 
 		// This horible snippet will fix the scrolling weird problem on iOS, but yikes!
-		// $timeout(function(){
-		// 	var page = $('.page');
-		// 	page.removeClass('page');
-		// 			$timeout(function(){
-		// 				page.addClass('page');
-		// 			}, 600);
-		// }, 600);
+		$timeout(function(){
+			var page = $('.page');
+			page.removeClass('page');
+					$timeout(function(){
+						page.addClass('page');
+					}, 600);
+		}, 600);
 
 	}
 ]);
 /*
-* ListViewController.js
+* ListViewCtrl.js
 */
-app.controller('ListViewController', ['$scope', '$location', 'ConfigFactory', 'MusicService',
+app.controller('ListViewCtrl', ['$scope', '$location', 'ConfigFactory', 'MusicService',
 	function($scope, $location, ConfigFactory, MusicService){
 		ConfigFactory.title = 'List View';
 		ConfigFactory.hasHeader = true;
@@ -485,9 +429,9 @@ app.controller('ListViewController', ['$scope', '$location', 'ConfigFactory', 'M
 	}
 ]);
 /*
-* HomeController.js
+* HomeCtrl.js
 */
-app.controller('LoginController',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
+app.controller('LoginCtrl',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
 	function($scope, $rootScope, $location, ConfigFactory){
 		ConfigFactory.title = 'Login';
 		ConfigFactory.hasHeader = true;
@@ -503,10 +447,10 @@ app.controller('LoginController',[ '$scope', '$rootScope', '$location', 'ConfigF
 	}
 ]);
 /*
- * MapController.js
+ * MapCtrl.js
  */
 
-app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel',
+app.controller('MapCtrl', ['$scope', '$log', 'ConfigFactory', 'StoresModel',
 	function($scope, $log, ConfigFactory, StoresModel){
 		ConfigFactory.title = 'Map demo';
 		ConfigFactory.hasHeader = true;
@@ -535,9 +479,9 @@ app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel
 ]);
 
 /*
-* RecoverController.js
+* RecoverCtrl.js
 */
-app.controller('RecoverController',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
+app.controller('RecoverCtrl',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
 	function($scope, $rootScope, $location, ConfigFactory){
 		ConfigFactory.title = 'Recover your password';
 		ConfigFactory.hasHeader = true;
@@ -552,10 +496,10 @@ app.controller('RecoverController',[ '$scope', '$rootScope', '$location', 'Confi
 	}
 ]);
 /*
-* SwiperController.js
+* SwiperCtrl.js
 */
 
-app.controller('SwiperController', [ '$scope', '$location', 'ConfigFactory',
+app.controller('SwiperCtrl', [ '$scope', '$location', 'ConfigFactory',
 
 	function($scope, $location, ConfigFactory){
 		ConfigFactory.title = 'Swiper plugin';
@@ -1057,6 +1001,59 @@ app.filter('upperCase', function(){
 	};
 });
 
+
+app.config([ '$routeProvider',
+	function($routeProvider){
+		$routeProvider
+		.when('/login', {
+			templateUrl: 'partials/login/login.html',
+			controller: 'LoginCtrl'
+		})
+		.when('/login/recover', {
+			templateUrl: 'partials/login/recover.html',
+			controller: 'RecoverCtrl'
+		})
+		.when('/home', {
+			templateUrl: 'partials/home/home.html',
+			controller: 'HomeCtrl'
+		})
+		.when('/forms', {
+			templateUrl: 'partials/forms/forms.html',
+			controller: 'FormsCtrl'
+		})
+		.when('/listview', {
+			templateUrl: 'partials/listview/listview.html',
+			controller: 'ListViewCtrl'
+		})
+		.when('/detailDefault/:id', {
+			templateUrl: 'partials/details/detailDefault.html',
+			controller: 'DetailCtrl'
+		})
+		.when('/calendar', {
+			templateUrl: 'partials/calendar/calendar.html',
+			controller: 'CalendarCtrl'
+		})
+		.when('/swiper', {
+			templateUrl: 'partials/swiper/swiper.html',
+			controller: 'SwiperCtrl'
+		})
+		.when('/map', {
+			templateUrl: 'partials/map/map.html',
+			controller: 'MapCtrl'
+		})
+		.when('/chartsjs', {
+			templateUrl: 'partials/charts/chartsjs.html',
+			controller: 'ChartsjsCtrl'
+		})
+		.when('/d3Charts', {
+			templateUrl: 'partials/charts/d3Charts.html',
+			controller: 'D3ChartsCtrl'
+		})
+		.otherwise({
+			redirectTo:'/home'
+		});
+	}
+]);
 //TODO: check if there is a better/proper way to do this calls and return promises
 app.factory('MusicService',[ '$http', '$rootScope', 'ConfigFactory',
 	function($http, $rootScope, ConfigFactory){

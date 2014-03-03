@@ -1,8 +1,8 @@
 /*
-* DetailController.js
+* DetailCtrl.js
 */
 
-app.controller('DetailController', ['$scope', '$routeParams', '$location', 'ConfigFactory', 'MusicService',
+app.controller('DetailCtrl', ['$scope', '$routeParams', '$location', 'ConfigFactory', 'MusicService',
 	function($scope, $routeParams, $location, ConfigFactory, MusicService){
 		ConfigFactory.title = $routeParams.id;
 		ConfigFactory.hasHeader = true;

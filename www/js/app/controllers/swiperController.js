@@ -1,8 +1,8 @@
 /*
-* SwiperController.js
+* SwiperCtrl.js
 */
 
-app.controller('SwiperController', [ '$scope', '$location', 'ConfigFactory',
+app.controller('SwiperCtrl', [ '$scope', '$location', 'ConfigFactory',
 
 	function($scope, $location, ConfigFactory){
 		ConfigFactory.title = 'Swiper plugin';

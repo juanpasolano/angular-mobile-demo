@@ -1,8 +1,8 @@
 /*
-* ChartsjsController.js
+* ChartsjsCtrl.js
 */
 
-app.controller('ChartsjsController', ['$scope', '$timeout', 'ConfigFactory',
+app.controller('ChartsjsCtrl', ['$scope', '$timeout', 'ConfigFactory',
 	function($scope, $timeout, ConfigFactory){
 		ConfigFactory.title = 'Chart.js';
 		ConfigFactory.hasHeader = true;

@@ -1,8 +1,8 @@
 /*
-* D3ChartsController.js
+* D3ChartsCtrl.js
 */
 
-app.controller('D3ChartsController', ['$scope', '$timeout', 'ConfigFactory',
+app.controller('D3ChartsCtrl', ['$scope', '$timeout', 'ConfigFactory',
 	function($scope, $timeout, ConfigFactory){
 		ConfigFactory.title = 'd3 Charts';
 		ConfigFactory.hasHeader = true;

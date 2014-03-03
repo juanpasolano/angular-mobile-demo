@@ -1,7 +1,7 @@
 /*
-* ListViewController.js
+* ListViewCtrl.js
 */
-app.controller('ListViewController', ['$scope', '$location', 'ConfigFactory', 'MusicService',
+app.controller('ListViewCtrl', ['$scope', '$location', 'ConfigFactory', 'MusicService',
 	function($scope, $location, ConfigFactory, MusicService){
 		ConfigFactory.title = 'List View';
 		ConfigFactory.hasHeader = true;

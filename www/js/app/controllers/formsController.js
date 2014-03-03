@@ -1,7 +1,7 @@
 /*
-* FormsController.js lalala
+* FormsCtrl.js lalala
 */
-app.controller('FormsController', ['$scope', '$location', 'ConfigFactory',
+app.controller('FormsCtrl', ['$scope', '$location', 'ConfigFactory',
 	function($scope, $location, ConfigFactory){
 		ConfigFactory.title = 'Forms';
 		ConfigFactory.hasHeader = true;

@@ -11,62 +11,7 @@ $(function() {
 
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch']);
 
-app.config([ '$routeProvider',
-	function($routeProvider){
-		$routeProvider
-		.when('/login', {
-			templateUrl: 'partials/login/login.html',
-			controller: 'LoginController'
-		})
-		.when('/login/recover', {
-			templateUrl: 'partials/login/recover.html',
-			controller: 'RecoverController'
-		})
-		.when('/home', {
-			templateUrl: 'partials/home/home.html',
-			controller: 'HomeController'
-		})
-		.when('/forms', {
-			templateUrl: 'partials/forms/forms.html',
-			controller: 'FormsController'
-		})
-		.when('/listview', {
-			templateUrl: 'partials/listview/listview.html',
-			controller: 'ListViewController'
-		})
-		.when('/detailDefault/:id', {
-			templateUrl: 'partials/details/detailDefault.html',
-			controller: 'DetailController'
-		})
-		.when('/calendar', {
-			templateUrl: 'partials/calendar/calendar.html',
-			controller: 'CalendarController'
-		})
-		.when('/swiper', {
-			templateUrl: 'partials/swiper/swiper.html',
-			controller: 'SwiperController'
-		})
-		.when('/map', {
-			templateUrl: 'partials/map/map.html',
-			controller: 'MapController'
-		})
-		.when('/chartsjs', {
-			templateUrl: 'partials/charts/chartsjs.html',
-			controller: 'ChartsjsController'
-		})
-		.when('/d3Charts', {
-			templateUrl: 'partials/charts/d3Charts.html',
-			controller: 'D3ChartsController'
-		})
-		.otherwise({
-			redirectTo:'/home'
-		});
-	}
-]);
-
-
-
-app.controller('MainController',[ '$scope', '$element', '$window', 'ConfigFactory',
+app.controller('MainCtrl',[ '$scope', '$element', '$window', 'ConfigFactory',
 	function($scope, $element, $window, ConfigFactory){
 		$scope.config = ConfigFactory;
 
@@ -109,22 +54,5 @@ app.controller('MainController',[ '$scope', '$element', '$window', 'ConfigFactor
 			$window.history.back();
 		};
 	}
-]);
-
-
-app.factory('ConfigFactory', [
-	function(){
-		return {
-			server: {
-				services: 'http://192.237.180.31/dhm/public/api/',
-				assets: 'http://192.237.180.31/dhm/public/'
-			},
-			title : 'Angular boilerplate from factory',
-			hasFooter: true,
-			hasHeader:false,
-			hasSideNavigation: false,
-			hasBackButton: false
-		};
-	}
-]);
+	]);
 

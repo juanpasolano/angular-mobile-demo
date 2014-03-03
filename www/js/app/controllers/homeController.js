@@ -1,12 +1,12 @@
 /*
-* HomeController.js
+* HomeCtrl.js
 */
-app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFactory',
+app.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout', 'ConfigFactory',
 	function($scope, $rootScope, $timeout, ConfigFactory){
 
-		ConfigFactory.title = 'Buenas';
+		ConfigFactory.title = 'Mi titulo';
 		ConfigFactory.hasHeader = true;
-		ConfigFactory.hasFooter = false;
+		ConfigFactory.hasFooter = true;
 		ConfigFactory.hasSideNavigation = true;
 
 		$scope.emitToast = function(type){
@@ -40,13 +40,13 @@ app.controller('HomeController', ['$scope', '$rootScope', '$timeout', 'ConfigFac
 		};
 
 		// This horible snippet will fix the scrolling weird problem on iOS, but yikes!
-		// $timeout(function(){
-		// 	var page = $('.page');
-		// 	page.removeClass('page');
-		// 			$timeout(function(){
-		// 				page.addClass('page');
-		// 			}, 600);
-		// }, 600);
+		$timeout(function(){
+			var page = $('.page');
+			page.removeClass('page');
+					$timeout(function(){
+						page.addClass('page');
+					}, 600);
+		}, 600);
 
 	}
 ]);

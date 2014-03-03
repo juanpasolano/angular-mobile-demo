@@ -1,8 +1,8 @@
 /*
- * MapController.js
+ * MapCtrl.js
  */
 
-app.controller('MapController', ['$scope', '$log', 'ConfigFactory', 'StoresModel',
+app.controller('MapCtrl', ['$scope', '$log', 'ConfigFactory', 'StoresModel',
 	function($scope, $log, ConfigFactory, StoresModel){
 		ConfigFactory.title = 'Map demo';
 		ConfigFactory.hasHeader = true;

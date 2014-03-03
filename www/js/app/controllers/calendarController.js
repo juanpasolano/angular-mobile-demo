@@ -1,8 +1,8 @@
 /*
-* CalendarController.js
+* CalendarCtrl.js
 */
 
-app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'ConfigFactory',
+app.controller('CalendarCtrl', ['$scope', '$rootScope', '$location', 'ConfigFactory',
 	function($scope, $rootScope, $location, ConfigFactory){
 		ConfigFactory.title = 'Calendar';
 		ConfigFactory.hasHeader = true;
@@ -51,6 +51,7 @@ app.controller('CalendarController', ['$scope', '$rootScope', '$location', 'Conf
 				console.log('this would be a fine place to attach custom event handlers.');
 			}
 		};
+
 
 		$scope.addEvent = function(){
 			$scope.events.push($scope.newEvent);

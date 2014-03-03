@@ -1,7 +1,7 @@
 /*
-* HomeController.js
+* HomeCtrl.js
 */
-app.controller('LoginController',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
+app.controller('LoginCtrl',[ '$scope', '$rootScope', '$location', 'ConfigFactory',
 	function($scope, $rootScope, $location, ConfigFactory){
 		ConfigFactory.title = 'Login';
 		ConfigFactory.hasHeader = true;
