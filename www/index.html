@@ -52,7 +52,7 @@
 
         <div id="wrapper"  ng-class="{true: 'blur-filter'}[config.wrapperIsBlured]">
 
-            <div id="header" class="row collapse">
+            <div id="header" class="row collapse"  ng-class="{'shown' : config.hasHeader == true}">
                 <div class="column small-2">
                     <a class="button menuButton" ng-click="toggleSideNav()" ng-show="config.hasSideNavigation && !config.hasBackButton">&#9776;</a>
                     <a class="button menuButton" ng-click="goBack()" ng-show="config.hasBackButton">&#59237;</a>
@@ -75,7 +75,7 @@
 
 
 
-            <div id="footer" ng-class="{false: 'hidden'}[config.hasFooter]">
+            <div id="footer" ng-class="{true: 'shown'}[config.hasFooter]">
                 <a href="#/home">Home</a>
                 <a href="#/listview" >ListView</a>
                 <a href="#/calendar" >Calendar</a>

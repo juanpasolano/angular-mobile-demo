@@ -441,19 +441,20 @@ app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$te
 ]);
 /*
 * scrollFixDrivctive.js
-* This small directive fixes the overflow scroll bug on ios devices.
+* This small directive fixes the overflow scroll bug on ios 7 devices.
 */
 app.directive('mbScrollfixer', ['$timeout',
 	function($timeout){
 		return{
 			link: function(scope, element, attrs){
 				var el =  $(element);
-			$timeout(function(){
-				el.css({'overflow-x':'none', 'height': '99%'});
+				el.on('touchstart', function(event){});
 				$timeout(function(){
-					el.css({'overflow-x':'scroll', 'height': '100%'});
+					el.css({'overflow-y': 'hidden', '-webkit-overflow-scrolling': 'none'});
+					$timeout(function(){
+						el.css({'overflow-y': 'scroll', '-webkit-overflow-scrolling': 'touch'});
+					}, 600);
 				}, 600);
-			}, 600);
 			}
 		};
 	}

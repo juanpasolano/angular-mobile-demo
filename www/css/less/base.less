@@ -7,6 +7,7 @@
 @mainFont:'Lato', Sans-serif;
 @sideBarWidth:250px;
 @headerHeight: 70px;
+@footerHeight:70px;
 
 @mainColor:#E6375A;
 @darkGray:#4A4D4E;
@@ -15,6 +16,7 @@
 @headerColor:@darkGray;
 @sideNavColor:#fff;
 @footerColor:@darkGray;
+@contentColor: white;
 
 @paragraphColor:@darkGray;
 @headersColor:@darkGray;
@@ -119,6 +121,7 @@ button, .button, label, a{
   width: 100%;
   height: 100%;
   position: absolute;
+  background: @contentColor;
   top: 0;
   left: 0;
   -webkit-transition: all .4s;
@@ -141,8 +144,10 @@ button, .button, label, a{
   background: @headerColor;
   box-sizing: border-box;
   padding: 10px;
-  &.hidden{
-    display: none;
+  -webkit-transform: translate3d(0,( (@headerHeight + 20px)*-1px ),0);
+  -webkit-transition: all .2s;
+  &.shown{
+    -webkit-transform: translate3d(0,0,0);
   }
   .menuButton{
     font-family: 'entypo';
@@ -159,7 +164,7 @@ button, .button, label, a{
   }
 }
 #content {
-  background: @lightGray;
+  background: @contentColor;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -179,16 +184,15 @@ button, .button, label, a{
 }
 #footer{
   width: 100%;
-  height: @headerHeight;
+  height: @footerHeight;
   position: absolute;
   bottom: 0;
   display:-webkit-flex;
   background: @footerColor;
-  -webkit-transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,(@footerHeight + 20px),0);
   -webkit-transition: all .2s;
-  &.hidden{
-    -webkit-transform: translate3d(0,(@headerHeight + 20px),0);
-    //display: none;
+  &.shown{
+    -webkit-transform: translate3d(0,0,0);
   }
   > a{
       -webkit-flex: 1 1 auto;
@@ -366,29 +370,27 @@ button, .button, label, a{
     font-size: 2.7em;
     font-style: normal;
     position: absolute;
-    left: -0.4em;
-    top: -0.2em;
-  }
-  &.button{
-    &:before{
-      top: 0.1em;
-    }
-  }
-  &.button.tiny{
-    &:before{
-      top: 0;
-    }
+    left: -0.3em;
+    top: 50%;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    -webkit-transform: translate3d(0,-50%, 0);
   }
 }
 .has-chevron{
-  padding-right: 3em !important;
   &:after{
-    content: '\E75E';
+    content: '\E766';
     font-size: 2em;
     position: absolute;
     font-family: 'entypo';
-    top: 0;
+    top: 50%;
+    -webkit-transform: translate3d(0, -50%, 0);
     right: 0.6em;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    text-align: center;
   }
 }
 .row.extend{
@@ -419,7 +421,7 @@ button, .button, label, a{
   width: @size;
   height: @size/2;
   border-radius:@size/2;
-  background: white;
+  background: @lightGray;
   position: relative;
 
   .hidden{
