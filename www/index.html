@@ -52,15 +52,15 @@
 
         <div id="wrapper"  ng-class="{true: 'blur-filter'}[config.wrapperIsBlured]">
 
-            <div id="header" class="row">
+            <div id="header" class="row collapse">
                 <div class="column small-2">
                     <a class="button menuButton" ng-click="toggleSideNav()" ng-show="config.hasSideNavigation && !config.hasBackButton">&#9776;</a>
                     <a class="button menuButton" ng-click="goBack()" ng-show="config.hasBackButton">&#59237;</a>
                 </div>
-                <div class="column small-8">
-                    <h3 class="title" ng-class="{true: 'sideNav'}[config.hasSideNavigation]">{{config.title}}</h3>
+                <div class="column small-8 tac">
+                    <h3 class="title">{{config.title}}</h3>
                 </div>
-                <div class="column small-2">
+                <div class="column small-2 tar">
                     <a class="button menuButton" ng-show="config.hasRightButton">&#59196;</a>
                 </div>
             </div>
