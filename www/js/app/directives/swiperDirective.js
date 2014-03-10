@@ -10,9 +10,7 @@ app.directive('mbSwiper', [
 		return{
 			transclude: true,
 			template:'<div class="swiper-container"><div class="swiper-wrapper" ng-transclude></div></div>',
-			scope:{
-				options: '=mbSwiperOptions'
-			},
+			scope:true,
 			link: function(scope, element, attrs){
 
 				//default options of plugin
@@ -20,6 +18,9 @@ app.directive('mbSwiper', [
 					loop:true,
 					grabCursor: true,
 				};
+
+				//catching options with evail to avoid NonAssign Error
+				scope.options = scope.$eval(attrs.mbSwiperOptions) || {};
 
 				//extending defaults and scope.options into the settings variable
 				var settings = $.extend({}, defaults, scope.options);
