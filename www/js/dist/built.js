@@ -47,8 +47,7 @@ app.controller('MainCtrl',[ '$scope', '$element', '$window', 'ConfigFactory',
 		};
 
 		$scope.toggleSideNav = function(){
-			$element.find('#wrapper').toggleClass('open');
-			$element.find('#sideNav').toggleClass('open');
+			$element.find('#wrapper, #content .content-cover, #sideNav').toggleClass('open');
 		};
 		$scope.goBack = function(){
 			$window.history.back();
