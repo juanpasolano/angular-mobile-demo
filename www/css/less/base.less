@@ -10,6 +10,7 @@
 @footerHeight:70px;
 
 @mainColor:#E6375A;
+@secondColor:spin(@mainColor, 20%);
 @darkGray:#4A4D4E;
 @lightGray:#dfe2e2;
 
@@ -107,6 +108,9 @@ button, .button, label, a{
 .mainColor{
   color:@mainColor;
 }
+.bgMainColor{
+  background: @mainColor
+}
 
 /*==========  LAYOUT  ==========*/
 #app {
@@ -148,6 +152,22 @@ button, .button, label, a{
   -webkit-transition: all .2s;
   &.shown{
     -webkit-transform: translate3d(0,0,0);
+  }
+  .column:nth-child(2){
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 23px;
+      height: 100%;
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%,fade(@darkGray, 0%)), color-stop(100%,fade(@darkGray, 100%))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(left,  fade(@darkGray, 0%) 0%,fade(@darkGray, 100%) 100%); /* Chrome10+,Safari5.1+ */
+      background: linear-gradient(to right,  fade(@darkGray, 0%) 0%,fade(@darkGray, 100%) 100%); /* W3C */
+    }
   }
   .menuButton{
     font-family: 'entypo';
@@ -379,6 +399,7 @@ button, .button, label, a{
   }
 }
 .has-chevron{
+  position: relative;
   &:after{
     content: '\E766';
     font-size: 2em;

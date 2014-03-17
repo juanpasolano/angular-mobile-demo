@@ -156,7 +156,7 @@
   content: '\1F4F7';
 }
 .entypo-megaphone:before {
-  content: '1F4E3';
+  content: '\1F4E3';
 }
 .entypo-moon:before {
   content: '\0045';
@@ -1019,6 +1019,9 @@ a {
 .mainColor {
   color: #e6375a;
 }
+.bgMainColor {
+  background: #e6375a;
+}
 /*==========  LAYOUT  ==========*/
 #app {
   width: 100%;
@@ -1060,6 +1063,25 @@ a {
 }
 #header.shown {
   -webkit-transform: translate3d(0, 0, 0);
+}
+#header .column:nth-child(2) {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+#header .column:nth-child(2):after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 23px;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(74, 77, 78, 0)), color-stop(100%, #4a4d4e));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(74, 77, 78, 0) 0%, #4a4d4e 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: linear-gradient(to right, rgba(74, 77, 78, 0) 0%, #4a4d4e 100%);
+  /* W3C */
 }
 #header .menuButton {
   font-family: 'entypo';
@@ -1279,6 +1301,9 @@ a {
   height: 1em;
   line-height: 1em;
   -webkit-transform: translate3d(0, -50%, 0);
+}
+.has-chevron {
+  position: relative;
 }
 .has-chevron:after {
   content: '\E766';

@@ -12,9 +12,6 @@ app.controller('ListViewCtrl', ['$scope', '$location', 'ConfigFactory', 'MusicSe
 		ConfigFactory.rightButtonFn = function(ev){
 			console.log(ev);
 		};
-		$scope.config = ConfigFactory;
-
-		$scope.loginData = {};
 
 		var itemsSuccess = function(data, status){
 			$scope.items = data.results.albummatches.album;

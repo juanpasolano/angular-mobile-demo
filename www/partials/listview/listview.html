@@ -1,5 +1,10 @@
 <div class="page">
-    <input type="text" ng-model="searchText.name"/>
+
+    <div class="" ng-show="!items" style="margin-top: 1rem;">
+        <div mb-loading-spinner></div>
+    </div>
+
+    <input type="text" ng-model="searchText.name" ng-show="items"/>
     <ul class="listview">
     	<li ng-repeat="item in items | filter:searchText " class="row column medium-6" ng-click="getDetails(item)">
     		<div class="column small-3">
