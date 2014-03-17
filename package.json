@@ -1,13 +1,18 @@
 {
-  "name": "EmberAppBoilerplate",
+  "name": "Angular Fastapps",
   "version": "0.0.1",
-  "description": "Ember App Boilerplate",
+  "description": "Angular FastApps",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juanpasolano/angular-mobile-demo.git"
+  },
+  "homepage": "https://github.com/juanpasolano/angular-mobile-demo",
+  "bugs": "https://github.com/juanpasolano/angular-mobile-demo/issues",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Juan Pablo Solano",
-  "license": "BSD-2-Clause",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",

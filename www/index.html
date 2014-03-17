@@ -52,6 +52,8 @@
 
         <div id="wrapper"  ng-class="{true: 'blur-filter'}[config.wrapperIsBlured]">
 
+
+            <!-- HEADER -->
             <div id="header" class="row collapse"  ng-class="{'shown' : config.hasHeader == true}">
                 <div class="column small-2">
                     <a class="button menuButton" ng-click="toggleSideNav()" ng-show="config.hasSideNavigation && !config.hasBackButton">&#9776;</a>
@@ -67,6 +69,10 @@
 
             <!-- CONTENT -->
             <div id="content" style="{{contentStyles()}}">
+
+                <!-- prevents events when sidenavigation is open -->
+                <div class="content-cover" ng-swipe-left="toggleSideNav()"></div>
+
                 <div ng-view="" class="page-holder page-pop-animation clearfix">
 
                 </div>
@@ -93,12 +99,7 @@
         <div id="loading" mb-loading-pop-over="">
             <div class="msgBox">
                 <p>{{options.text}}</p>
-                <div class="loading-dots">
-                    <div class="loading-dot"></div>
-                    <div class="loading-dot"></div>
-                    <div class="loading-dot"></div>
-                    <div class="loading-dot"></div>
-                </div>
+                <div mb-loading-spinner></div>
             </div>
         </div>
 
