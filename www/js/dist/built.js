@@ -508,8 +508,8 @@ present and will initialize immediatelly
 
 */
 
-app.directive('mbSwiper', ['$timeout',
-	function($timeout){
+app.directive('mbSwiper', ['$timeout', '$parse',
+	function($timeout, $parse){
 		return{
 			priority: 2000,
 			transclude: true,
@@ -526,7 +526,7 @@ app.directive('mbSwiper', ['$timeout',
 
 				var init = function() {
 					//catching options with evail to avoid NonAssign Error
-					scope.options = scope.$eval(attrs.mbSwiperOptions) || {};
+					scope.options = $parse(attrs.mbSwiperOptions)(scope.$parent) || {};
 
 					//extending defaults and scope.options into the settings variable
 					var settings = $.extend({}, defaults, scope.options);
