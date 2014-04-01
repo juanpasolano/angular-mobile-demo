@@ -51,6 +51,16 @@ app.directive('mbSwiper', ['$timeout', '$parse',
 					var swiperElem = element.find('.swiper-container');
 					//init it bitch!
 					var mySwiper = swiperElem.swiper(settings);
+					//check for images to load
+					checkImageLoad();
+				};
+				var checkImageLoad = function(){
+					element.find('img').bind('load', function(){
+						var self = this;
+						setTimeout(function(){
+							$(self).css('opacity', 1);
+						}, 100);
+					});
 				};
 
 				//we check if the directive should wait for some data to be loaded to initiate
