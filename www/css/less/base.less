@@ -1,10 +1,11 @@
-@import 'entypoIcons.less';
+@import 'ionicons.less';
 @import 'mixins.less';
 @import 'font.less';
 
 
 /*MAIN VARIABLES*/
 @mainFont:'Lato', Sans-serif;
+@iconsFont:"ionicons";
 @sideBarWidth:250px;
 @headerHeight: 70px;
 @footerHeight:70px;
@@ -105,7 +106,7 @@ button, .button, label, a{
 .no-padding{
   padding: 0 !important;
 }
-.p1em{
+.p1rem{
   padding: 1rem;
 }
 .mainColor{
@@ -173,10 +174,9 @@ button, .button, label, a{
     }
   }
   .menuButton{
-    font-family: 'entypo';
-    font-size: 3.9rem;
-    padding: 1.1rem 0.5rem;
-    line-height: 0.8rem;
+    font-family: @iconsFont;
+    font-size: 3rem;
+    padding: 0.3rem 0.9rem 0.5rem;
   }
   .title{
     display: inline-block;
@@ -402,28 +402,29 @@ button, .button, label, a{
   text-indent: 2rem;
   position: relative;
   &:before{
-    font-family: 'entypo';
-    font-size: 2.7rem;
+    font-family: @iconsFont;
+    font-size: 1.6rem;
     font-style: normal;
     position: absolute;
-    left: -1.2rem;
-    top: 50%;
+    left: -0.9rem;
+    top: 54%;
     width: 1rem;
     height: 1rem;
     line-height: 1rem;
+    color:@mainColor;
     -webkit-transform: translate3d(0,-50%, 0);
   }
 }
 .has-chevron{
   position: relative;
   &:after{
-    content: '\E766';
-    font-size: 2rem;
+    content: '\e0b8';
+    font-size: 1.3rem;
     position: absolute;
-    font-family: 'entypo';
+    font-family: @iconsFont;
     top: 50%;
     -webkit-transform: translate3d(0, -50%, 0);
-    right: 3rem;
+    right: 3.2rem;
     width: 1rem;
     height: 1rem;
     line-height: 1rem;
