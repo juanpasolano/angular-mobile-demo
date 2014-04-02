@@ -1753,6 +1753,9 @@ a {
 .flr {
   float: right;
 }
+.ttu {
+  text-transform: uppercase;
+}
 .no-padding {
   padding: 0 !important;
 }
@@ -2042,7 +2045,7 @@ a {
   background: #636768;
 }
 .has-icon {
-  text-indent: 2rem;
+  padding-left: 3rem !important;
   position: relative;
 }
 .has-icon:before {
@@ -2050,7 +2053,7 @@ a {
   font-size: 1.6rem;
   font-style: normal;
   position: absolute;
-  left: -0.9rem;
+  left: 0.6rem;
   top: 54%;
   width: 1rem;
   height: 1rem;
@@ -2068,7 +2071,7 @@ a {
   font-family: "ionicons";
   top: 50%;
   -webkit-transform: translate3d(0, -50%, 0);
-  right: 3.2rem;
+  right: 1.2rem;
   width: 1rem;
   height: 1rem;
   line-height: 1rem;
@@ -2174,11 +2177,10 @@ a {
 .vertical-menu li a {
   color: #4a4d4e;
   display: block;
-  height: 46px;
-  font-size: 16px;
+  height: auto;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 12px 0 0 20px;
+  padding: .7rem 1rem .7rem 1rem;
   text-decoration: none;
   font-weight: 300;
 }
