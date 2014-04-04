@@ -1735,6 +1735,11 @@ a {
 .x-ng-cloak {
   display: none;
 }
+/*This fixes google maps funcky css*/
+img[src*="gstatic.com/"],
+img[src*="googleapis.com/"] {
+  max-width: 99999px;
+}
 .tac {
   text-align: center;
 }
