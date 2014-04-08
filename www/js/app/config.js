@@ -6,7 +6,7 @@ app.factory('ConfigFactory', [
 				assets: 'http://192.237.180.31/dhm/public/'
 			},
 			title : 'Angular boilerplate from factory',
-			hasFooter: true,
+			hasFooter: false,
 			hasHeader:false,
 			hasSideNavigation: false,
 			hasBackButton: false,
