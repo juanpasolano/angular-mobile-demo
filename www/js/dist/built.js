@@ -789,21 +789,22 @@ app.directive('mbMarkdown',[
 ]);
 /*
 * modalBox.js:
-*
-*		$rootScope.$emit('makeModal', {
-*			options:{
-*				template:'partials/modals/calendarModal.html',
-*				text:'some text'
-*				cancelText :'Yep',
-*				hasCancelBtn: true,
-*				acceptText: 'Ok, go.'
-*				hasAcceptBtn: true,
-*				data: {}
-*			}
-*		});
-*
-*		The template variable has higher priority over the text variable
-*		Any other variable passed to options will get into the isolated scope, therefore you can access it in the template html
+
+		$rootScope.$emit('makeModal', {
+			options:{
+				template:'partials/modals/calendarModal.html',
+				text:'some text',
+				title: 'Some title',
+				cancelText :'Yep',
+				hasCancelBtn: true,
+				acceptText: 'Ok, go.',
+				hasAcceptBtn: true,
+				data: {}
+			}
+		});
+
+		The template variable has higher priority over the text variable
+		Any other variable passed to options will get into the isolated scope, therefore you can access it in the template html
 */
 app.directive('mbModalBox',['$http', '$compile', '$timeout',  '$rootScope', '$templateCache', 'ConfigFactory',
 	function($http, $compile, $timeout,  $rootScope, $templateCache, ConfigFactory){
