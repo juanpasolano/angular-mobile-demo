@@ -11,6 +11,7 @@ app.controller('CalendarCtrl', ['$scope', '$rootScope', '$location', 'ConfigFact
 		$scope.config = ConfigFactory;
 
 		$scope.events = [
+            { date: '2014-05-09', title: 'Lorem ipsum dolor sit.', url: 'http://github.com/kylestetz/CLNDR' },
 			{ date: '2014-01-09', title: 'Lorem ipsum dolor sit.', url: 'http://github.com/kylestetz/CLNDR' },
 			{ date: '2014-02-09', title: 'Lorem ipsum dolor sit.', url: 'http://github.com/kylestetz/CLNDR' },
 			{ date: '2014-02-09', title: 'Lorem ipsum dolor sit 2.', url: 'http://github.com/kylestetz/CLNDR' },

@@ -2202,6 +2202,7 @@ img[src*="googleapis.com/"] {
 .calendar .clndr-controls {
   background: #e6375a;
   padding-bottom: 0.5rem;
+  padding-top: 1.6rem;
 }
 .calendar .clndr-controls > div {
   height: 2.4rem;
