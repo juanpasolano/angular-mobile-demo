@@ -2,3 +2,4 @@ node_modules/
 .idea/
 .gitshots/
 .sass-cache
+www/js/dist/
