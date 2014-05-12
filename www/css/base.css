@@ -1936,32 +1936,24 @@ img[src*="googleapis.com/"] {
 }
 .page-slide-animation.ng-enter,
 .page-slide-animation.ng-leave {
-  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
-  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
-  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  min-height: 1000px;
-  -webkit-transform: translate3d(0, 0, 0);
 }
 .page-slide-animation.ng-enter {
-  opacity: 0;
+  left: 100%;
   -webkit-transform: translate3d(100%, 0, 0);
 }
 .page-slide-animation.ng-enter.ng-enter-active {
   -webkit-transform: translate3d(0, 0, 0);
-  opacity: 1;
+  left: 0;
 }
 .page-slide-animation.ng-leave {
+  left: 0;
   -webkit-transform: translate3d(0, 0, 0);
-  opacity: 1;
 }
 .page-slide-animation.ng-leave.ng-leave-active {
   -webkit-transform: translate3d(-100%, 0, 0);
-  opacity: 0;
 }
 .page-pop-animation.ng-enter,
 .page-pop-animation.ng-leave {
@@ -2210,6 +2202,7 @@ img[src*="googleapis.com/"] {
 .calendar .clndr-controls {
   background: #e6375a;
   padding-bottom: 0.5rem;
+  padding-top: 1.6rem;
 }
 .calendar .clndr-controls > div {
   height: 2.4rem;

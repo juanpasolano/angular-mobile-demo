@@ -4,6 +4,15 @@
 	&::-moz-placeholder {color: @color }
 	&:-ms-input-placeholder {color: @color }
 }
+.vertical-center(){
+  //This mixin centers vertically whatever is INSIDE of it
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
 .text-shadow (@string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
 	text-shadow: @string;
 }

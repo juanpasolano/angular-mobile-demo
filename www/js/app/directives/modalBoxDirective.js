@@ -10,7 +10,7 @@
 				hasCancelBtn: true,
 				acceptText: 'Ok, go.',
 				hasAcceptBtn: true,
-				data: {}
+				data: {} //can be accessed in the template using {{options.data}}
 			}
 		});
 

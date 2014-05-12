@@ -55,7 +55,7 @@ $.fn.extend({
 *
 * */
 
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch', 'ngSanitize']);
 
 app.controller('MainCtrl',[ '$scope', '$element', '$window', 'ConfigFactory',
 	function($scope, $element, $window, ConfigFactory){

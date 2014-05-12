@@ -18,6 +18,7 @@ app.directive('mbToast',['$rootScope', '$timeout',
 				scope.messages = [];
 				function createToast(data){
 					scope.messages.push(data);
+                    scope.$digest();
 					removeToast();
 				}
 				function removeToast(){
