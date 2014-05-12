@@ -10,7 +10,10 @@ app.factory('ConfigFactory', [
 			hasHeader:false,
 			hasSideNavigation: false,
 			hasBackButton: false,
-			hasRightButton: false
+            rightClickText: '&#xe1b3;',
+			hasRightButton: false,
+            rightClickFn: function(){
+            }
 		};
 	}
 ]);

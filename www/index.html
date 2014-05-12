@@ -63,7 +63,7 @@
                     <h3 class="title">{{config.title}}</h3>
                 </div>
                 <div class="column small-2 tar">
-                    <a class="button menuButton" ng-show="config.hasRightButton">&#xe170;</a>
+                    <a class="button menuButton" ng-show="config.hasRightButton" ng-click="config.rightClickFn()" ng-bind-html="config.rightClickText"></a>
                 </div>
             </div>
 
@@ -147,6 +147,7 @@
     <script src="js/vendor/angular-1.2.13/angular-route.min.js"></script>
     <script src="js/vendor/angular-1.2.13/angular-animate.min.js"></script>
     <script src="js/vendor/angular-1.2.13/angular-touch.min.js"></script>
+    <script src="js/vendor/angular-1.2.13/angular-sanitize.min.js"></script>
 
     <!-- Underscore: If you dont know what underscore does... -->
     <script src="js/vendor/underscore-min.js"></script>
