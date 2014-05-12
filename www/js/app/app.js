@@ -4,10 +4,56 @@
 *
 */
 'use strict';
-
-$(function() {
-	FastClick.attach(document.body);
+$.fn.extend({
+    disableSelection : function() {
+        this.each(function() {
+            this.onselectstart = function() { return false; };
+            this.unselectable = "on";
+            $(this).css('-moz-user-select', 'none');
+            $(this).css('-webkit-user-select', 'none');
+        });
+    }
 });
+
+
+/*
+*
+* Bootstraping the app
+*
+* */
+(function() {
+    /*Changes language to Spanish*/
+    moment.lang('es');
+
+    /*Initializes plugin for fastclicking*/
+    FastClick.attach(document.body);
+
+    /*Diasbles selection to prevent copy, paste messages on devices*/
+    $.fn.disableSelection();
+
+    /*This function executes the Angular bootstrap function*/
+    var bootstrapAngular = function(){
+        angular.element(document).ready(function() {
+            angular.bootstrap(document, ['app']);
+        });
+    };
+
+    /*We chek if cordova is avalible to listen to device ready*/
+    if (typeof cordova !== 'undefined') {
+        document.addEventListener("deviceready", function() {
+            bootstrapAngular();
+        }, false);
+    } else {
+        bootstrapAngular();
+    }
+})();
+
+
+/*
+*
+* HERE THE ANGULAR MAGIC BEGINS
+*
+* */
 
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngTouch']);
 
@@ -53,5 +99,5 @@ app.controller('MainCtrl',[ '$scope', '$element', '$window', 'ConfigFactory',
 			$window.history.back();
 		};
 	}
-	]);
+]);
 
