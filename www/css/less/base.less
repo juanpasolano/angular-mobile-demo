@@ -285,33 +285,29 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
 }
 .page-slide-animation{
   &.ng-enter, &.ng-leave{
-    @time:.6s;
-    -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
-    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
-    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) @time;
+    @time:.4s;
+    -webkit-transition:-webkit-transform @time cubic-bezier(0.250, 0.460, 0.450, 0.940), opacity @time cubic-bezier(0.250, 0.460, 0.450, 0.940);
     position:absolute;
     top:0;
-    left:0;
-    right:0;
-    min-height:1000px;
-    -webkit-transform:translate3d(0,0,0);
   }
   &.ng-enter {
-    opacity:0;
+    // opacity:0;
+    left:100%;
     -webkit-transform:translate3d(100%,0,0);
   }
   &.ng-enter.ng-enter-active {
     -webkit-transform:translate3d(0,0,0);
-    opacity:1;
+    left:0;
+    // opacity:1;
   }
   &.ng-leave {
+    left:0;
     -webkit-transform:translate3d(0,0,0);
-    opacity:1;
+    // opacity:1;
   }
   &.ng-leave.ng-leave-active {
     -webkit-transform:translate3d(-100%,0,0);
-    opacity:0;
+    // opacity:0;
   }
 }
 .page-pop-animation{
